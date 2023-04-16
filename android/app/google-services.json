@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "658689660549",
+    "project_id": "rescue-app-ce200",
+    "storage_bucket": "rescue-app-ce200.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658689660549:android:70551bc8634eec3321fbec",
+        "android_client_info": {
+          "package_name": "com.example.untitled"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658689660549-17eu9js2gblos0r01l7ntptb7roh3ngq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.untitled",
+            "certificate_hash": "7da0c30b36fc26e36301f231e6d82e4a7ff44535"
+          }
+        },
+        {
+          "client_id": "658689660549-bj1h2lg51rf3atigoaj9pbcacind2sq5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_95bALYTZNjJbD5BxfC0m98x-QqIbOtY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658689660549-bj1h2lg51rf3atigoaj9pbcacind2sq5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
