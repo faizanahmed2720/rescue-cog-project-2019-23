@@ -91,7 +91,7 @@ class _userSignupState extends State<userSignup> {
                           passwordController.text,
                           phoneController.text,
                           fullnameController.text,
-                          'driver',
+                          'user',
                         );
                         //if user crdential is null then there must be an exception.
                         if (userCredential != null) {
