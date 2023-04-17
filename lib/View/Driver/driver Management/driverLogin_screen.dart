@@ -67,7 +67,6 @@ class _DriverLoginState extends State<DriverLogin> {
                 ),
                 ElevatedButton(
                     onPressed: () async {
-                      log("login pressed");
                       try {
                         UserCredential? userCredential =
                             await _authController.signInUser(

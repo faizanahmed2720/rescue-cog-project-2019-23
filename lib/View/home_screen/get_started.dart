@@ -46,7 +46,7 @@ class _get_startedState extends State<get_started> {
             width: 200,
             child: ElevatedButton(
                 onPressed: () {
-                  Get.to(userLogin());
+                  Get.to(UserLogin());
                 },
                 style: ElevatedButton.styleFrom(primary: secondaryColor),
                 child: Text(

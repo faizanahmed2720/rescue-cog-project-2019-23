@@ -6,9 +6,10 @@ class FirestoreController {
 
   Future<void> postUserDataToFirestore(
     UserModel userModel,
+    String userType,
   ) async {
     await _firebaseFirestore
-        .collection('user')
+        .collection(userType == 'driver' ? 'driver' : 'user')
         .doc(userModel.uid)
         .set(userModel.toJson());
   }

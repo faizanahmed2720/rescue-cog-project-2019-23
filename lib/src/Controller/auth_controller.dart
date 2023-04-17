@@ -12,6 +12,7 @@ class AuthController {
     String password,
     String userName,
     String phoneNumber,
+    String userType,
   ) async {
     UserCredential? userCredential;
     try {
@@ -28,6 +29,7 @@ class AuthController {
             uid: user!.uid,
             phoneNumber: phoneNumber,
           ),
+          userType,
         );
       }
     } on FirebaseAuthException catch (e) {

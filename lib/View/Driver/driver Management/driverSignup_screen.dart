@@ -136,20 +136,8 @@ class _DriverSignupState extends State<DriverSignup> {
                   height: 50,
                 ),
                 ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(primary: secondaryColor),
-                    child: const Padding(
-                      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                      child: Text(
-                        "SIGNUP",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    )),
-                const SizedBox(
-                  height: 100,
-                ),
-                ElevatedButton(
                     onPressed: () async {
+                      //used for driver signup,
                       try {
                         UserCredential? userCredential =
                             await _authController.createAccount(
@@ -157,7 +145,9 @@ class _DriverSignupState extends State<DriverSignup> {
                           passwordController.text,
                           phoneController.text,
                           fullnameController.text,
+                          'driver',
                         );
+                        //if user crdential is null then there must be an exception.
                         if (userCredential != null) {
                           showSnackBar(
                             "Signup Successful",
@@ -176,12 +166,26 @@ class _DriverSignupState extends State<DriverSignup> {
                           );
                         }
                       } catch (e) {
+                        //e will tell us the value of exception
                         showSnackBar(
                           e.toString(),
                           context,
                         );
                       }
                     },
+                    style: ElevatedButton.styleFrom(primary: secondaryColor),
+                    child: const Padding(
+                      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                      child: Text(
+                        "SIGNUP",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    )),
+                const SizedBox(
+                  height: 100,
+                ),
+                ElevatedButton(
+                    onPressed: () async {},
                     style: ElevatedButton.styleFrom(primary: secondaryColor),
                     child: const Padding(
                       padding: EdgeInsets.fromLTRB(5, 3, 5, 3),

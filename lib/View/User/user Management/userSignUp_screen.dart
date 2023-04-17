@@ -1,9 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:untitled/View/Driver/driver%20Management/driverSignup_screen.dart';
 import 'package:untitled/View/User/user%20Management/userLogIn_screen.dart';
+import 'package:untitled/View/home_screen/get_started.dart';
+import 'package:untitled/src/Controller/auth_controller.dart';
 
 import '../../../src/Constants/colors.dart';
 import '../../../src/Utils/CommonWidgets/customTextField.dart';
@@ -20,6 +24,7 @@ class _userSignupState extends State<userSignup> {
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  final AuthController _authController = AuthController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +48,7 @@ class _userSignupState extends State<userSignup> {
                   secureText: false,
                   type: TextInputType.text,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 CustomTextField(
@@ -53,7 +58,7 @@ class _userSignupState extends State<userSignup> {
                   secureText: false,
                   type: TextInputType.emailAddress,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 CustomTextField(
@@ -63,7 +68,7 @@ class _userSignupState extends State<userSignup> {
                   secureText: false,
                   type: TextInputType.number,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 CustomTextField(
@@ -73,20 +78,56 @@ class _userSignupState extends State<userSignup> {
                   secureText: true,
                   type: TextInputType.text,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      //used for user signup,
+                      try {
+                        UserCredential? userCredential =
+                            await _authController.createAccount(
+                          emailController.text,
+                          passwordController.text,
+                          phoneController.text,
+                          fullnameController.text,
+                          'driver',
+                        );
+                        //if user crdential is null then there must be an exception.
+                        if (userCredential != null) {
+                          showSnackBar(
+                            "Signup Successful",
+                            context,
+                          );
+                          Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (context) => const get_started(),
+                            ),
+                            (route) => false,
+                          );
+                        } else {
+                          showSnackBar(
+                            "Login failed",
+                            context,
+                          );
+                        }
+                      } catch (e) {
+                        //e will tell us the value of exception
+                        showSnackBar(
+                          e.toString(),
+                          context,
+                        );
+                      }
+                    },
                     style: ElevatedButton.styleFrom(primary: secondaryColor),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
+                    child: const Padding(
+                      padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
                       child: Text(
                         "SIGNUP",
                         style: TextStyle(fontSize: 20),
                       ),
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 140,
                 ),
                 SizedBox(
@@ -94,7 +135,7 @@ class _userSignupState extends State<userSignup> {
                   width: 100,
                   child: ElevatedButton(
                       onPressed: () {
-                        Get.to(userLogin());
+                        Get.to(const UserLogin());
                       },
                       style: ElevatedButton.styleFrom(
                         primary: secondaryColor,

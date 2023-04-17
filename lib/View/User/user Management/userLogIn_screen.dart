@@ -1,24 +1,25 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:untitled/View/Driver/driver%20Management/driverSignup_screen.dart';
 import 'package:untitled/View/User/user%20Management/userSignUp_screen.dart';
-import 'package:untitled/src/Constants/text_strings.dart';
+import 'package:untitled/View/home_screen/get_started.dart';
+import 'package:untitled/src/Controller/auth_controller.dart';
 
 import '../../../src/Constants/colors.dart';
 import '../../../src/Utils/CommonWidgets/customTextField.dart';
 
-class userLogin extends StatefulWidget {
-  const userLogin({super.key});
+class UserLogin extends StatefulWidget {
+  const UserLogin({super.key});
 
   @override
-  State<userLogin> createState() => _userLoginState();
+  State<UserLogin> createState() => _UserLoginState();
 }
 
-class _userLoginState extends State<userLogin> {
+class _UserLoginState extends State<UserLogin> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  final AuthController _authController = AuthController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class _userLoginState extends State<userLogin> {
                   secureText: false,
                   type: TextInputType.emailAddress,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 CustomTextField(
@@ -52,20 +53,45 @@ class _userLoginState extends State<userLogin> {
                   secureText: true,
                   type: TextInputType.text,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 100,
                 ),
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      try {
+                        UserCredential? userCredential =
+                            await _authController.signInUser(
+                          emailController.text,
+                          passwordController.text,
+                        );
+                        if (userCredential != null) {
+                          showSnackBar(
+                            "Login Successful",
+                            context,
+                          );
+                          Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (context) => const get_started(),
+                            ),
+                            (route) => false,
+                          );
+                        }
+                      } catch (e) {
+                        showSnackBar(
+                          e.toString(),
+                          context,
+                        );
+                      }
+                    },
                     style: ElevatedButton.styleFrom(primary: secondaryColor),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
+                    child: const Padding(
+                      padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
                       child: Text(
                         "LOGIN",
                         style: TextStyle(fontSize: 20),
                       ),
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 140,
                 ),
                 SizedBox(
@@ -73,7 +99,7 @@ class _userLoginState extends State<userLogin> {
                   width: 100,
                   child: ElevatedButton(
                       onPressed: () {
-                        Get.to(userSignup());
+                        Get.to(const userSignup());
                       },
                       style: ElevatedButton.styleFrom(
                         primary: secondaryColor,
