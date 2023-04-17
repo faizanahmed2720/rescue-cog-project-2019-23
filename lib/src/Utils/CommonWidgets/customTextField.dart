@@ -8,7 +8,8 @@ class CustomTextField extends StatelessWidget {
   final TextInputType type;
   final String? Function(String?)? validator;
 
-  CustomTextField({
+  const CustomTextField({
+    super.key,
     required this.placeholder,
     required this.icon,
     required this.secureText,

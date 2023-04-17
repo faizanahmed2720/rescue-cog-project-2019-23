@@ -1,23 +1,24 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:untitled/View/home_screen/get_started.dart';
+import 'package:untitled/src/Controller/auth_controller.dart';
 
 import '../../../src/Constants/colors.dart';
 import '../../../src/Utils/CommonWidgets/customTextField.dart';
 
-class driverSignup extends StatefulWidget {
-  const driverSignup({super.key});
+class DriverSignup extends StatefulWidget {
+  const DriverSignup({super.key});
 
   @override
-  State<driverSignup> createState() => _driverSignupState();
+  State<DriverSignup> createState() => _DriverSignupState();
 }
 
-class _driverSignupState extends State<driverSignup> {
+class _DriverSignupState extends State<DriverSignup> {
   TextEditingController fullnameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController cnicController = TextEditingController();
-  TextEditingController vehicleController = TextEditingController(); //
+  TextEditingController vehicleController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController dropdownController = TextEditingController();
   final List<String> vehicleTypes = [
@@ -26,6 +27,8 @@ class _driverSignupState extends State<driverSignup> {
     'Kinglong Van'
   ];
 
+  final AuthController _authController = AuthController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +36,10 @@ class _driverSignupState extends State<driverSignup> {
         children: [
           Container(
             decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10),
+                ),
                 image: DecorationImage(
                     image: AssetImage("assets/Images/sign_up.png"),
                     fit: BoxFit.cover)),
@@ -42,7 +49,12 @@ class _driverSignupState extends State<driverSignup> {
                 ? dropdownController.text
                 : null,
             items: vehicleTypes
-                .map((type) => DropdownMenuItem(child: Text(type), value: type))
+                .map(
+                  (type) => DropdownMenuItem(
+                    value: type,
+                    child: Text(type),
+                  ),
+                )
                 .toList(),
             onChanged: (value) {
               dropdownController.text = value!;
@@ -55,7 +67,12 @@ class _driverSignupState extends State<driverSignup> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(30, 250, 30, 0),
+            padding: const EdgeInsets.only(
+              left: 30,
+              top: 250,
+              right: 30,
+              bottom: 0,
+            ),
             child: Column(
               children: [
                 CustomTextField(
@@ -65,7 +82,7 @@ class _driverSignupState extends State<driverSignup> {
                   secureText: false,
                   type: TextInputType.text,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 CustomTextField(
@@ -75,7 +92,7 @@ class _driverSignupState extends State<driverSignup> {
                   secureText: false,
                   type: TextInputType.emailAddress,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 CustomTextField(
@@ -85,7 +102,7 @@ class _driverSignupState extends State<driverSignup> {
                   secureText: false,
                   type: TextInputType.number,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 CustomTextField(
@@ -95,7 +112,7 @@ class _driverSignupState extends State<driverSignup> {
                   secureText: false,
                   type: TextInputType.number,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 CustomTextField(
@@ -105,7 +122,7 @@ class _driverSignupState extends State<driverSignup> {
                   secureText: false,
                   type: TextInputType.text,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 CustomTextField(
@@ -115,27 +132,59 @@ class _driverSignupState extends State<driverSignup> {
                   secureText: true,
                   type: TextInputType.text,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(primary: secondaryColor),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                    child: const Padding(
+                      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                       child: Text(
                         "SIGNUP",
                         style: TextStyle(fontSize: 20),
                       ),
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 100,
                 ),
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      try {
+                        UserCredential? userCredential =
+                            await _authController.createAccount(
+                          emailController.text,
+                          passwordController.text,
+                          phoneController.text,
+                          fullnameController.text,
+                        );
+                        if (userCredential != null) {
+                          showSnackBar(
+                            "Signup Successful",
+                            context,
+                          );
+                          Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (context) => const get_started(),
+                            ),
+                            (route) => false,
+                          );
+                        } else {
+                          showSnackBar(
+                            "Login failed",
+                            context,
+                          );
+                        }
+                      } catch (e) {
+                        showSnackBar(
+                          e.toString(),
+                          context,
+                        );
+                      }
+                    },
                     style: ElevatedButton.styleFrom(primary: secondaryColor),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(5, 3, 5, 3),
+                    child: const Padding(
+                      padding: EdgeInsets.fromLTRB(5, 3, 5, 3),
                       child: Text(
                         "Log In",
                         style: TextStyle(fontSize: 10),
@@ -148,4 +197,11 @@ class _driverSignupState extends State<driverSignup> {
       ),
     );
   }
+}
+
+void showSnackBar(String text, BuildContext context) {
+  var snackBar = SnackBar(
+    content: Text(text),
+  );
+  ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }

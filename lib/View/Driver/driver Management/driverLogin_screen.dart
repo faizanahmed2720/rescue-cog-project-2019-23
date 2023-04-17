@@ -1,23 +1,27 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:untitled/View/home_screen/get_started.dart';
+import 'package:untitled/src/Controller/auth_controller.dart';
 
 import '../../../src/Constants/colors.dart';
 import '../../../src/Utils/CommonWidgets/customTextField.dart';
 import 'driverSignup_screen.dart';
 
-class driverLogin extends StatefulWidget {
-  const driverLogin({super.key});
+class DriverLogin extends StatefulWidget {
+  const DriverLogin({super.key});
 
   @override
-  State<driverLogin> createState() => _driverLoginState();
+  State<DriverLogin> createState() => _DriverLoginState();
 }
 
-class _driverLoginState extends State<driverLogin> {
+class _DriverLoginState extends State<DriverLogin> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  final AuthController _authController = AuthController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +30,21 @@ class _driverLoginState extends State<driverLogin> {
         children: [
           Container(
             decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/Images/log_in.png"),
-                    fit: BoxFit.cover)),
+              image: DecorationImage(
+                  image: AssetImage("assets/Images/log_in.png"),
+                  fit: BoxFit.cover),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(30, 320, 30, 0),
             child: Column(
               children: [
+                Container(
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("assets/Images/log_in.png"),
+                          fit: BoxFit.cover)),
+                ),
                 CustomTextField(
                   controller: emailController,
                   icon: Icons.email,
@@ -41,7 +52,7 @@ class _driverLoginState extends State<driverLogin> {
                   secureText: false,
                   type: TextInputType.emailAddress,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 CustomTextField(
@@ -51,20 +62,46 @@ class _driverLoginState extends State<driverLogin> {
                   secureText: true,
                   type: TextInputType.text,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 100,
                 ),
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      log("login pressed");
+                      try {
+                        UserCredential? userCredential =
+                            await _authController.signInUser(
+                          emailController.text,
+                          passwordController.text,
+                        );
+                        if (userCredential != null) {
+                          showSnackBar(
+                            "Login Successful",
+                            context,
+                          );
+                          Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (context) => const get_started(),
+                            ),
+                            (route) => false,
+                          );
+                        }
+                      } catch (e) {
+                        showSnackBar(
+                          e.toString(),
+                          context,
+                        );
+                      }
+                    },
                     style: ElevatedButton.styleFrom(primary: secondaryColor),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
+                    child: const Padding(
+                      padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
                       child: Text(
                         "LOGIN",
                         style: TextStyle(fontSize: 20),
                       ),
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 140,
                 ),
                 SizedBox(
@@ -72,7 +109,7 @@ class _driverLoginState extends State<driverLogin> {
                   width: 100,
                   child: ElevatedButton(
                       onPressed: () {
-                        Get.to(driverSignup());
+                        Get.to(const DriverSignup());
                       },
                       style: ElevatedButton.styleFrom(
                         primary: secondaryColor,

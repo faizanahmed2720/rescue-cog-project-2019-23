@@ -61,7 +61,7 @@ class _get_startedState extends State<get_started> {
             width: 200,
             child: ElevatedButton(
                 onPressed: () {
-                  Get.to(driverLogin());
+                  Get.to(DriverLogin());
                 },
                 style: ElevatedButton.styleFrom(primary: secondaryColor),
                 child: Text(
