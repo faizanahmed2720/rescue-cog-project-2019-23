@@ -14,7 +14,7 @@ class userDashboard extends StatelessWidget {
               child: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("assets/Images/sign_up.png"),
+                    image: AssetImage("assets/Images/Dashboard/dashboard.png"),
                     fit: BoxFit.cover)),
           ))
         ],

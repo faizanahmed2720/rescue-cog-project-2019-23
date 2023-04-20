@@ -1,9 +1,6 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:untitled/View/home_screen/get_started.dart';
 import 'package:untitled/src/Controller/auth_controller.dart';
 

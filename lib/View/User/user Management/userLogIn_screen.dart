@@ -8,6 +8,7 @@ import 'package:untitled/src/Controller/auth_controller.dart';
 
 import '../../../src/Constants/colors.dart';
 import '../../../src/Utils/CommonWidgets/customTextField.dart';
+import '../../User Dashboard/userDashoard_screen.dart';
 
 class UserLogin extends StatefulWidget {
   const UserLogin({super.key});
@@ -59,16 +60,15 @@ class _UserLoginState extends State<UserLogin> {
                 ElevatedButton(
                     onPressed: () async {
                       try {
-                        UserCredential? userCredential =
-                            await _authController.signInUser(
-                          emailController.text,
-                          passwordController.text,
-                        );
+                        UserCredential? userCredential = await _authController
+                            .signInUser(
+                              emailController.text,
+                              passwordController.text,
+                            )
+                            .then((value) => Get.to(const userDashboard()));
                         if (userCredential != null) {
-                          showSnackBar(
-                            "Login Successful",
-                            context,
-                          );
+                          Get.snackbar('success', "Login Successfully");
+                          // ignore: use_build_context_synchronously
                           Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
                               builder: (context) => const get_started(),
