@@ -28,11 +28,13 @@ class _DriverLoginState extends State<DriverLogin> {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/Images/log_in.png"),
-                  fit: BoxFit.cover),
+          Expanded(
+            child: Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/Images/log_in.png"),
+                    fit: BoxFit.cover),
+              ),
             ),
           ),
           Padding(
