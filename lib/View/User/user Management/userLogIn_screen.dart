@@ -8,6 +8,7 @@ import 'package:untitled/src/Controller/auth_controller.dart';
 
 import '../../../src/Constants/colors.dart';
 import '../../../src/Utils/CommonWidgets/customTextField.dart';
+import '../../User Dashboard/home.dart';
 import '../../User Dashboard/userDashoard_screen.dart';
 
 class UserLogin extends StatefulWidget {
@@ -65,7 +66,7 @@ class _UserLoginState extends State<UserLogin> {
                               emailController.text,
                               passwordController.text,
                             )
-                            .then((value) => Get.to(const userDashboard()));
+                            .then((value) => Get.to(const home()));
                         if (userCredential != null) {
                           Get.snackbar('success', "Login Successfully");
                           // ignore: use_build_context_synchronously
