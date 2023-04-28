@@ -1,56 +1,66 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
-// import 'package:untitled/View/Driver/driver%20Management/driverSignup_screen.dart';
-// import 'package:untitled/View/User/user%20Management/userLogIn_screen.dart';
-// import 'package:untitled/View/home_screen/get_started.dart';
-// import 'package:untitled/src/Constants/colors.dart';
-// import 'package:untitled/src/Controller/auth_controller.dart';
-// import 'package:untitled/src/Utils/CommonWidgets/customTextField.dart';
+// import '../../../src/Constants/colors.dart';
+// import '../../../src/Controller/auth_controller.dart';
+// import '../../../src/Utils/CommonWidgets/customTextField.dart';
+// import '../../home_screen/get_started.dart';
+// import 'driverLogin_screen.dart';
+// import 'driverSignup_screen.dart';
 
-// class SignupPage extends StatefulWidget {
-//   const SignupPage({super.key});
-
-//   @override
-//   State<SignupPage> createState() => _SignupPageState();
-// }
-
-// class _SignupPageState extends State<SignupPage> {
+// class DriverSignupPage extends StatelessWidget {
 //   TextEditingController fullnameController = TextEditingController();
 //   TextEditingController emailController = TextEditingController();
 //   TextEditingController phoneController = TextEditingController();
+//   TextEditingController cnicController = TextEditingController();
+//   TextEditingController vehicleController = TextEditingController();
 //   TextEditingController passwordController = TextEditingController();
+//   TextEditingController dropdownController = TextEditingController();
+//   final List<String> vehicleTypes = [
+//     'Suzuki Bolan',
+//     'Changhan',
+//     'Kinglong Van'
+//   ];
+
 //   final AuthController _authController = AuthController();
+
+//   DriverSignupPage({super.key});
 
 //   @override
 //   Widget build(BuildContext context) {
 //     return MaterialApp(
-//       home: Scaffold(
-//         body: SingleChildScrollView(
-//           child: Column(
-//             children: [
-//               Container(
-//                 height: 250,
-//                 alignment: Alignment.center,
-//                 width: double.infinity,
-//                 decoration: const BoxDecoration(
-//                   borderRadius: BorderRadius.only(
-//                     bottomLeft: Radius.circular(25),
-//                     bottomRight: Radius.circular(25),
-//                   ),
-//                   color: primaryColor,
+//         home: Scaffold(
+//       body: SingleChildScrollView(
+//         child: Column(
+//           children: [
+//             Container(
+//               height: 250,
+//               alignment: Alignment.center,
+//               width: double.infinity,
+//               decoration: const BoxDecoration(
+//                 borderRadius: BorderRadius.only(
+//                   bottomLeft: Radius.circular(25),
+//                   bottomRight: Radius.circular(25),
 //                 ),
-//                 child: const Text(
-//                   "SIGNUP",
-//                   style: TextStyle(
-//                     color: Colors.white,
-//                     fontSize: 30,
-//                     fontWeight: FontWeight.bold,
-//                   ),
+//                 color: primaryColor,
+//               ),
+//               child: const Text(
+//                 "SIGNUP",
+//                 style: TextStyle(
+//                   color: Colors.white,
+//                   fontSize: 30,
+//                   fontWeight: FontWeight.bold,
 //                 ),
 //               ),
-//               Padding(
-//                 padding: const EdgeInsets.fromLTRB(30, 50, 30, 0),
+//             ),
+//             Padding(
+//               padding: const EdgeInsets.only(
+//                 left: 30,
+//                 top: 20,
+//                 right: 30,
+//                 bottom: 0,
+//               ),
+//               child: SingleChildScrollView(
 //                 child: Column(
 //                   children: [
 //                     CustomTextField(
@@ -84,6 +94,40 @@
 //                       height: 20,
 //                     ),
 //                     CustomTextField(
+//                       controller: cnicController,
+//                       icon: Icons.quick_contacts_dialer_sharp,
+//                       placeholder: 'CNIC',
+//                       secureText: false,
+//                       type: TextInputType.number,
+//                     ),
+//                     const SizedBox(
+//                       height: 20,
+//                     ),
+//                     DropdownButtonFormField(
+//                       value: dropdownController.text.isNotEmpty
+//                           ? dropdownController.text
+//                           : null,
+//                       items: vehicleTypes
+//                           .map(
+//                             (type) => DropdownMenuItem(
+//                               value: type,
+//                               child: Text(type),
+//                             ),
+//                           )
+//                           .toList(),
+//                       onChanged: (value) {
+//                         dropdownController.text = value!;
+//                       },
+//                       decoration: const InputDecoration(
+//                         labelText: 'Vehicle Type',
+//                         icon: Icon(Icons.car_rental),
+//                         focusedBorder: InputBorder.none,
+//                       ),
+//                     ),
+//                     const SizedBox(
+//                       height: 20,
+//                     ),
+//                     CustomTextField(
 //                       controller: passwordController,
 //                       icon: Icons.password,
 //                       placeholder: 'PASSWORD',
@@ -95,7 +139,7 @@
 //                     ),
 //                     ElevatedButton(
 //                         onPressed: () async {
-//                           //used for user signup,
+//                           //used for driver signup,
 //                           try {
 //                             UserCredential? userCredential =
 //                                 await _authController.createAccount(
@@ -103,7 +147,7 @@
 //                               passwordController.text,
 //                               phoneController.text,
 //                               fullnameController.text,
-//                               'user',
+//                               'driver',
 //                             );
 //                             //if user crdential is null then there must be an exception.
 //                             if (userCredential != null) {
@@ -137,7 +181,7 @@
 //                         style:
 //                             ElevatedButton.styleFrom(primary: secondaryColor),
 //                         child: const Padding(
-//                           padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
+//                           padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
 //                           child: Text(
 //                             "SIGNUP",
 //                             style: TextStyle(fontSize: 20),
@@ -155,7 +199,7 @@
 //                         ),
 //                         TextButton(
 //                           onPressed: () {
-//                             Get.to(const UserLogin());
+//                             Get.to(const DriverLogin());
 //                           },
 //                           child: const Text(
 //                             "Log in",
@@ -170,10 +214,10 @@
 //                   ],
 //                 ),
 //               ),
-//             ],
-//           ),
+//             ),
+//           ],
 //         ),
 //       ),
-//     );
+//     ));
 //   }
 // }
