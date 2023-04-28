@@ -1,19 +1,28 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
+import 'package:untitled/View/splash_screen/splash_screen.dart';
 
-class userAccountSetting extends StatefulWidget {
-  const userAccountSetting({super.key});
+class UserAccountSetting extends StatefulWidget {
+  const UserAccountSetting({super.key});
 
   @override
-  State<userAccountSetting> createState() => _userAccountSettingState();
+  State<UserAccountSetting> createState() => _UserAccountSettingState();
 }
 
-class _userAccountSettingState extends State<userAccountSetting> {
+class _UserAccountSettingState extends State<UserAccountSetting> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text("This is User Account Setting Screen")),
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            FirebaseAuth.instance.signOut();
+            Get.to(const SplashScreen());
+          },
+          child: const Text("logout"),
+        ),
+      ),
     );
   }
 }

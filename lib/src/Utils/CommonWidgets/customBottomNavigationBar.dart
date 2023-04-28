@@ -9,6 +9,8 @@ import '../../../View/User Profile/user_profile.dart';
 import '../../Constants/colors.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
+  const CustomBottomNavigationBar({super.key});
+
   @override
   _CustomBottomNavigationBarState createState() =>
       _CustomBottomNavigationBarState();
@@ -31,7 +33,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         'page': const fireBrigades(),
       },
       {
-        'page': const userAccountSetting(),
+        'page': const UserAccountSetting(),
       },
       {
         'page': const userProfile(),
@@ -54,7 +56,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         shape: const CircularNotchedRectangleWithCorners(),
         notchMargin: 0.05,
         clipBehavior: Clip.antiAlias,
-        child: Container(
+        child: SizedBox(
           height: kBottomNavigationBarHeight * 1,
           child: Container(
             decoration: const BoxDecoration(
