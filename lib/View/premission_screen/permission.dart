@@ -1,5 +1,3 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:get/get.dart';
@@ -52,8 +50,9 @@ class _permissionScreenState extends State<permissionScreen> {
                         .then((value) => {Get.to(const get_started())});
                     // Code to access location and make call goes here
                   },
-                  style: ElevatedButton.styleFrom(primary: secondaryColor),
-                  child: Text(
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: secondaryColor),
+                  child: const Text(
                     "OK",
                     style: TextStyle(fontSize: 20),
                   ))),

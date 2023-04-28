@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
-class requestAmbulance extends StatefulWidget {
-  const requestAmbulance({super.key});
+class RequestAmbulance extends StatefulWidget {
+  const RequestAmbulance({super.key});
 
   @override
-  State<requestAmbulance> createState() => _requestAmbulanceState();
+  State<RequestAmbulance> createState() => _RequestAmbulanceState();
 }
 
-class _requestAmbulanceState extends State<requestAmbulance> {
+class _RequestAmbulanceState extends State<RequestAmbulance> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(child: Text("This is Ambulance Request Screen")),
     );
   }

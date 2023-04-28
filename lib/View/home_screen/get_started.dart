@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import '../../src/Constants/colors.dart';
 import '../Driver/driver Management/driverLogin_screen.dart';
 import '../User/user Management/userLogIn_screen.dart';
@@ -33,8 +29,9 @@ class _get_startedState extends State<get_started> {
             width: 200,
             child: ElevatedButton(
                 onPressed: () {},
-                style: ElevatedButton.styleFrom(primary: secondaryColor),
-                child: Text(
+                style:
+                    ElevatedButton.styleFrom(backgroundColor: secondaryColor),
+                child: const Text(
                   "Emergency",
                   style: TextStyle(fontSize: 20),
                 ))),
@@ -46,10 +43,11 @@ class _get_startedState extends State<get_started> {
             width: 200,
             child: ElevatedButton(
                 onPressed: () {
-                  Get.to(UserLogin());
+                  Get.to(const UserLogin());
                 },
-                style: ElevatedButton.styleFrom(primary: secondaryColor),
-                child: Text(
+                style:
+                    ElevatedButton.styleFrom(backgroundColor: secondaryColor),
+                child: const Text(
                   "LogIn as a User",
                   style: TextStyle(fontSize: 20),
                 ))),
@@ -61,10 +59,11 @@ class _get_startedState extends State<get_started> {
             width: 200,
             child: ElevatedButton(
                 onPressed: () {
-                  Get.to(DriverLogin());
+                  Get.to(const DriverLogin());
                 },
-                style: ElevatedButton.styleFrom(primary: secondaryColor),
-                child: Text(
+                style:
+                    ElevatedButton.styleFrom(backgroundColor: secondaryColor),
+                child: const Text(
                   "LogIn as a Driver",
                   style: TextStyle(fontSize: 20),
                 ))),

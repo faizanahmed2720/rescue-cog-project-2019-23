@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,7 +28,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         'page': const userDashboard(),
       },
       {
-        'page': const requestAmbulance(),
+        'page': const RequestAmbulance(),
       },
       {
         'page': const fireBrigades(),
