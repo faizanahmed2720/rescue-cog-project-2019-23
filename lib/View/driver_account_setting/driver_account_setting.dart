@@ -3,26 +3,33 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/src/Controller/auth_controller.dart';
 import 'package:untitled/src/Utils/CommonWidgets/customTextField.dart';
-
 import '../../src/Constants/colors.dart';
 import '../splash_screen/splash_screen.dart';
 
-class UserAccountSetting extends StatefulWidget {
-  const UserAccountSetting({super.key});
+class DriverAccountSetting extends StatefulWidget {
+  const DriverAccountSetting({super.key});
 
   @override
-  State<UserAccountSetting> createState() => _UserAccountSettingState();
+  State<DriverAccountSetting> createState() => _DriverAccountSettingState();
 }
 
-class _UserAccountSettingState extends State<UserAccountSetting> {
+class _DriverAccountSettingState extends State<DriverAccountSetting> {
   TextEditingController fullnameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController residcenceController = TextEditingController();
   TextEditingController cnicController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController dobController = TextEditingController();
+  TextEditingController vehicleNoController = TextEditingController();
+
   final AuthController _authController = AuthController();
-  TextEditingController dropdownController = TextEditingController();
+  TextEditingController genderDropdownController = TextEditingController();
   final List<String> genderTypes = ['Male', 'Female', 'Other'];
+  TextEditingController vehicleDopdownController = TextEditingController();
+  final List<String> vehicleTypes = [
+    'Suzuki Bolan',
+    'Changhan',
+    'Kinglong Van'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -95,8 +102,8 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
                     height: 10,
                   ),
                   DropdownButtonFormField(
-                    value: dropdownController.text.isNotEmpty
-                        ? dropdownController.text
+                    value: genderDropdownController.text.isNotEmpty
+                        ? genderDropdownController.text
                         : null,
                     items: genderTypes
                         .map(
@@ -107,7 +114,7 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
                         )
                         .toList(),
                     onChanged: (value) {
-                      dropdownController.text = value!;
+                      genderDropdownController.text = value!;
                     },
                     decoration: const InputDecoration(
                       labelText: 'Gender',
@@ -119,11 +126,45 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
                     height: 10,
                   ),
                   CustomTextField(
-                    controller: passwordController,
+                    controller: dobController,
                     icon: Icons.calendar_month,
                     placeholder: 'DATE OF BIRTH',
                     secureText: false,
+                    type: TextInputType.number,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  CustomTextField(
+                    controller: vehicleNoController,
+                    icon: Icons.numbers,
+                    placeholder: 'VEHICLE NUMBER',
+                    secureText: false,
                     type: TextInputType.text,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  DropdownButtonFormField(
+                    value: vehicleDopdownController.text.isNotEmpty
+                        ? vehicleDopdownController.text
+                        : null,
+                    items: vehicleTypes
+                        .map(
+                          (type) => DropdownMenuItem(
+                            value: type,
+                            child: Text(type),
+                          ),
+                        )
+                        .toList(),
+                    onChanged: (value) {
+                      vehicleDopdownController.text = value!;
+                    },
+                    decoration: const InputDecoration(
+                      labelText: 'Vehicle Type',
+                      icon: Icon(Icons.car_rental),
+                      focusedBorder: InputBorder.none,
+                    ),
                   ),
                   const SizedBox(
                     height: 20,

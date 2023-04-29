@@ -1,5 +1,8 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../User Account Setting/user_account_setting.dart';
 
 // ignore: camel_case_types
 class userDashboard extends StatelessWidget {
@@ -107,7 +110,9 @@ class userDashboard extends StatelessWidget {
                     height: 150,
                     width: 150,
                     child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(const UserAccountSetting());
+                        },
                         child: Image.asset(
                             "assets/Images/Dashboard/account setting.png"),
                         style: ElevatedButton.styleFrom(
