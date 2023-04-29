@@ -1,10 +1,9 @@
+// ignore_for_file: file_names, use_build_context_synchronously, deprecated_member_use
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:untitled/View/Driver/driver%20Management/driverSignup_screen.dart';
-import 'package:untitled/View/User%20Dashboard/home.dart';
-import 'package:untitled/View/User/user%20Management/userSignUp_screen.dart';
 import 'package:untitled/View/home_screen/get_started.dart';
 import 'package:untitled/src/Constants/colors.dart';
 import 'package:untitled/src/Controller/auth_controller.dart';

@@ -1,7 +1,12 @@
-// ignore: file_names
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../Fire Brigades/fire_brigades_screen.dart';
+import '../First Aid Guide/first_aid _guide.dart';
+import '../Nearest Hospital/nearest_hospital.dart';
+import '../Request Ambulance/request_ambulance_screen.dart';
 import '../User Account Setting/user_account_setting.dart';
 
 // ignore: camel_case_types
@@ -45,7 +50,9 @@ class userDashboard extends StatelessWidget {
                               height: 150,
                               width: 150,
                               child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.to(const RequestAmbulance());
+                                  },
                                   child: Image.asset(
                                       "assets/Images/Dashboard/ambulance.png"),
                                   style: ElevatedButton.styleFrom(
@@ -60,7 +67,9 @@ class userDashboard extends StatelessWidget {
                               height: 150,
                               width: 150,
                               child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.to(const NearestHospital());
+                                  },
                                   child: Image.asset(
                                       "assets/Images/Dashboard/hospital.png"),
                                   style: ElevatedButton.styleFrom(
@@ -79,7 +88,9 @@ class userDashboard extends StatelessWidget {
                               height: 150,
                               width: 150,
                               child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.to(const firstAidGuide());
+                                  },
                                   child: Image.asset(
                                       "assets/Images/Dashboard/first aid.png"),
                                   style: ElevatedButton.styleFrom(
@@ -94,7 +105,9 @@ class userDashboard extends StatelessWidget {
                               height: 150,
                               width: 150,
                               child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.to(const fireBrigades());
+                                  },
                                   child: Image.asset(
                                       "assets/Images/Dashboard/fire brigades.png"),
                                   style: ElevatedButton.styleFrom(

@@ -1,4 +1,5 @@
-// ignore: file_names
+// ignore_for_file: file_names
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,6 +14,7 @@ class CustomBottomNavigationBar extends StatefulWidget {
   const CustomBottomNavigationBar({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CustomBottomNavigationBarState createState() =>
       _CustomBottomNavigationBarState();
 }

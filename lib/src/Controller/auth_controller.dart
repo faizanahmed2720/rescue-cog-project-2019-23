@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:untitled/models/user_model.dart';
 import 'package:untitled/src/Controller/firebase_controller.dart';
