@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/View/User%20Dashboard/home.dart';
+import 'package:untitled/View/User%20Dashboard/userDashoard_screen.dart';
 import 'package:untitled/View/splash_screen/intro_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -24,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
         context,
         MaterialPageRoute(
           builder: (context) =>
-              user == null ? const IntroScreen() : const home(),
+              user == null ? const IntroScreen() : const userDashboard(),
         ),
         (route) => false,
       );

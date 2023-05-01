@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../src/Utils/CommonWidgets/CustomBottomNavigationBarWithWallet.dart';
+import '../../src/Utils/CommonWidgets/FloatingactionButtonWithNotched.dart';
 import '../Fire Brigades/fire_brigades_screen.dart';
 import '../First Aid Guide/first_aid _guide.dart';
 import '../Nearest Hospital/nearest_hospital.dart';
@@ -17,12 +19,15 @@ class userDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: CustomNavigationBar(),
+        floatingActionButtonLocation:
+            FloatingActionButtonLocation.miniCenterDocked,
+        floatingActionButton: FloatingActionButtonWithNotched(),
         body: SingleChildScrollView(
           child: Stack(
             children: [
               Image.asset(
                 "assets/Images/Dashboard/background.png",
-                // width: 1080, height: 2460,
                 width: MediaQuery.of(context).size.width,
                 fit: BoxFit.cover,
               ),
@@ -89,7 +94,7 @@ class userDashboard extends StatelessWidget {
                               width: 150,
                               child: ElevatedButton(
                                   onPressed: () {
-                                    Get.to(const firstAidGuide());
+                                    Get.to(const FirstAidGuide());
                                   },
                                   child: Image.asset(
                                       "assets/Images/Dashboard/first aid.png"),

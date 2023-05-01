@@ -113,7 +113,7 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
                     },
                     decoration: const InputDecoration(
                       labelText: 'Gender',
-                      // icon: Icon(Icons.gender),
+                      icon: Icon(Icons.person),
                       focusedBorder: InputBorder.none,
                     ),
                   ),
