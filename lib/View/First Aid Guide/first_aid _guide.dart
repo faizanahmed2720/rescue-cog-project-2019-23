@@ -1,176 +1,145 @@
 // ignore: file_names
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:untitled/View/First%20Aid%20Guide/disease_1.dart';
-import 'package:untitled/View/First%20Aid%20Guide/disease_3.dart';
-import 'package:untitled/View/First%20Aid%20Guide/disease_4.dart';
-import 'package:untitled/View/First%20Aid%20Guide/disease_5.dart';
-import 'package:untitled/View/First%20Aid%20Guide/disease_6.dart';
-import 'package:untitled/src/Constants/colors.dart';
 
-import 'disease_2.dart';
+import '../../src/Constants/colors.dart';
+import '../../src/Constants/text_strings.dart';
+import '../../src/Utils/CommonWidgets/CustomBottomNavigationBarWithWallet.dart';
+import '../../src/Utils/CommonWidgets/FloatingactionButtonWithNotched.dart';
 
-class FirstAidGuide extends StatefulWidget {
-  const FirstAidGuide({super.key});
+class FirstAidGuide extends StatelessWidget {
+  final List<Map<String, String>> buttonData = [
+    {
+      'title': 'COVID-19 Precautions',
+      'image': 'assets/Images/First Aid Guide/Banner1.png',
+      'description': Button1description,
+    },
+    {
+      'title': 'Monkey Pox Precautions',
+      'image': 'assets/images/Curves/topCurve.png',
+      'description': 'This is the description for button 2',
+    },
+    {
+      'title': 'Fever Precautions',
+      'image': 'assets/images/Curves/topCurve.png',
+      'description': 'This is the description for button 3',
+    },
+    {
+      'title': 'Heart Attack Precautions',
+      'image': 'path/to/image4.jpg',
+      'description': 'This is the description for button 4',
+    },
+    {
+      'title': 'Epilepsy Precautions',
+      'image': 'path/to/image5.jpg',
+      'description': 'This is the description for button 5',
+    },
+    {
+      'title': 'Cough & Mild Precautions',
+      'image': 'path/to/image6.jpg',
+      'description': 'This is the description for button 6',
+    },
+  ];
 
-  @override
-  State<FirstAidGuide> createState() => _FirstAidGuideState();
-}
-
-class _FirstAidGuideState extends State<FirstAidGuide> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              height: 200,
-              alignment: Alignment.center,
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(25),
-                  bottomRight: Radius.circular(25),
-                ),
-                color: primaryColor,
+      bottomNavigationBar: CustomNavigationBar(),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: FloatingActionButtonWithNotched(),
+      body: Column(
+        children: [
+          Container(
+            height: 200,
+            alignment: Alignment.center,
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(25),
+                bottomRight: Radius.circular(25),
               ),
-              child: const Text(
-                "FIND THE GUIDE",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
+              color: primaryColor,
+            ),
+            child: const Text(
+              "FIND THE GUIDE",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 50),
-                  child: SizedBox(
-                    height: 50,
-                    width: 250,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Get.to(const Disease1());
-                      },
-                      child: const Text(
-                        "COVID-19 Precautions",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: buttonData.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                    padding: const EdgeInsets.fromLTRB(40, 20, 40, 0),
+                    child: SizedBox(
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DetailScreen(
+                                title: buttonData[index]['title']!,
+                                image: buttonData[index]['image']!,
+                                description: buttonData[index]['description']!,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          buttonData[index]['title']!,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
+                        style:
+                            ElevatedButton.styleFrom(primary: secondaryColor),
                       ),
-                      style: ElevatedButton.styleFrom(primary: secondaryColor),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: SizedBox(
-                    height: 50,
-                    width: 250,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Get.to(const Disease2());
-                      },
-                      child: const Text(
-                        "Monkey Pox Precautions",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      style: ElevatedButton.styleFrom(primary: secondaryColor),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: SizedBox(
-                    height: 50,
-                    width: 250,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Get.to(const Disease3());
-                      },
-                      child: const Text(
-                        "Fever Precautions",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      style: ElevatedButton.styleFrom(primary: secondaryColor),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: SizedBox(
-                    height: 50,
-                    width: 250,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Get.to(const Disease4());
-                      },
-                      child: const Text(
-                        "Heart Attack Precautions",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      style: ElevatedButton.styleFrom(primary: secondaryColor),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: SizedBox(
-                    height: 50,
-                    width: 250,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Get.to(const Disease5());
-                      },
-                      child: const Text(
-                        "Epilepsy Precautions",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      style: ElevatedButton.styleFrom(primary: secondaryColor),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: SizedBox(
-                    height: 50,
-                    width: 250,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Get.to(const Disease6());
-                      },
-                      child: const Text(
-                        "Cough & Mild Precautions",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      style: ElevatedButton.styleFrom(primary: secondaryColor),
-                    ),
-                  ),
-                ),
-              ],
+                    ));
+              },
             ),
-          ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class DetailScreen extends StatelessWidget {
+  final String title;
+  final String image;
+  final String description;
+
+  const DetailScreen(
+      {required this.title, required this.image, required this.description});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          title,
         ),
+        backgroundColor: primaryColor,
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Image.asset(
+            image,
+            height: 200,
+            fit: BoxFit.cover,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Text(description),
+          ),
+        ],
       ),
     );
   }
