@@ -1,5 +1,6 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:untitled/View/First%20Aid%20Guide/textformat.dart';
 
 import '../../src/Constants/colors.dart';
 import '../../src/Constants/text_strings.dart';
@@ -11,7 +12,7 @@ class FirstAidGuide extends StatelessWidget {
     {
       'title': 'COVID-19 Precautions',
       'image': 'assets/Images/First Aid Guide/Banner1.png',
-      'description': Button1description,
+      'description': "${Covid_h1}, ${Covid_p1}",
     },
     {
       'title': 'Monkey Pox Precautions',
@@ -69,76 +70,80 @@ class FirstAidGuide extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: buttonData.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                    padding: const EdgeInsets.fromLTRB(40, 20, 40, 0),
-                    child: SizedBox(
-                      height: 50,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => DetailScreen(
-                                title: buttonData[index]['title']!,
-                                image: buttonData[index]['image']!,
-                                description: buttonData[index]['description']!,
-                              ),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          buttonData[index]['title']!,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        style:
-                            ElevatedButton.styleFrom(primary: secondaryColor),
-                      ),
-                    ));
-              },
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class DetailScreen extends StatelessWidget {
-  final String title;
-  final String image;
-  final String description;
-
-  const DetailScreen(
-      {required this.title, required this.image, required this.description});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          title,
-        ),
-        backgroundColor: primaryColor,
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Image.asset(
-            image,
-            height: 200,
-            fit: BoxFit.cover,
-          ),
           Padding(
-            padding: const EdgeInsets.all(16),
-            child: Text(description),
-          ),
+              padding: const EdgeInsets.fromLTRB(40, 20, 40, 0),
+              child: SizedBox(
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const TextFormatWidget(
+                          disease: "COVID-19 Precautions",
+                          image: "assets/Images/First Aid Guide/Banner1.png",
+                          heading1: "I am a heading",
+                          heading2: "i am a heading",
+                          heading3: "i am a heading",
+                          heading4: "i am a heading",
+                          paragraph1: Covid_p1,
+                          paragraph2:
+                              "I am a pragaphuyguyftjytkugfdhtrjyughybgctrgbjhv fgcnxdtrjyugcfxdtrjyfumcgxdtryfucgxdnrtyfumhcgfxdenrty6fuymxdehtdryfcgxdzrt5ychgfxdnrtmyfuvhgc fxdnrt6fyugh cfxrndtj6fyu7,gvhj cfxndrtjfyu,hjc gfxdrtj6fyugvh cfxdrntjyuf,hj",
+                          paragraph3:
+                              "I am a pragaphuyguyftjytkugfdhtrjyughybgctrgbjhv fgcnxdtrjyugcfxdtrjyfumcgxdtryfucgxdnrtyfumhcgfxdenrty6fuymxdehtdryfcgxdzrt5ychgfxdnrtmyfuvhgc fxdnrt6fyugh cfxrndtj6fyu7,gvhj cfxndrtjfyu,hjc gfxdrtj6fyugvh cfxdrntjyuf,hj",
+                          paragraph4:
+                              "I am a pragaphuyguyftjytkugfdhtrjyughybgctrgbjhv fgcnxdtrjyugcfxdtrjyfumcgxdtryfucgxdnrtyfumhcgfxdenrty6fuymxdehtdryfcgxdzrt5ychgfxdnrtmyfuvhgc fxdnrt6fyugh cfxrndtj6fyu7,gvhj cfxndrtjfyu,hjc gfxdrtj6fyugvh cfxdrntjyuf,hj",
+                        ),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Corona",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(primary: secondaryColor),
+                ),
+              )),
+          Padding(
+              padding: const EdgeInsets.fromLTRB(40, 20, 40, 0),
+              child: SizedBox(
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const TextFormatWidget(
+                          disease: "COVID-19 Precautions",
+                          image: "assets/Images/First Aid Guide/Banner1.png",
+                          heading1: "I am a heading",
+                          heading2: "i am a heading",
+                          heading3: "i am a heading",
+                          heading4: "i am a heading",
+                          paragraph1: Covid_p1,
+                          paragraph2:
+                              "I am a pragaphuyguyftjytkugfdhtrjyughybgctrgbjhv fgcnxdtrjyugcfxdtrjyfumcgxdtryfucgxdnrtyfumhcgfxdenrty6fuymxdehtdryfcgxdzrt5ychgfxdnrtmyfuvhgc fxdnrt6fyugh cfxrndtj6fyu7,gvhj cfxndrtjfyu,hjc gfxdrtj6fyugvh cfxdrntjyuf,hj",
+                          paragraph3:
+                              "I am a pragaphuyguyftjytkugfdhtrjyughybgctrgbjhv fgcnxdtrjyugcfxdtrjyfumcgxdtryfucgxdnrtyfumhcgfxdenrty6fuymxdehtdryfcgxdzrt5ychgfxdnrtmyfuvhgc fxdnrt6fyugh cfxrndtj6fyu7,gvhj cfxndrtjfyu,hjc gfxdrtj6fyugvh cfxdrntjyuf,hj",
+                          paragraph4:
+                              "I am a pragaphuyguyftjytkugfdhtrjyughybgctrgbjhv fgcnxdtrjyugcfxdtrjyfumcgxdtryfucgxdnrtyfumhcgfxdenrty6fuymxdehtdryfcgxdzrt5ychgfxdnrtmyfuvhgc fxdnrt6fyugh cfxrndtj6fyu7,gvhj cfxndrtjfyu,hjc gfxdrtj6fyugvh cfxdrntjyuf,hj",
+                        ),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "COVID-19 PRECAUTIONS",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(primary: secondaryColor),
+                ),
+              ))
         ],
       ),
     );

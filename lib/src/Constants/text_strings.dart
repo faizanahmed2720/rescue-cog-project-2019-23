@@ -106,4 +106,21 @@ const hospital6 = "National Hospital & Medical Centre";
 
 //Fire Brigades Text
 
-const String Button1description = "";
+const String Covid_h1 = 'Keep yourself and others safe: Do it all!\n';
+
+const String Covid_p1 =
+    'Protect yourself and those around you: Get vaccinated as soon as it’s your turn and follow local guidance on vaccination. Keep physical distance of at least 1 metre from others, even if they don’t appear to be sick. Avoid crowds and close contact. Wear a properly fitted mask when physical distancing is not possible and in poorly ventilated settings. Clean your hands frequently with alcohol-based hand rub or soap and water. Cover your mouth and nose with a bent elbow or tissue when you cough or sneeze. Dispose of used tissues immediately and clean hands regularly. If you develop symptoms or test positive for COVID-19, self-isolate until you recover.\n';
+
+const String Covid_h2 = 'Wear a mask properly\n';
+
+const String Covid_p2 =
+    'To properly wear your mask: Make sure your mask covers your nose, mouth and chin. Clean your hands before you put your mask on, before and after you take it off, and after you touch it at any time. When you take off your mask, store it in a clean plastic bag, and every day either wash it if it’s a fabric mask or dispose of it in a trash bin if it’s a medical mask. Don’t use masks with valves. Make your environment safer. The risks of getting COVID-19 are higher in crowded and inadequately ventilated spaces where infected people spend long periods of time together in close proximity. Outbreaks have been reported in places where people have gather, often in crowded indoor settings and where they talk loudly, shout, breathe heavily or sing such as restaurants, choir practices, fitness classes, nightclubs, offices and places of worship.\n'
+    'To make your environment as safe as possible:\n'
+    'Avoid the 3Cs: spaces that are closed, crowded or involve close contact. Meet people outside. Outdoor gatherings are safer than indoor ones, particularly if indoor spaces are small and without outdoor air coming in. Keep good hygiene. By following good respiratory hygiene you protect the people around you from viruses that cause colds, flu and COVID-19.\n'
+    'To ensure good hygiene you should:\n'
+    'Regularly and thoroughly clean your hands with either an alcohol-based hand rub or soap and water. This eliminates germs that may be on your hands, including viruses. Cover your mouth and nose with your bent elbow or a tissue when you cough or sneeze. Dispose of the used tissue immediately into a closed bin and wash your hands. Clean and disinfect surfaces requently, especially those which are regularly touched, such as door handles, faucets and phone screens.\n'
+    'What to do if you feel unwell\n'
+    'If you feel unwell, here’s what to do. If you have a fever, cough and difficulty breathing, seek medical attention immediately. Call by telephone first and follow the directions of your local health authority.'
+    'Know the full range of symptoms of COVID-19. The most common symptoms of COVID-19 are fever, dry cough, tiredness and loss of taste or smell. Less common symptoms include aches and pains, headache, sore throat, red or irritated eyes, diarrhoea,  a skin rash or discolouration of fingers or toes.\n'
+    'Stay home and self-isolate for 10 days from symptom onset, plus three days after symptoms cease. Call your health care provider or hotline for advice. Have someone bring you supplies. If you need to leave your house or have someone near you, wear a properly fitted mask to avoid infecting others.\n'
+    'Keep up to date on the latest information from trusted sources, such as WHO or your local and national health authorities. Local and national authorities and public health units are best placed to advise on what people in your area should be doing to protect themselves.\n';
