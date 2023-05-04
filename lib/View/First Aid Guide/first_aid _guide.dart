@@ -12,7 +12,7 @@ class FirstAidGuide extends StatelessWidget {
     {
       'title': 'COVID-19 Precautions',
       'image': 'assets/Images/First Aid Guide/Banner1.png',
-      'description': "${Covid_h1}, ${Covid_p1}",
+      'description': "This is the description for button 1",
     },
     {
       'title': 'Monkey Pox Precautions',
@@ -80,25 +80,27 @@ class FirstAidGuide extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => const TextFormatWidget(
-                          disease: "COVID-19 Precautions",
+                          disease: "COVID-19 PRECAUTIONS",
                           image: "assets/Images/First Aid Guide/Banner1.png",
-                          heading1: "I am a heading",
-                          heading2: "i am a heading",
-                          heading3: "i am a heading",
-                          heading4: "i am a heading",
+                          heading1:
+                              "Keep yourself and others safe: Do it all! \nProtect yourself and those around you: ",
+                          heading2:
+                              "Wear a mask properly to properly wear your mask: ",
+                          heading3:
+                              "To make your environment as safe as possible: ",
+                          heading4: "To ensure good hygiene you should: ",
+                          heading5: "",
                           paragraph1: Covid_p1,
-                          paragraph2:
-                              "I am a pragaphuyguyftjytkugfdhtrjyughybgctrgbjhv fgcnxdtrjyugcfxdtrjyfumcgxdtryfucgxdnrtyfumhcgfxdenrty6fuymxdehtdryfcgxdzrt5ychgfxdnrtmyfuvhgc fxdnrt6fyugh cfxrndtj6fyu7,gvhj cfxndrtjfyu,hjc gfxdrtj6fyugvh cfxdrntjyuf,hj",
-                          paragraph3:
-                              "I am a pragaphuyguyftjytkugfdhtrjyughybgctrgbjhv fgcnxdtrjyugcfxdtrjyfumcgxdtryfucgxdnrtyfumhcgfxdenrty6fuymxdehtdryfcgxdzrt5ychgfxdnrtmyfuvhgc fxdnrt6fyugh cfxrndtj6fyu7,gvhj cfxndrtjfyu,hjc gfxdrtj6fyugvh cfxdrntjyuf,hj",
-                          paragraph4:
-                              "I am a pragaphuyguyftjytkugfdhtrjyughybgctrgbjhv fgcnxdtrjyugcfxdtrjyfumcgxdtryfucgxdnrtyfumhcgfxdenrty6fuymxdehtdryfcgxdzrt5ychgfxdnrtmyfuvhgc fxdnrt6fyugh cfxrndtj6fyu7,gvhj cfxndrtjfyu,hjc gfxdrtj6fyugvh cfxdrntjyuf,hj",
+                          paragraph2: Covid_p2,
+                          paragraph3: Covid_p3,
+                          paragraph4: Covid_p4,
+                          paragraph5: Covid_p5,
                         ),
                       ),
                     );
                   },
                   child: Text(
-                    "Corona",
+                    "COVID-19 PRECAUTIONS",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -117,19 +119,21 @@ class FirstAidGuide extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => const TextFormatWidget(
-                          disease: "COVID-19 Precautions",
+                          disease: "COVID-19 PRECAUTIONS",
                           image: "assets/Images/First Aid Guide/Banner1.png",
-                          heading1: "I am a heading",
-                          heading2: "i am a heading",
-                          heading3: "i am a heading",
-                          heading4: "i am a heading",
+                          heading1:
+                              "Keep yourself and others safe: Do it all! \nProtect yourself and those around you: ",
+                          heading2:
+                              "Wear a mask properly to properly wear your mask: ",
+                          heading3:
+                              "To make your environment as safe as possible: ",
+                          heading4: "To ensure good hygiene you should: ",
+                          heading5: "",
                           paragraph1: Covid_p1,
-                          paragraph2:
-                              "I am a pragaphuyguyftjytkugfdhtrjyughybgctrgbjhv fgcnxdtrjyugcfxdtrjyfumcgxdtryfucgxdnrtyfumhcgfxdenrty6fuymxdehtdryfcgxdzrt5ychgfxdnrtmyfuvhgc fxdnrt6fyugh cfxrndtj6fyu7,gvhj cfxndrtjfyu,hjc gfxdrtj6fyugvh cfxdrntjyuf,hj",
-                          paragraph3:
-                              "I am a pragaphuyguyftjytkugfdhtrjyughybgctrgbjhv fgcnxdtrjyugcfxdtrjyfumcgxdtryfucgxdnrtyfumhcgfxdenrty6fuymxdehtdryfcgxdzrt5ychgfxdnrtmyfuvhgc fxdnrt6fyugh cfxrndtj6fyu7,gvhj cfxndrtjfyu,hjc gfxdrtj6fyugvh cfxdrntjyuf,hj",
-                          paragraph4:
-                              "I am a pragaphuyguyftjytkugfdhtrjyughybgctrgbjhv fgcnxdtrjyugcfxdtrjyfumcgxdtryfucgxdnrtyfumhcgfxdenrty6fuymxdehtdryfcgxdzrt5ychgfxdnrtmyfuvhgc fxdnrt6fyugh cfxrndtj6fyu7,gvhj cfxndrtjfyu,hjc gfxdrtj6fyugvh cfxdrntjyuf,hj",
+                          paragraph2: Covid_p2,
+                          paragraph3: Covid_p3,
+                          paragraph4: Covid_p4,
+                          paragraph5: Covid_p5,
                         ),
                       ),
                     );
@@ -143,7 +147,7 @@ class FirstAidGuide extends StatelessWidget {
                   ),
                   style: ElevatedButton.styleFrom(primary: secondaryColor),
                 ),
-              ))
+              )),
         ],
       ),
     );

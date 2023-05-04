@@ -10,10 +10,12 @@ class TextFormatWidget extends StatelessWidget {
     required this.heading2,
     required this.heading3,
     required this.heading4,
+    required this.heading5,
     required this.paragraph1,
     required this.paragraph2,
     required this.paragraph3,
     required this.paragraph4,
+    required this.paragraph5,
   });
   final String disease;
   final String image;
@@ -21,11 +23,13 @@ class TextFormatWidget extends StatelessWidget {
   final String heading2;
   final String heading3;
   final String heading4;
+  final String heading5;
 
   final String paragraph1;
   final String paragraph2;
   final String paragraph3;
   final String paragraph4;
+  final String paragraph5;
 
   @override
   Widget build(BuildContext context) {
@@ -106,6 +110,19 @@ class TextFormatWidget extends StatelessWidget {
                     ),
                     Text(
                       paragraph4,
+                    ),
+                    Text(
+                      heading5,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      paragraph5,
                     ),
                   ],
                 ),

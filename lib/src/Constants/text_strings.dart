@@ -103,24 +103,60 @@ const hospital5 = " Shalimar Hospital";
 const hospital6 = "National Hospital & Medical Centre";
 
 //First Aid Guide Text
-
-//Fire Brigades Text
-
-const String Covid_h1 = 'Keep yourself and others safe: Do it all!\n';
-
 const String Covid_p1 =
-    'Protect yourself and those around you: Get vaccinated as soon as it’s your turn and follow local guidance on vaccination. Keep physical distance of at least 1 metre from others, even if they don’t appear to be sick. Avoid crowds and close contact. Wear a properly fitted mask when physical distancing is not possible and in poorly ventilated settings. Clean your hands frequently with alcohol-based hand rub or soap and water. Cover your mouth and nose with a bent elbow or tissue when you cough or sneeze. Dispose of used tissues immediately and clean hands regularly. If you develop symptoms or test positive for COVID-19, self-isolate until you recover.\n';
-
-const String Covid_h2 = 'Wear a mask properly\n';
+    'Get vaccinated as soon as it’s your turn and follow local guidance on vaccination. Keep physical distance of at least 1 metre from others, even if they don’t appear to be sick. Avoid crowds and close contact. Wear a properly fitted mask when physical distancing is not possible and in poorly ventilated settings. Clean your hands frequently with alcohol-based hand rub or soap and water. Cover your mouth and nose with a bent elbow or tissue when you cough or sneeze. Dispose of used tissues immediately and clean hands regularly. If you develop symptoms or test positive for COVID-19, self-isolate until you recover.\n';
 
 const String Covid_p2 =
-    'To properly wear your mask: Make sure your mask covers your nose, mouth and chin. Clean your hands before you put your mask on, before and after you take it off, and after you touch it at any time. When you take off your mask, store it in a clean plastic bag, and every day either wash it if it’s a fabric mask or dispose of it in a trash bin if it’s a medical mask. Don’t use masks with valves. Make your environment safer. The risks of getting COVID-19 are higher in crowded and inadequately ventilated spaces where infected people spend long periods of time together in close proximity. Outbreaks have been reported in places where people have gather, often in crowded indoor settings and where they talk loudly, shout, breathe heavily or sing such as restaurants, choir practices, fitness classes, nightclubs, offices and places of worship.\n'
-    'To make your environment as safe as possible:\n'
-    'Avoid the 3Cs: spaces that are closed, crowded or involve close contact. Meet people outside. Outdoor gatherings are safer than indoor ones, particularly if indoor spaces are small and without outdoor air coming in. Keep good hygiene. By following good respiratory hygiene you protect the people around you from viruses that cause colds, flu and COVID-19.\n'
-    'To ensure good hygiene you should:\n'
-    'Regularly and thoroughly clean your hands with either an alcohol-based hand rub or soap and water. This eliminates germs that may be on your hands, including viruses. Cover your mouth and nose with your bent elbow or a tissue when you cough or sneeze. Dispose of the used tissue immediately into a closed bin and wash your hands. Clean and disinfect surfaces requently, especially those which are regularly touched, such as door handles, faucets and phone screens.\n'
-    'What to do if you feel unwell\n'
-    'If you feel unwell, here’s what to do. If you have a fever, cough and difficulty breathing, seek medical attention immediately. Call by telephone first and follow the directions of your local health authority.'
-    'Know the full range of symptoms of COVID-19. The most common symptoms of COVID-19 are fever, dry cough, tiredness and loss of taste or smell. Less common symptoms include aches and pains, headache, sore throat, red or irritated eyes, diarrhoea,  a skin rash or discolouration of fingers or toes.\n'
-    'Stay home and self-isolate for 10 days from symptom onset, plus three days after symptoms cease. Call your health care provider or hotline for advice. Have someone bring you supplies. If you need to leave your house or have someone near you, wear a properly fitted mask to avoid infecting others.\n'
-    'Keep up to date on the latest information from trusted sources, such as WHO or your local and national health authorities. Local and national authorities and public health units are best placed to advise on what people in your area should be doing to protect themselves.\n';
+    'Make sure your mask covers your nose, mouth and chin. Clean your hands before you put your mask on, before and after you take it off, and after you touch it at any time. When you take off your mask, store it in a clean plastic bag, and every day either wash it if it’s a fabric mask or dispose of it in a trash bin if it’s a medical mask. Don’t use masks with valves. Make your environment safer. The risks of getting COVID-19 are higher in crowded and inadequately ventilated spaces where infected people spend long periods of time together in close proximity. Outbreaks have been reported in places where people have gather, often in crowded indoor settings and where they talk loudly, shout, breathe heavily or sing such as restaurants, choir practices, fitness classes, nightclubs, offices and places of worship.\n';
+
+const String Covid_p3 =
+    'Avoid the 3Cs: spaces that are closed, crowded or involve close contact. Meet people outside. Outdoor gatherings are safer than indoor ones, particularly if indoor spaces are small and without outdoor air coming in. Keep good hygiene. By following good respiratory hygiene you protect the people around you from viruses that cause colds, flu and COVID-19.\n';
+
+const String Covid_p4 =
+    'Regularly and thoroughly clean your hands with either an alcohol-based hand rub or soap and water. This eliminates germs that may be on your hands, including viruses. Cover your mouth and nose with your bent elbow or a tissue when you cough or sneeze. Dispose of the used tissue immediately into a closed bin and wash your hands. Clean and disinfect surfaces requently, especially those which are regularly touched, such as door handles, faucets and phone screens.\n';
+
+const String Covid_p5 =
+    '(CDC Announces a Shortened Isolation and Quarantine Period for General Population) سی ڈی سی کا عام آبادی کے ل ےئ مختصر تنہا ےئ اور قرنطینہ مدت کا اعلان-\n';
+// (Pfizer COVID-19 Boosters Now Available for People Ages 16-17) فائزر کوویڈ- 19بوس رٹز اب 17-16سال کی عمر کے لوگوں کے ل ےئ دستیاب
+
+// (Health Department Urges Boosters and Prevention Strategies to Reduce Spread of COVID-19 and Emerging Variants) محکمہ صحت - 19اور ایمرجنگ ویرینٹ کے پھیلاؤکوکم کر ےن کے ل ےئ بوس رٹز
+
+// اور روک تھام کی حکمت عملیوں پر زور دیا
+
+// (Children Ages 5-11 Now Eligible for COVID-19 Vaccination)سے 11سال کی عمر کے بچے اب کوویڈ- 19ویکسینیشن کے اہل ہیں
+
+// (Eligible Individuals Recommended to Get COVID-19 Booster Shots) اہل افراد کوویڈ- 19بوس رٹ شاٹس حاصل کر ےن کی سفارش
+
+// میں COVID-19کی پہلی ویکسینیشنز کے بارے میں آپ کو کیا جاننے کی ضرورت ہے (What you need to know about first COVID 19 vaccinations in Fairfax County)
+
+// اپنے ہاتھوں کو دھوئیں (Wash Your Hands)
+
+// سی ڈی سی نے کپڑے سے نا ک منہ تک چہره ڈها نپنے کی تنبيہ کی ہے (CDC Recommends Wearing Simple Cloth Face Coverings in Public)
+
+// ورجینیا میں عوامی مقامات کے اندر اب چہروں کو ڈھانپنا ضروری ہے (Face Coverings Now Required Inside Public Places in Virginia)
+
+// آپ گھر سے نکل رہے ہیں؟ جانے سے پہلے کوُوِڈ ۔ 19 کے خطرات جانیئے  (Leaving Home? Know the COVID-19 Risks Before You Go)
+
+// ورجینیا نے کارکنوں کو کوُوِڈ ۱۹سے محفوظ رکھنے کے لئے ملازمت کی جگہ کے حفاظتی معیارات کو اپنالیا ہے (Virginia Adopts Workplace Safety Standards to Protect Workers from COVID-19)
+
+// کیا میرا بچہ سکول یا چائلڈ کئیر جانے کے قابل ہے (Is My Child Well Enough To Go To School)
+
+// COVID-19 mRNAویکسینز کے کام کرنے کے طریقے کا قریبی جائزہ (A Closer Look at How COVID-19 mRNA Vaccines Work)
+
+//  میں نے ماسک آپ کے لئے پہنا تھا۔ میں (Masks Protect You)
+
+//  میں نے ماسک آپ کے لئے پہنا تھا۔ اب میں اسے اپنے لئے بھی پہنتی ہوں۔ (Masks Protect You)
+
+//  COVID کی تھکاوٹ کی وجہ سے اپنے آپ کو خطرے میں نہ ڈالیں۔ (Masks Protect You)
+
+//  ویکسین لینے کے فوائد جانیں (Know the Benefits of Getting a COVID-19 Vaccine)
+
+// (Focus on Facts: mRNA COVID-19 Vaccines) حقائق پر  فوکس
+
+// (Moving Toward Food Security: How to Get Help From and Donate to Local Food Pantries) تحفظ غذا کی طرف رواں دواں :کس طرح مدد حاصل کی جائے اور مقامی غذائی خزانوں میں کیسے عطیہ کیا جائے
+
+// آڈیو (Audio)
+
+// سی ڈی سی نے کپڑے سے نا ک منہ تک چہره ڈها نپنے کی تنبيہ کی ہے (CDC Recommends Wearing Simple Cloth Face Coverings in Public)
+
+// ورجینیا میں عوامی مقامات کے اندر اب چہروں کو ڈھانپنا ضروری ہے (Face Coverings Now Required Inside Public Places in Virginia\n';
