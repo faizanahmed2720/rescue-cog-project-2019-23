@@ -12,9 +12,9 @@ class AuthController {
   Future<UserCredential?> createAccount(
     String email,
     String password,
-    String userName,
-    String phoneNumber,
-    String userType,
+    // String userName,
+    // String phoneNumber,
+    // String userType,
   ) async {
     UserCredential? userCredential;
     try {
@@ -22,18 +22,18 @@ class AuthController {
         email: email,
         password: password,
       );
-      user = _firebaseAuth.currentUser;
-      if (userCredential != null) {
-        _firestoreService.postUserDataToFirestore(
-          UserModel(
-            userName: userName,
-            email: email,
-            uid: user!.uid,
-            phoneNumber: phoneNumber,
-          ),
-          userType,
-        );
-      }
+      // user = _firebaseAuth.currentUser;
+      // if (userCredential != null) {
+      //   _firestoreService.postUserDataToFirestore(
+      //     UserModel(
+      //       userName: userName,
+      //       email: email,
+      //       uid: user!.uid,
+      //       phoneNumber: phoneNumber,
+      //     ),
+      //     userType,
+      //   );
+      // }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
         throw ('Email already in use');

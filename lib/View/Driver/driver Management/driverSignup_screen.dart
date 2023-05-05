@@ -145,9 +145,6 @@ class DriverSignup extends StatelessWidget {
                                 await _authController.createAccount(
                               emailController.text,
                               passwordController.text,
-                              phoneController.text,
-                              fullnameController.text,
-                              'driver',
                             );
                             //if user crdential is null then there must be an exception.
                             if (userCredential != null) {

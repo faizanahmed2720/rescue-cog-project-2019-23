@@ -1,5 +1,8 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import '../../../View/User Profile/user_profile.dart';
 import '../../constants/colors.dart';
 
 Widget FloatingActionButtonWithNotched() {
@@ -22,7 +25,7 @@ Widget FloatingActionButtonWithNotched() {
             ),
           ),
           onPressed: () {
-            // Get.to(profile());
+            Get.to(userProfile());
           }),
     ),
   );

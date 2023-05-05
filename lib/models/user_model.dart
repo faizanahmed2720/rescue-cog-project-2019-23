@@ -7,7 +7,7 @@ class UserModel {
   String userName;
   String email;
   String phoneNumber;
-  String? uid;
+   String? uid;
 
   UserModel({
     required this.email,

@@ -10,6 +10,8 @@ import 'package:untitled/src/Controller/auth_controller.dart';
 import 'package:untitled/src/Utils/CommonWidgets/customTextField.dart';
 import 'package:untitled/src/Utils/CommonWidgets/snackbar_widget.dart';
 
+import '../../../src/Controller/profile_controller.dart';
+
 class userSignup extends StatefulWidget {
   const userSignup({super.key});
 
@@ -23,6 +25,8 @@ class _userSignupState extends State<userSignup> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final AuthController _authController = AuthController();
+
+  final _profileController = Get.put(profileController());
 
   @override
   Widget build(BuildContext context) {
@@ -98,14 +102,32 @@ class _userSignupState extends State<userSignup> {
                       onPressed: () async {
                         //used for user signup,
                         try {
-                          UserCredential? userCredential =
-                              await _authController.createAccount(
-                            emailController.text,
-                            passwordController.text,
-                            phoneController.text,
-                            fullnameController.text,
-                            'user',
-                          );
+                          profileModel user;
+                          UserCredential? userCredential = await _authController
+                              .createAccount(
+                                emailController.text,
+                                passwordController.text,
+                                // phoneController.text,
+                                // fullnameController.text,
+                                // 'user',
+                              )
+                              .whenComplete(() => {
+                                    user = profileModel(
+                                        uid: _profileController
+                                            .getCurrentUserUid(),
+                                        fullname:
+                                            fullnameController.text.trim(),
+                                        email: emailController.text.trim(),
+                                        phoneNo: phoneController.text.trim(),
+                                        password:
+                                            passwordController.text.trim(),
+                                        residence: "",
+                                        gender: "",
+                                        cnic: "",
+                                        dateofBirth: "",
+                                        profileImage: ""),
+                                    _profileController.createUser(user)
+                                  });
                           //if user crdential is null then there must be an exception.
                           if (userCredential != null) {
                             // ignore: use_build_context_synchronously
@@ -129,10 +151,7 @@ class _userSignupState extends State<userSignup> {
                           }
                         } catch (e) {
                           //e will tell us the value of exception
-                          showSnackBar(
-                            e.toString(),
-                            context,
-                          );
+                        
                         }
                       },
                       style: ElevatedButton.styleFrom(primary: secondaryColor),
