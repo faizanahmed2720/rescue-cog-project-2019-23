@@ -1,16 +1,13 @@
 // ignore_for_file: unused_field
 
 import 'dart:io';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:untitled/src/Controller/auth_controller.dart';
 import 'package:untitled/src/Controller/profile_controller.dart';
 import 'package:untitled/src/Utils/CommonWidgets/customTextField.dart';
-
 import '../../src/Constants/colors.dart';
-import '../splash_screen/splash_screen.dart';
 
 class UserAccountSetting extends StatefulWidget {
   const UserAccountSetting({super.key});
