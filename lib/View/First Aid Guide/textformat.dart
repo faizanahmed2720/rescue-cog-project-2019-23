@@ -47,6 +47,7 @@ class TextFormatWidget extends StatelessWidget {
               Image.asset(
                 image,
                 height: 200,
+                width: 400,
                 fit: BoxFit.cover,
               ),
               Padding(

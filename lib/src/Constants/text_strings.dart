@@ -182,5 +182,50 @@ const String pox_p5 = 'مونکی پوکس انفیکشن کو کیسے روکا
 // کسی ایسے شخص کے ساتھ جنسی تعلقات یا جلد سے جلد کے رابطے سے گریز کریں جس میں ددورا یا بندر پاکس سے متعلق دیگر علامات ہوں۔\n
 // کسی بھی حالیہ بیماری کے بارے میں اپنے جنسی ساتھی سے بات کریں اور اپنے جسم یا ساتھی کے جسم پر جننانگوں اور مقعد سمیت نئے یا غیر واضح زخموں یا دانے سے آگاہ رہیں۔
 // ایسے مواد کے ساتھ رابطے سے گریز کریں جو وائرس سے آلودہ ہو سکتے ہیں۔
-// اگر آپ کو مونکی پوکس کا سامنا ہوا ہے تو اپنے ہیلتھ کیئر فراہم کنندہ سے تشخیص طلب کریں۔ کچھ لوگوں کے لیے جو مونکی پوکس کا شکار ہو چکے ہیں، معالجین اور صحت عامہ کے اہلکار بیماری کو روکنے یا بیماری کی شدت کو کم کرنے کے لیے ویکسین کی سفارش کر سکتے ہیں۔ 
+// اگر آپ کو مونکی پوکس کا سامنا ہوا ہے تو اپنے ہیلتھ کیئر فراہم کنندہ سے تشخیص طلب کریں۔ کچھ لوگوں کے لیے جو مونکی پوکس کا شکار ہو چکے ہیں، معالجین اور صحت عامہ کے اہلکار بیماری کو روکنے یا بیماری کی شدت کو کم کرنے کے لیے ویکسین کی سفارش کر سکتے ہیں۔
 // ';
+
+const String fever_p1 =
+    'One of the most effective ways to prevent the spread of fever-related illnesses is to maintain good hygiene practices. This includes washing your hands regularly with soap and water or using an alcohol-based hand sanitizer, especially after coughing or sneezing, before eating, and after using the restroom. Cover your nose and mouth with a tissue or your sleeve when coughing or sneezing, and dispose of the tissue immediately. Avoid touching your face, nose, and mouth with your hands as much as possible.';
+const String fever_p2 =
+    'If you suspect that you may have a fever-related illness, it is important to avoid close contact with others until you are well. Stay at home, and avoid going to work, school, or other public places where you may expose others to the illness. If you must go out, wear a face mask and maintain a distance of at least six feet from others. Similarly, if someone close to you is sick with a fever-related illness, avoid close contact with them until they are well.';
+const String fever_p3 =
+    'A strong immune system is essential for fighting off fever-related illnesses. To keep your immune system healthy, maintain a balanced diet that includes plenty of fruits, vegetables, whole grains, and lean protein. Get plenty of sleep and exercise regularly to reduce stress and improve your overall health. Avoid smoking and excessive alcohol consumption, which can weaken your immune system and increase your risk of developing fever-related illnesses.';
+const String fever_p4 =
+    'If you have a fever that lasts for more than a few days, or if you experience other symptoms such as severe headache, cough, difficulty breathing, or rash, seek medical attention immediately. These could be signs of a more serious underlying health condition that requires medical treatment. Follow your healthcare providers instructions regarding treatment, including taking any prescribed medications and getting plenty of rest.';
+const String fever_p5 = '';
+
+//Heart Attack Precautions
+
+const String heart_p1 =
+    'One of the most effective ways to reduce your risk of heart attack is to maintain a healthy lifestyle. This includes eating a balanced diet that is low in saturated and trans fats, salt, and added sugars, and high in fiber, whole grains, fruits, and vegetables. Regular physical activity, such as brisk walking, cycling, or swimming, can help you maintain a healthy weight, lower your blood pressure and cholesterol levels, and reduce your risk of heart attack.';
+const String heart_p2 =
+    'Many chronic health conditions, such as diabetes, high blood pressure, and high cholesterol, can increase your risk of heart attack. Therefore, it is important to manage these conditions effectively. Follow your healthcare providers instructions regarding medications, lifestyle changes, and regular check-ups to ensure that these conditions are well-controlled and do not lead to complications.';
+const String heart_p3 =
+    'Smoking is a major risk factor for heart attack, as it damages the blood vessels and increases the risk of plaque buildup in the arteries. Therefore, it is important to avoid smoking and exposure to secondhand smoke. Similarly, excessive alcohol consumption can also increase your risk of heart attack, so it is important to limit your alcohol intake to moderate levels, which is defined as no more than one drink per day for women and two drinks per day for men.';
+const String heart_p4 =
+    'It is important to be aware of the symptoms of heart attack, which can include chest pain or discomfort, shortness of breath, nausea or vomiting, cold sweats, and lightheadedness. If you experience any of these symptoms, seek medical attention immediately. Early recognition and treatment of heart attack can save lives and reduce the risk of complications. In summary, heart attack is a serious and potentially life-threatening condition, but there are many precautions you can take to reduce your risk. By maintaining a healthy lifestyle, managing chronic health conditions, avoiding smoking and excessive alcohol consumption, and recognizing the symptoms of heart attack, you can help keep your heart healthy and reduce your risk of heart attack. Remember to always consult with your healthcare provider for individualized advice on heart attack prevention.';
+const String heart_p5 = '';
+
+//epilepsy precautions
+
+const String epilepsy_p1 =
+    'The most important step in managing epilepsy is to take your medications as prescribed by your healthcare provider. Antiepileptic drugs (AEDs) are the primary treatment for epilepsy, and they work by stabilizing the electrical activity in the brain to prevent seizures. However, it is important to take your medications consistently and at the right times to ensure that they are effective. Do not stop taking your medications without first consulting with your healthcare provider.';
+const String epilepsy_p2 =
+    'Sleep deprivation and stress can trigger seizures in some people with epilepsy. Therefore, it is important to get enough sleep and manage stress effectively. Aim for 7-8 hours of sleep per night, and establish a regular sleep schedule. Practice relaxation techniques, such as deep breathing, meditation, or yoga, to help manage stress.';
+const String epilepsy_p3 =
+    'Certain triggers, such as flashing lights, loud noises, or alcohol consumption, can increase the risk of seizures in some people with epilepsy. Therefore, it is important to avoid these triggers whenever possible. Wear sunglasses or avoid bright lights if they trigger seizures, and avoid loud or sudden noises. Limit alcohol consumption, and avoid using recreational drugs, which can also increase the risk of seizures.';
+const String epilepsy_p4 =
+    'In case of a seizure, it is important to wear a medical alert bracelet or necklace that indicates that you have epilepsy. This can help emergency responders provide appropriate care and treatment in case of an emergency. Make sure that your family members and close friends are aware of your condition and know what to do in case of a seizure.';
+const String epilepsy_p5 = '';
+
+//
+const String cough_p1 =
+    'The most important step in preventing the spread of illness is to practice good hygiene. Wash your hands frequently with soap and water for at least 20 seconds, especially after coughing or sneezing, before eating, and after using the restroom. If soap and water are not available, use an alcohol-based hand sanitizer. Cover your mouth and nose with a tissue or your elbow when coughing or sneezing, and avoid touching your face, especially your eyes, nose, and mouth.';
+const String cough_p2 =
+    'If you have a cough or mild symptoms, it is important to stay home and avoid contact with others to prevent the spread of illness. Work from home if possible, and avoid going to public places, such as school, daycare, or crowded events. If you need to see a healthcare provider, call ahead to let them know about your symptoms and follow their instructions.';
+const String cough_p3 =
+    'While cough and mild symptoms are usually self-limiting, there are some steps you can take to manage your symptoms and feel more comfortable. Drink plenty of fluids, such as water, tea, or soup, to help loosen mucus and soothe your throat. Use over-the-counter medications, such as cough suppressants, decongestants, or antihistamines, as directed by your healthcare provider to relieve your symptoms. Use a humidifier or take a steamy shower to help moisten your airways.';
+const String cough_p4 =
+    'While most cough and mild symptoms will resolve on their own, it is important to monitor your symptoms and seek medical attention if they worsen or persist. Contact your healthcare provider if you experience chest pain, difficulty breathing, high fever, or other symptoms that are concerning to you.';
+const String cough_p5 = '';
