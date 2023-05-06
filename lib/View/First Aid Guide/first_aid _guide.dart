@@ -119,27 +119,26 @@ class FirstAidGuide extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => const TextFormatWidget(
-                          disease: "COVID-19 PRECAUTIONS",
-                          image: "assets/Images/First Aid Guide/Banner1.png",
+                          disease: "MONKEY POX PRECAUTIONS",
+                          image: "assets/Images/First Aid Guide/Banner2.png",
                           heading1:
-                              "Keep yourself and others safe: Do it all! \nProtect yourself and those around you: ",
-                          heading2:
-                              "Wear a mask properly to properly wear your mask: ",
-                          heading3:
-                              "To make your environment as safe as possible: ",
-                          heading4: "To ensure good hygiene you should: ",
-                          heading5: "",
-                          paragraph1: Covid_p1,
-                          paragraph2: Covid_p2,
-                          paragraph3: Covid_p3,
-                          paragraph4: Covid_p4,
-                          paragraph5: Covid_p5,
+                              "1.	Personal Protective Measures for Monkeypox: ",
+                          heading2: "2.	Environmental Sanitation: ",
+                          heading3: "3.	Quarantine and Isolation Procedures: ",
+                          heading4: "4.	Vaccination and Treatment Options: ",
+                          heading5:
+                              "مونکی پوکس انفیکشن کو کیسے روکا جا سکتا ہے؟",
+                          paragraph1: pox_p1,
+                          paragraph2: pox_p2,
+                          paragraph3: pox_p3,
+                          paragraph4: pox_p4,
+                          paragraph5: pox_p5,
                         ),
                       ),
                     );
                   },
                   child: Text(
-                    "COVID-19 PRECAUTIONS",
+                    "MONKEY POX PRECAUTIONS",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,

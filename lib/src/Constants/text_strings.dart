@@ -160,3 +160,27 @@ const String Covid_p5 =
 // سی ڈی سی نے کپڑے سے نا ک منہ تک چہره ڈها نپنے کی تنبيہ کی ہے (CDC Recommends Wearing Simple Cloth Face Coverings in Public)
 
 // ورجینیا میں عوامی مقامات کے اندر اب چہروں کو ڈھانپنا ضروری ہے (Face Coverings Now Required Inside Public Places in Virginia\n';
+
+const String pox_p1 =
+    'This section can cover various ways individuals can protect themselves from contracting monkeypox, such as wearing gloves, masks, and goggles when handling animals or their products. It can also include guidance on avoiding direct contact with infected individuals and practicing good hand hygiene.';
+
+const String pox_p2 =
+    'This section can focus on measures to prevent the spread of monkeypox through the environment. This may include recommendations on cleaning and disinfecting surfaces that may have been contaminated with the virus. It can also provide guidance on proper disposal of animal carcasses and contaminated waste.';
+
+const String pox_p3 =
+    'This section can provide information on quarantine and isolation measures that can help contain the spread of monkeypox. This may include recommendations on how to identify and isolate infected individuals and their contacts. It can also provide guidance on monitoring individuals for signs and symptoms of the disease.';
+
+const String pox_p4 =
+    'This section can cover the various vaccination and treatment options available for monkeypox. It can provide information on the efficacy of available vaccines and their recommended use. It can also provide guidance on treatment options, such as antiviral medications, and when to seek medical attention.';
+
+const String pox_p5 = 'مونکی پوکس انفیکشن کو کیسے روکا جا سکتا ہے؟\n';
+// 'انفیکشن سے بچنے کے لیے، افراد کو چاہیے کہ:\n';
+
+// 'اس بات کو یقینی بنائیں کہ متاثرہ افراد دوسروں سے الگ تھلگ رہیں جب تک کہ جلد کے زخم مکمل طور پر ٹھیک نہ ہوجائیں۔\n';
+// 'متاثرہ لوگوں کی دیکھ بھال کرتے وقت ذاتی حفاظتی سامان پہنیں۔\n';
+// متاثرہ افراد یا جانوروں سے رابطے کے بعد ہاتھ کی مناسب حفظان صحت کی مشق کریں، کم از کم 20 سیکنڈ تک صابن اور پانی سے ہاتھ دھوئیں، یا جب تک دو بار "ہیپی برتھ ڈے" گانے میں وقت لگے۔ جہاں صابن اور پانی دستیاب نہیں ہے ہینڈ سینیٹائزر جس میں کم از کم 60٪ الکحل ہو، ہاتھوں کی تمام سطحوں کو ڈھانپنے کے لیے استعمال کیا جائے، پھر ہاتھوں کو اس وقت تک رگڑیں جب تک کہ وہ خشک نہ ہوں۔
+// کسی ایسے شخص کے ساتھ جنسی تعلقات یا جلد سے جلد کے رابطے سے گریز کریں جس میں ددورا یا بندر پاکس سے متعلق دیگر علامات ہوں۔\n
+// کسی بھی حالیہ بیماری کے بارے میں اپنے جنسی ساتھی سے بات کریں اور اپنے جسم یا ساتھی کے جسم پر جننانگوں اور مقعد سمیت نئے یا غیر واضح زخموں یا دانے سے آگاہ رہیں۔
+// ایسے مواد کے ساتھ رابطے سے گریز کریں جو وائرس سے آلودہ ہو سکتے ہیں۔
+// اگر آپ کو مونکی پوکس کا سامنا ہوا ہے تو اپنے ہیلتھ کیئر فراہم کنندہ سے تشخیص طلب کریں۔ کچھ لوگوں کے لیے جو مونکی پوکس کا شکار ہو چکے ہیں، معالجین اور صحت عامہ کے اہلکار بیماری کو روکنے یا بیماری کی شدت کو کم کرنے کے لیے ویکسین کی سفارش کر سکتے ہیں۔ 
+// ';

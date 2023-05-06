@@ -52,6 +52,7 @@ dependencies:
   intl: any
   image_picker: ^0.8.7+4
   firebase_storage: ^11.1.2
+  easy_localization: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -83,6 +84,8 @@ flutter:
     - assets/Images/Driver Account Setting/
     - assets/Images/Dashboard/
     - assets/Images/First Aid Guide/
+    # - assets/Images/translation/
+    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

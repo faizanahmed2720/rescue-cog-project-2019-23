@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/src/Constants/colors.dart';
 
@@ -59,13 +60,13 @@ class TextFormatWidget extends StatelessWidget {
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
                       ),
-                    ),
+                    ).tr(),
                     const SizedBox(
                       height: 20,
                     ),
                     Text(
                       paragraph1,
-                    ),
+                    ).tr(),
                     const SizedBox(
                       height: 20,
                     ),
@@ -75,13 +76,13 @@ class TextFormatWidget extends StatelessWidget {
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
                       ),
-                    ),
+                    ).tr(),
                     const SizedBox(
                       height: 20,
                     ),
                     Text(
                       paragraph2,
-                    ),
+                    ).tr(),
                     const SizedBox(
                       height: 20,
                     ),
@@ -91,39 +92,39 @@ class TextFormatWidget extends StatelessWidget {
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
                       ),
-                    ),
+                    ).tr(),
                     const SizedBox(
                       height: 20,
                     ),
                     Text(
                       paragraph3,
-                    ),
+                    ).tr(),
                     Text(
                       heading4,
                       style: const TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
                       ),
-                    ),
+                    ).tr(),
                     const SizedBox(
                       height: 20,
                     ),
                     Text(
                       paragraph4,
-                    ),
+                    ).tr(),
                     Text(
                       heading5,
                       style: const TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
                       ),
-                    ),
+                    ).tr(),
                     const SizedBox(
                       height: 20,
                     ),
                     Text(
                       paragraph5,
-                    ),
+                    ).tr(),
                   ],
                 ),
               )
