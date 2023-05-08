@@ -73,7 +73,7 @@ class userDashboard extends StatelessWidget {
                               width: 150,
                               child: ElevatedButton(
                                   onPressed: () {
-                                    Get.to(const NearestHospital());
+                                    Get.to(NearestHospital());
                                   },
                                   child: Image.asset(
                                       "assets/Images/Dashboard/hospital.png"),
