@@ -16,27 +16,27 @@
 // }
 
 
-// // child: Column(
-// //           children: [
-// //             Container(
-// //               height: 250,
-// //               alignment: Alignment.center,
-// //               width: double.infinity,
-// //               decoration: const BoxDecoration(
-// //                 borderRadius: BorderRadius.only(
-// //                   bottomLeft: Radius.circular(25),
-// //                   bottomRight: Radius.circular(25),
-// //                 ),
-// //                 color: primaryColor,
-// //               ),
-// //               child: const Text(
-// //                 "FIND THE DRIVER",
-// //                 style: TextStyle(
-// //                   color: Colors.white,
-// //                   fontSize: 30,
-// //                   fontWeight: FontWeight.bold,
-// //                 ),
-// //               ),
-// //             ),
-// //           ],
-// //         ),
+// child: Column(
+//           children: [
+//             Container(
+//               height: 250,
+//               alignment: Alignment.center,
+//               width: double.infinity,
+//               decoration: const BoxDecoration(
+//                 borderRadius: BorderRadius.only(
+//                   bottomLeft: Radius.circular(25),
+//                   bottomRight: Radius.circular(25),
+//                 ),
+//                 color: primaryColor,
+//               ),
+//               child: const Text(
+//                 "FIND THE DRIVER",
+//                 style: TextStyle(
+//                   color: Colors.white,
+//                   fontSize: 30,
+//                   fontWeight: FontWeight.bold,
+//                 ),
+//               ),
+//             ),
+//           ],
+//         ),

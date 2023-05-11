@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../models/driver_model.dart';
 import '../constants/colors.dart';
 import 'dart:io';
 
@@ -49,10 +50,10 @@ class profileController extends GetxController {
     return userdata;
   }
 
-  Future<List<profileModel>> getAllUserdetail() async {
-    final snapshot = await _firebaseFirestore.collection("Client").get();
+  Future<List<DriverModel>> getAllUserdetail() async {
+    final snapshot = await _firebaseFirestore.collection("driver").get();
     final userdata =
-        snapshot.docs.map((e) => profileModel.fromSnapshot(e)).toList();
+        snapshot.docs.map((e) => DriverModel.fromSnapshot(e)).toList();
     return userdata;
   }
 

@@ -65,7 +65,6 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
     user = await _profileController.getUserDetails();
 
     fullnameController.text = user.fullname;
-
     emailController.text = user.email;
     phoneController.text = user.phoneNo;
     passwordController.text = user.password;
@@ -74,7 +73,9 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
     dropdownController.text = user.gender!;
     dateOfBirthController.text = user.dateofBirth!;
 
-    setState(() {});
+    setState(() {
+
+    });
   }
 
   @override
