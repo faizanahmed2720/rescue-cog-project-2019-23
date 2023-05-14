@@ -251,7 +251,7 @@ class FirstAidGuide extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => const TextFormatWidget(
                             disease: "EPILEPSY PRECAUTIONS",
-                            image: "assets/Images/First Aid Guide/Banner2.png",
+                            image: "assets/Images/First Aid Guide/Epilepsy.png",
                             heading1:
                                 "1.	Take Your Medications as Prescribed: ",
                             heading2: "2.	Get Enough Sleep and Manage Stress: ",

@@ -1,6 +1,7 @@
 // ignore_for_file: unused_field
 
 import 'dart:io';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -8,6 +9,8 @@ import 'package:untitled/src/Controller/auth_controller.dart';
 import 'package:untitled/src/Controller/profile_controller.dart';
 import 'package:untitled/src/Utils/CommonWidgets/customTextField.dart';
 import '../../src/Constants/colors.dart';
+import '../../src/Utils/CommonWidgets/CustomBottomNavigationBarWithWallet.dart';
+import '../../src/Utils/CommonWidgets/FloatingactionButtonWithNotched.dart';
 
 class UserAccountSetting extends StatefulWidget {
   const UserAccountSetting({super.key});
@@ -24,7 +27,25 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController residcenceController = TextEditingController();
   TextEditingController cnicController = TextEditingController();
+
   TextEditingController dateOfBirthController = TextEditingController();
+  DateTime? selectedDate;
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate ?? DateTime.now(),
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2024));
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+        dateOfBirthController.text =
+            DateFormat('yyyy-MM-dd').format(selectedDate!);
+      });
+    }
+  }
+
   TextEditingController dropdownController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -73,14 +94,16 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
     dropdownController.text = user.gender!;
     dateOfBirthController.text = user.dateofBirth!;
 
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: CustomNavigationBar(),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: FloatingActionButtonWithNotched(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -224,17 +247,41 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
                       focusedBorder: InputBorder.none,
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
+                  // const SizedBox(
+                  //   height: 5,
+                  // ),
+                  // Padding(
+                  // padding: EdgeInsets.only(right: 255),
+                  Text(
+                    "",
+                    style: TextStyle(
+                      // fontWeight: FontWeight.bold,
+                      color: secondaryColor,
+                      fontSize: 15,
+                    ),
                   ),
-                  CustomTextField(
+                  // ),
+                  const SizedBox(height: 10),
+                  TextFormField(
+                    onTap: () => _selectDate(context),
+                    readOnly: true,
                     controller: dateOfBirthController,
-                    icon: Icons.calendar_month,
-                    placeholder: 'DATE OF BIRTH',
-                    secureText: false,
-                    type: TextInputType.text,
+                    decoration: const InputDecoration(
+                      hintText: "Select date of Vehicle Theft",
+                      prefixIcon: Icon(Icons.calendar_today),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: secondaryColor,
+                        ),
+                      ),
+                    ),
+                    validator: (value) {
+                      if (value == null) {
+                        return 'Select Date';
+                      }
+                    },
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 20,
                   ),
                   CustomTextField(
@@ -274,6 +321,9 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    height: 100,
                   ),
                 ],
               ),

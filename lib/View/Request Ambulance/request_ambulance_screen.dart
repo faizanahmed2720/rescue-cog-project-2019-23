@@ -61,6 +61,9 @@ class _RequestAmbulanceState extends State<RequestAmbulance> {
                                       Text("${snapshot.data![index].fullname}"),
                                   subtitle: Text(
                                       "${snapshot.data![index].vehicleNumber}"),
+                                  onTap: () {
+                                    Map();
+                                  },
                                   textColor: Colors.black,
                                   leading: Container(
                                       width: 50,
@@ -78,8 +81,7 @@ class _RequestAmbulanceState extends State<RequestAmbulance> {
                                           "${snapshot.data![index].profileImage}",
                                           fit: BoxFit.cover,
                                         ),
-                                      )
-                                  ),
+                                      )),
                                   trailing:
                                       CircleAvatar(child: Icon(Icons.star)),
                                   shape: RoundedRectangleBorder(

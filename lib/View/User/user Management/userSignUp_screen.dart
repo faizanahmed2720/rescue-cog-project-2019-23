@@ -9,6 +9,7 @@ import 'package:untitled/src/Constants/colors.dart';
 import 'package:untitled/src/Controller/auth_controller.dart';
 import 'package:untitled/src/Utils/CommonWidgets/customTextField.dart';
 import 'package:untitled/src/Utils/CommonWidgets/snackbar_widget.dart';
+import 'package:untitled/src/Utils/Regex/regex.dart';
 
 import '../../../src/Controller/profile_controller.dart';
 
@@ -25,8 +26,8 @@ class _userSignupState extends State<userSignup> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final AuthController _authController = AuthController();
-
   final _profileController = Get.put(profileController());
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -58,100 +59,129 @@ class _userSignupState extends State<userSignup> {
               padding: const EdgeInsets.fromLTRB(30, 50, 30, 0),
               child: Column(
                 children: [
-                  CustomTextField(
-                    controller: fullnameController,
-                    icon: Icons.person,
-                    placeholder: 'FULLNAME',
-                    secureText: false,
-                    type: TextInputType.text,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  CustomTextField(
-                    controller: emailController,
-                    icon: Icons.email,
-                    placeholder: 'EMAIL',
-                    secureText: false,
-                    type: TextInputType.emailAddress,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  CustomTextField(
-                    controller: phoneController,
-                    icon: Icons.phone,
-                    placeholder: 'PHONE',
-                    secureText: false,
-                    type: TextInputType.number,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  CustomTextField(
-                    controller: passwordController,
-                    icon: Icons.password,
-                    placeholder: 'PASSWORD',
-                    secureText: true,
-                    type: TextInputType.text,
-                  ),
-                  const SizedBox(
+                  Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          CustomTextField(
+                            controller: fullnameController,
+                            icon: Icons.person,
+                            placeholder: 'FULLNAME',
+                            secureText: false,
+                            type: TextInputType.text,
+                            validator: (val) {
+                              if (val!.isValidName == false)
+                                return 'Enter valid Name';
+                            },
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          CustomTextField(
+                            controller: emailController,
+                            icon: Icons.email,
+                            placeholder: 'EMAIL',
+                            secureText: false,
+                            type: TextInputType.emailAddress,
+                            validator: (val) {
+                              if (val!.isValidEmail == false)
+                                return 'Enter valid email';
+                            },
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          CustomTextField(
+                            controller: phoneController,
+                            icon: Icons.phone,
+                            placeholder: 'PHONE',
+                            secureText: false,
+                            type: TextInputType.number,
+                            validator: (val) {
+                              if (val!.isValidPhone == false)
+                                return 'Enter valid Phone';
+                            },
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          CustomTextField(
+                            controller: passwordController,
+                            icon: Icons.password,
+                            placeholder: 'PASSWORD',
+                            secureText: true,
+                            type: TextInputType.text,
+                            validator: (val) {
+                              if (passwordController.toString().isEmpty) {
+                                return 'Please enter some text';
+                              }
+                              if (val!.isValidPassword == false)
+                                return ' Password should contain A,a ,123';
+                            },
+                          ),
+                        ],
+                      )),
+                  SizedBox(
                     height: 40,
                   ),
                   ElevatedButton(
                       onPressed: () async {
                         //used for user signup,
-                        try {
-                          profileModel user;
-                          UserCredential? userCredential = await _authController
-                              .createAccount(
-                                emailController.text,
-                                passwordController.text,
-                                // phoneController.text,
-                                // fullnameController.text,
-                                // 'user',
-                              )
-                              .whenComplete(() => {
-                                    user = profileModel(
-                                        uid: _profileController
-                                            .getCurrentUserUid(),
-                                        fullname:
-                                            fullnameController.text.trim(),
-                                        email: emailController.text.trim(),
-                                        phoneNo: phoneController.text.trim(),
-                                        password:
-                                            passwordController.text.trim(),
-                                        residence: "",
-                                        gender: "",
-                                        cnic: "",
-                                        dateofBirth: "",
-                                        profileImage: ""),
-                                    _profileController.createUser(user)
-                                  });
-                          //if user crdential is null then there must be an exception.
-                          if (userCredential != null) {
-                            // ignore: use_build_context_synchronously
-                            showSnackBar(
-                              "Signup Successful",
-                              context,
-                            );
-                            // ignore: use_build_context_synchronously
-                            Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(
-                                builder: (context) => const get_started(),
-                              ),
-                              (route) => false,
-                            );
-                          } else {
-                            // ignore: use_build_context_synchronously
-                            showSnackBar(
-                              "Login failed",
-                              context,
-                            );
+                        if (_formKey.currentState!.validate()) {
+                          try {
+                            profileModel user;
+                            UserCredential? userCredential =
+                                await _authController
+                                    .createAccount(
+                                      emailController.text,
+                                      passwordController.text,
+                                      // phoneController.text,
+                                      // fullnameController.text,
+                                      // 'user',
+                                    )
+                                    .whenComplete(() => {
+                                          user = profileModel(
+                                              uid: _profileController
+                                                  .getCurrentUserUid(),
+                                              fullname: fullnameController.text
+                                                  .trim(),
+                                              email:
+                                                  emailController.text.trim(),
+                                              phoneNo:
+                                                  phoneController.text.trim(),
+                                              password: passwordController.text
+                                                  .trim(),
+                                              residence: "",
+                                              gender: "",
+                                              cnic: "",
+                                              dateofBirth: "",
+                                              profileImage: ""),
+                                          _profileController.createUser(user)
+                                        });
+                            //if user crdential is null then there must be an exception.
+                            if (userCredential != null) {
+                              // ignore: use_build_context_synchronously
+                              showSnackBar(
+                                "Signup Successful",
+                                context,
+                              );
+                              // ignore: use_build_context_synchronously
+                              Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                  builder: (context) => const get_started(),
+                                ),
+                                (route) => false,
+                              );
+                            } else {
+                              // ignore: use_build_context_synchronously
+                              showSnackBar(
+                                "Login failed",
+                                context,
+                              );
+                            }
+                          } catch (e) {
+                            //e will tell us the value of exception
                           }
-                        } catch (e) {
-                          //e will tell us the value of exception
-                        
                         }
                       },
                       style: ElevatedButton.styleFrom(primary: secondaryColor),
