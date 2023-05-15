@@ -24,20 +24,20 @@ class _NearestHospitalState extends State<NearestHospital> {
   }
 
   void _addMarkers() {
-    _addMarker(LatLng(31.4905, 74.3048), 'Shaukat Khanum');
+    _addMarker(LatLng(33.9930, 71.4402), 'Shaukat Khanum');
     _addMarker(LatLng(31.4846, 74.2974), 'Jinnah Hospital');
-    _addMarker(LatLng(31.5131, 74.3609), 'Doctors Hospital');
-    _addMarker(LatLng(31.5334, 74.3502), 'National Hospital');
-    _addMarker(LatLng(31.5612, 74.3225), 'Punjab Institute of Cardiology');
-    _addMarker(LatLng(31.5112, 74.3447), 'Ittefaq Hospital');
-    _addMarker(LatLng(31.6123, 74.2968), 'Shalamar Hospital');
-    _addMarker(LatLng(31.5708, 74.3063), 'Mayo Hospital');
-    _addMarker(LatLng(31.5452, 74.2964), 'Hameed Latif Hospital');
-    _addMarker(LatLng(31.4977, 74.3182), 'Farooq Hospital');
-    _addMarker(LatLng(31.5177, 74.3218), 'Fatima Memorial Hospital');
-    _addMarker(LatLng(31.4964, 74.2956), 'Surgimed Hospital');
-    _addMarker(LatLng(31.5313, 74.3969), 'Sharif Medical City Hospital');
-    _addMarker(LatLng(31.5547, 74.3162), 'Sheikh Zayed Hospital');
+    _addMarker(LatLng(31.4797, 74.2804), 'Doctors Hospital');
+    _addMarker(LatLng(31.4846, 74.3974), 'National Hospital');
+    _addMarker(LatLng(31.5382, 74.3362), 'Punjab Institute of Cardiology');
+    _addMarker(LatLng(31.4756, 74.3377), 'Ittefaq Hospital');
+    _addMarker(LatLng(31.5753, 74.3798), 'Shalamar Hospital');
+    _addMarker(LatLng(31.5708, 74.3152), 'Mayo Hospital');
+    _addMarker(LatLng(31.5119, 74.3283), 'Hameed Latif Hospital');
+    _addMarker(LatLng(31.5127, 74.2996), 'Farooq Hospital');
+    _addMarker(LatLng(31.5356, 74.3273), 'Fatima Memorial Hospital');
+    _addMarker(LatLng(31.5380, 74.3513), 'Surgimed Hospital');
+    _addMarker(LatLng(31.3361, 74.1985), 'Sharif Medical City Hospital');
+    _addMarker(LatLng(31.5082, 74.3086), 'Sheikh Zayed Hospital');
   }
 
   @override

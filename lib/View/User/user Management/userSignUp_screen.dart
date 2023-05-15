@@ -135,7 +135,7 @@ class _userSignupState extends State<userSignup> {
                                     .createAccount(
                                       emailController.text,
                                       passwordController.text,
-                                      phoneController.text,
+                                      // phoneController.text,
                                       // fullnameController.text,
                                       // 'user',
                                     )

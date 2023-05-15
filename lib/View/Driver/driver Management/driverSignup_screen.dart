@@ -147,7 +147,7 @@ class DriverSignup extends StatelessWidget {
                                   await _authController.createAccount(
                                 emailController.text,
                                 passwordController.text,
-                                phoneController.text,
+                                // phoneController.text,
                                 // fullnameController.text,
                                 // 'driver',
                               );
