@@ -24,6 +24,7 @@ class DriverSignup extends StatelessWidget {
   ];
 
   final AuthController _authController = AuthController();
+  final _formKey = GlobalKey<FormState>();
 
   DriverSignup({super.key});
 
@@ -139,40 +140,45 @@ class DriverSignup extends StatelessWidget {
                     ),
                     ElevatedButton(
                         onPressed: () async {
-                          //used for driver signup,
-                          try {
-                            UserCredential? userCredential =
-                                await _authController.createAccount(
-                              emailController.text,
-                              passwordController.text,
-                            );
-                            //if user crdential is null then there must be an exception.
-                            if (userCredential != null) {
-                              // ignore: use_build_context_synchronously
-                              showSnackBar(
-                                "Signup Successful",
-                                context,
+                          if (_formKey.currentState!.validate()) {
+                            //used for driver signup,
+                            try {
+                              UserCredential? userCredential =
+                                  await _authController.createAccount(
+                                emailController.text,
+                                passwordController.text,
+                                phoneController.text,
+                                // fullnameController.text,
+                                // 'driver',
                               );
-                              // ignore: use_build_context_synchronously
-                              Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(
-                                  builder: (context) => const get_started(),
-                                ),
-                                (route) => false,
-                              );
-                            } else {
-                              // ignore: use_build_context_synchronously
+                              //if user crdential is null then there must be an exception.
+                              if (userCredential != null) {
+                                // ignore: use_build_context_synchronously
+                                showSnackBar(
+                                  "Signup Successful",
+                                  context,
+                                );
+                                // ignore: use_build_context_synchronously
+                                Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(
+                                    builder: (context) => const get_started(),
+                                  ),
+                                  (route) => false,
+                                );
+                              } else {
+                                // ignore: use_build_context_synchronously
+                                showSnackBar(
+                                  "Login failed",
+                                  context,
+                                );
+                              }
+                            } catch (e) {
+                              //e will tell us the value of exception
                               showSnackBar(
-                                "Login failed",
+                                e.toString(),
                                 context,
                               );
                             }
-                          } catch (e) {
-                            //e will tell us the value of exception
-                            showSnackBar(
-                              e.toString(),
-                              context,
-                            );
                           }
                         },
                         style:
