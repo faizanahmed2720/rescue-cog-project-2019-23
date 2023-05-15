@@ -9,6 +9,7 @@ import 'package:untitled/src/Constants/colors.dart';
 import 'package:untitled/src/Controller/auth_controller.dart';
 import 'package:untitled/src/Utils/CommonWidgets/customTextField.dart';
 import 'package:untitled/src/Utils/CommonWidgets/snackbar_widget.dart';
+import 'package:untitled/src/Utils/Regex/regex.dart';
 
 class DriverLogin extends StatefulWidget {
   const DriverLogin({super.key});
@@ -21,6 +22,8 @@ class _DriverLoginState extends State<DriverLogin> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final AuthController _authController = AuthController();
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,6 +60,9 @@ class _DriverLoginState extends State<DriverLogin> {
                     placeholder: 'EMAIL',
                     secureText: false,
                     type: TextInputType.emailAddress,
+                    validator: (val) {
+                      if (val!.isValidName == false) return 'Enter valid Name';
+                    },
                   ),
                   const SizedBox(
                     height: 40,
@@ -67,6 +73,13 @@ class _DriverLoginState extends State<DriverLogin> {
                     placeholder: 'PASSWORD',
                     secureText: true,
                     type: TextInputType.text,
+                    validator: (val) {
+                      if (passwordController.toString().isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      if (val!.isValidPassword == false)
+                        return ' Password should contain A,a ,123';
+                    },
                   ),
                   const SizedBox(
                     height: 40,

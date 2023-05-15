@@ -121,7 +121,7 @@ class _userSignupState extends State<userSignup> {
                           ),
                         ],
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   ElevatedButton(
@@ -135,7 +135,7 @@ class _userSignupState extends State<userSignup> {
                                     .createAccount(
                                       emailController.text,
                                       passwordController.text,
-                                      // phoneController.text,
+                                      phoneController.text,
                                       // fullnameController.text,
                                       // 'user',
                                     )

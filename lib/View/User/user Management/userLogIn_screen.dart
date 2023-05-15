@@ -10,6 +10,7 @@ import 'package:untitled/src/Constants/colors.dart';
 import 'package:untitled/src/Controller/auth_controller.dart';
 import 'package:untitled/src/Utils/CommonWidgets/customTextField.dart';
 import 'package:untitled/src/Utils/CommonWidgets/snackbar_widget.dart';
+import 'package:untitled/src/Utils/Regex/regex.dart';
 
 import '../../User Dashboard/userDashoard_screen.dart';
 
@@ -24,6 +25,8 @@ class _UserLoginState extends State<UserLogin> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final AuthController _authController = AuthController();
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +63,9 @@ class _UserLoginState extends State<UserLogin> {
                     placeholder: 'EMAIL',
                     secureText: false,
                     type: TextInputType.emailAddress,
+                    validator: (val) {
+                      if (val!.isValidName == false) return 'Enter valid Name';
+                    },
                   ),
                   const SizedBox(
                     height: 40,
@@ -70,34 +76,45 @@ class _UserLoginState extends State<UserLogin> {
                     placeholder: 'PASSWORD',
                     secureText: true,
                     type: TextInputType.text,
+                    validator: (val) {
+                      if (passwordController.toString().isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      if (val!.isValidPassword == false)
+                        return ' Password should contain A,a ,123';
+                    },
                   ),
                   const SizedBox(
                     height: 40,
                   ),
                   ElevatedButton(
                       onPressed: () async {
-                        try {
-                          UserCredential? userCredential = await _authController
-                              .signInUser(
-                                emailController.text,
-                                passwordController.text,
-                              )
-                              .then((value) => Get.to(const userDashboard()));
-                          if (userCredential != null) {
-                            Get.snackbar('success', "Login Successfully");
-                            // ignore: use_build_context_synchronously
-                            Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(
-                                builder: (context) => const get_started(),
-                              ),
-                              (route) => false,
+                        if (_formKey.currentState!.validate()) {
+                          try {
+                            UserCredential? userCredential =
+                                await _authController
+                                    .signInUser(
+                                      emailController.text,
+                                      passwordController.text,
+                                    )
+                                    .then((value) =>
+                                        Get.to(const userDashboard()));
+                            if (userCredential != null) {
+                              Get.snackbar('success', "Login Successfully");
+                              // ignore: use_build_context_synchronously
+                              Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                  builder: (context) => const get_started(),
+                                ),
+                                (route) => false,
+                              );
+                            }
+                          } catch (e) {
+                            showSnackBar(
+                              e.toString(),
+                              context,
                             );
                           }
-                        } catch (e) {
-                          showSnackBar(
-                            e.toString(),
-                            context,
-                          );
                         }
                       },
                       style: ElevatedButton.styleFrom(primary: secondaryColor),
