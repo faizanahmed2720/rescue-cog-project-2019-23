@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../src/Constants/colors.dart';
 import '../../src/Controller/profile_controller.dart';
+import 'map.dart';
 
 class RequestAmbulance extends StatefulWidget {
   const RequestAmbulance({super.key});
@@ -62,7 +62,7 @@ class _RequestAmbulanceState extends State<RequestAmbulance> {
                                   subtitle: Text(
                                       "${snapshot.data![index].vehicleNumber}"),
                                   onTap: () {
-                                    Map();
+                                    Get.to(Rescue_Map());
                                   },
                                   textColor: Colors.black,
                                   leading: Container(

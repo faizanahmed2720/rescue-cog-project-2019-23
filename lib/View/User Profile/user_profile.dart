@@ -129,18 +129,7 @@ class _userProfileState extends State<userProfile> {
                           Divider(),
                           SizedBox(height: 40),
 
-                          ElevatedButton(onPressed: () {
-                            FirebaseAuth.instance.signOut();
-                            Get.to(const SplashScreen());
-                          }, style: ElevatedButton.styleFrom(primary: secondaryColor),
-                            child: Padding(
-                              padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                              child: Text(
-                                "LOGOUT".toUpperCase(),
-                                style: TextStyle(fontSize: 20),
-                              ),
-                            ),
-                          ),
+
 
 
                         ],
@@ -164,6 +153,18 @@ class _userProfileState extends State<userProfile> {
               }
             },
           ),
+        ElevatedButton(onPressed: () {
+          FirebaseAuth.instance.signOut();
+          Get.to(const SplashScreen());
+        }, style: ElevatedButton.styleFrom(primary: secondaryColor),
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+            child: Text(
+              "LOGOUT".toUpperCase(),
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ),
         ]),
         ],
       ),

@@ -57,97 +57,106 @@ class _UserLoginState extends State<UserLogin> {
               padding: const EdgeInsets.fromLTRB(30, 100, 30, 0),
               child: Column(
                 children: [
-                  CustomTextField(
-                    controller: emailController,
-                    icon: Icons.email,
-                    placeholder: 'EMAIL',
-                    secureText: false,
-                    type: TextInputType.emailAddress,
-                    validator: (val) {
-                      if (val!.isValidName == false) return 'Enter valid Name';
-                    },
-                  ),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  CustomTextField(
-                    controller: passwordController,
-                    icon: Icons.password,
-                    placeholder: 'PASSWORD',
-                    secureText: true,
-                    type: TextInputType.text,
-                    validator: (val) {
-                      if (passwordController.toString().isEmpty) {
-                        return 'Please enter some text';
-                      }
-                      if (val!.isValidPassword == false)
-                        return ' Password should contain A,a ,123';
-                    },
-                  ),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  ElevatedButton(
-                      onPressed: () async {
-                        if (_formKey.currentState!.validate()) {
-                          try {
-                            UserCredential? userCredential =
-                                await _authController
-                                    .signInUser(
-                                      emailController.text,
-                                      passwordController.text,
-                                    )
-                                    .then((value) =>
-                                        Get.to(const userDashboard()));
-                            if (userCredential != null) {
-                              Get.snackbar('success', "Login Successfully");
-                              // ignore: use_build_context_synchronously
-                              Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(
-                                  builder: (context) => const get_started(),
-                                ),
-                                (route) => false,
-                              );
-                            }
-                          } catch (e) {
-                            showSnackBar(
-                              e.toString(),
-                              context,
-                            );
-                          }
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(primary: secondaryColor),
-                      child: const Padding(
-                        padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
-                        child: Text(
-                          "LOGIN",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      )),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  Form(
+                    key: _formKey,
+                    child: Column(
                     children: [
-                      const Text(
-                        "Don't have an account?",
-                        style: TextStyle(
-                          color: primaryColor,
-                          fontSize: 15,
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Get.to(const userSignup());
+                      CustomTextField(
+                        controller: emailController,
+                        icon: Icons.email,
+                        placeholder: 'EMAIL',
+                        secureText: false,
+                        type: TextInputType.emailAddress,
+                        validator: (val) {
+                          if (val!.isValidEmail == false)
+                            return 'Enter valid email';
                         },
-                        child: const Text(
-                          "Sign up",
-                          style: TextStyle(
-                            color: primaryColor,
-                            fontWeight: FontWeight.bold,
+                      ),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      CustomTextField(
+                        controller: passwordController,
+                        icon: Icons.password,
+                        placeholder: 'PASSWORD',
+                        secureText: true,
+                        type: TextInputType.text,
+                        validator: (val) {
+                          if (passwordController.toString().isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          if (val!.isValidPassword == false)
+                            return ' Password should contain A,a ,123';
+                        },
+                      ),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      ElevatedButton(
+                          onPressed: () async {
+                            if (_formKey.currentState!.validate()) {
+                              try {
+                                UserCredential? userCredential =
+                                    await _authController
+                                        .signInUser(
+                                          emailController.text,
+                                          passwordController.text,
+                                        )
+                                        .then((value) =>
+                                            Get.to(const userDashboard()));
+                                if (userCredential != null) {
+                                  Get.snackbar('success', "Login Successfully",
+                                  backgroundColor: Colors.transparent);
+                                  // ignore: use_build_context_synchronously
+                                  Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                      builder: (context) => const get_started(),
+                                    ),
+                                    (route) => false,
+                                  );
+                                }
+                              } catch (e) {
+                                showSnackBar(
+                                  e.toString(),
+                                  context,
+                                );
+                              }
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(primary: secondaryColor),
+                          child: const Padding(
+                            padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
+                            child: Text(
+                              "LOGIN",
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          )),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Don't have an account?",
+                            style: TextStyle(
+                              color: primaryColor,
+                              fontSize: 15,
+                            ),
                           ),
-                        ),
+                          TextButton(
+                            onPressed: () {
+                              Get.to(const userSignup());
+                            },
+                            child: const Text(
+                              "Sign up",
+                              style: TextStyle(
+                                color: primaryColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
+                    ),
                   ),
                 ],
               ),

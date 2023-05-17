@@ -1,14 +1,6 @@
-// Start of Splash Screen
+// API Key
+const String google_api_key ="AIzaSyAn2DHcY5Fz4UCOlqlylRT55wMZ4-O9psc";
 
-// // Splash Screen 1
-// const String sambulanceService = "Ambulance Service";
-
-// // Splash Screen 2
-// const String sfbService = "Fire Brigades Service";
-
-// // Splash Screen 3
-// const String sfirstAidGuide = "Best First Aid Guide";
-// // End of Splash Screen
 
 // After Splash
 const String premissionMsg =
