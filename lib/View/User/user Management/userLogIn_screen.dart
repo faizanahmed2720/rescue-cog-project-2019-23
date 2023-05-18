@@ -85,8 +85,9 @@ class _UserLoginState extends State<UserLogin> {
                           if (passwordController.toString().isEmpty) {
                             return 'Please enter some text';
                           }
-                          if (val!.isValidPassword == false)
-                            return ' Password should contain A,a ,123';
+                          if (val!.isValidPassword == false) {
+                            return 'Incorrect Password';
+                          }
                         },
                       ),
                       const SizedBox(

@@ -54,6 +54,8 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
 
   File? _imageFile;
   String? _imageUrl;
+
+  String? profileImage;
   Future _pickImage() async {
     final pickedFile =
         await ImagePicker().getImage(source: ImageSource.gallery);
@@ -74,7 +76,8 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
       residence: "",
       cnic: "",
       gender: "",
-      dateofBirth: "");
+      dateofBirth: "",
+      profileImage: "");
   @override
   void initState() {
     // TODO: implement initState
@@ -107,75 +110,78 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              height: 200,
-              alignment: Alignment.center,
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(25),
-                  bottomRight: Radius.circular(25),
+            Stack(
+              children: [Container(
+                height: 250,
+                alignment: Alignment.center,
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(25),
+                    bottomRight: Radius.circular(25),
+                  ),
+                  color: primaryColor,
                 ),
-                color: primaryColor,
-              ),
-              child: const Text(
-                "ACCOUNT SETTING",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
+                child: const Text(
+                  "ACCOUNT SETTING",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 180, 0, 30),
+                  child: Center(
+                    child: GestureDetector(
+                      onTap: () {
+                        _pickImage();
+                      },
+                      child: Container(
+                        width: 150,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.grey[700],
+                          border: Border.all(
+                              color: Colors.white,
+                              width: 5.0,
+                              style: BorderStyle.solid),
+                        ),
+                        child: FutureBuilder<Object>(
+                            future: _profileController.getUserDetails(),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                profileModel userData =
+                                snapshot.data as profileModel;
+                                profileImage =  userData.profileImage!;
+                                return ClipOval(
+                                  child: Image.network(
+                                    userData.profileImage!,
+                                    fit: BoxFit.cover,
+                                  ),
+                                );
+                              } else if (snapshot.hasError) {
+                                return Center(
+                                  child: Text(snapshot.error.toString()),
+                                );
+                              } else {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+                            }),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 0),
-                    child: Center(
-                      child: GestureDetector(
-                        onTap: () {
-                          // _openGallery();
-                          _pickImage();
-                        },
-                        child: Container(
-                          width: 150,
-                          height: 150,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.grey[700],
-                            border: Border.all(
-                                color: Colors.white,
-                                width: 5.0,
-                                style: BorderStyle.solid),
-                          ),
-                          child: FutureBuilder<Object>(
-                              future: _profileController.getUserDetails(),
-                              builder: (context, snapshot) {
-                                if (snapshot.hasData) {
-                                  profileModel userData =
-                                      snapshot.data as profileModel;
-                                  return ClipOval(
-                                    child: Image.network(
-                                      userData.profileImage!,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  );
-                                } else if (snapshot.hasError) {
-                                  return Center(
-                                    child: Text(snapshot.error.toString()),
-                                  );
-                                } else {
-                                  return const Center(
-                                    child: CircularProgressIndicator(),
-                                  );
-                                }
-                              }),
-                        ),
-                      ),
-                    ),
-                  ),
                   CustomTextField(
                     controller: fullnameController,
                     icon: Icons.person,
@@ -247,27 +253,13 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
                       focusedBorder: InputBorder.none,
                     ),
                   ),
-                  // const SizedBox(
-                  //   height: 5,
-                  // ),
-                  // Padding(
-                  // padding: EdgeInsets.only(right: 255),
-                  Text(
-                    "",
-                    style: TextStyle(
-                      // fontWeight: FontWeight.bold,
-                      color: secondaryColor,
-                      fontSize: 15,
-                    ),
-                  ),
-                  // ),
                   const SizedBox(height: 10),
                   TextFormField(
                     onTap: () => _selectDate(context),
                     readOnly: true,
                     controller: dateOfBirthController,
                     decoration: const InputDecoration(
-                      hintText: "Select date of Vehicle Theft",
+                      hintText: "Select date",
                       prefixIcon: Icon(Icons.calendar_today),
                       enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
@@ -281,7 +273,7 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
                       }
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   CustomTextField(
@@ -292,7 +284,7 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
                     type: TextInputType.number,
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 40,
                   ),
                   ElevatedButton(
                     onPressed: () {
@@ -323,7 +315,7 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
                     ),
                   ),
                   SizedBox(
-                    height: 100,
+                    height: 50,
                   ),
                 ],
               ),

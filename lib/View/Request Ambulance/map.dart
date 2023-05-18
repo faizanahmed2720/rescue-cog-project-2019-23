@@ -64,9 +64,10 @@ class Rescue_MapState extends State<Rescue_Map> {
 
   void setCustomMarkerIcon() {
     BitmapDescriptor.fromAssetImage(
-        ImageConfiguration.empty, "assets/Images/user.png").then((icon) => {
+        ImageConfiguration.empty, "assets/Images/Navigation Icon/sourceLocation.png").then((icon) => {
     sourceIcon = icon
     },);
+    // sourceIcon = Icon(Image.asset("assets/Images/userSourceLocation.png") as IconData?) as BitmapDescriptor;
     BitmapDescriptor.fromAssetImage(
         ImageConfiguration.empty, "assets/Images/user.png").then((icon) => {
     destinationIcon = icon
@@ -99,7 +100,7 @@ class Rescue_MapState extends State<Rescue_Map> {
         initialCameraPosition: CameraPosition(
           target: LatLng(
               currentLocation!.latitude!, currentLocation!.longitude!),
-          zoom: 13.5,
+          // zoom: 13.5,
         ),
         polylines: {
           Polyline(polylineId: const PolylineId("route"),

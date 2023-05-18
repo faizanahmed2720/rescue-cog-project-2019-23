@@ -77,11 +77,11 @@ class _DriverLoginState extends State<DriverLogin> {
                       secureText: true,
                       type: TextInputType.text,
                       validator: (val) {
-                        if (passwordController.toString().isEmpty) {
+                        if (val!.isNull == false) {
                           return 'Please enter some text';
                         }
-                        if (val!.isValidPassword == false)
-                          return ' Password should contain A,a ,123';
+                       else if (val!.isValidPassword == false)
+                          return 'Incorrect Password';
                       },
                     ),
                     const SizedBox(

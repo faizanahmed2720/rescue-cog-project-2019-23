@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../src/Constants/colors.dart';
 import '../Driver/driver Management/driverLogin_screen.dart';
+import '../User/user Management/emergency.dart';
 import '../User/user Management/userLogIn_screen.dart';
 
 class get_started extends StatefulWidget {
@@ -28,7 +29,9 @@ class _get_startedState extends State<get_started> {
             height: 50,
             width: 200,
             child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(const Emergency());
+                },
                 style:
                     ElevatedButton.styleFrom(backgroundColor: secondaryColor),
                 child: const Text(

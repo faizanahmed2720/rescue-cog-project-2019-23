@@ -221,3 +221,21 @@ const String cough_p3 =
 const String cough_p4 =
     'While most cough and mild symptoms will resolve on their own, it is important to monitor your symptoms and seek medical attention if they worsen or persist. Contact your healthcare provider if you experience chest pain, difficulty breathing, high fever, or other symptoms that are concerning to you.';
 const String cough_p5 = '';
+
+
+//About Section
+String aboutUs = '''The Emergency Service Application, more commonly referred to as Rescue COG, is the most efficient emergency service that is currently on the market. It has a response time of seven to ten minutes, on average, and has helped more than ten million people in need. However, after the expansion of emergency services throughout all of Punjab's thesils, the Rescue COG Mobile Application was developed to determine the position of the Caller and match it with the location of the Emergency Vehicle that is located the closest to it in order to ensure a prompt response to any emergencies. This was done in order to guarantee that any emergencies will be dealt with in a timely manner.
+
+The app will also allow the caller to provide feedback regarding the quality of the emergency services that are being provided by Rescue COG, and it will notify the caller on the location of the vehicles that are responding to the emergency. In addition to this, the app will alert the caller on the location of the cars that are responding to the emergency.
+The following is a list of the most important features of the mobile app for Rescue COG, in the order of their importance:
+
+
+Simple interaction on the part of the user
+The active sharing of one's location during times of disaster in order to promote the prompt provision of assistance.
+You are able to monitor the deployed responders at any given moment in real time on a live map.
+the estimated time of arrival (ETA) of the vehicle that was sent out to arrive at the location
+We would appreciate it if you could provide some feedback on the safety training films and the emergency first aid literature.
+If you have any more questions, please do not hesitate to contact our Customer Care team at the following phone number or address:
+
+Email: faizan@rescue.cog.gov.pk''';
+
