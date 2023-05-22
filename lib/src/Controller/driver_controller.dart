@@ -6,14 +6,12 @@ import 'package:get/get.dart';
 import '../constants/colors.dart';
 import 'dart:io';
 
-import 'driver_controller.dart';
-
-class profileController extends GetxController {
-  static profileController get instance => Get.find();
+class driverController extends GetxController {
+  static driverController get instance => Get.find();
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  get user => _auth.currentUser;
+  get driver => _auth.currentUser;
 
   final firebaseInstance = FirebaseFirestore.instance;
 
@@ -21,16 +19,16 @@ class profileController extends GetxController {
   final storage = FirebaseStorage.instance;
   final firestore = FirebaseFirestore.instance;
 
-  Future<void> createUser(profileModel user) async {
+  Future<void> createUser(driverModel user) async {
     await firebaseInstance
-        .collection("user")
+        .collection("driver")
         .doc(getCurrentUserUid().toString())
         .set(user.toJason())
         .whenComplete(() => Get.snackbar(
-            "Success", "Your account has been created",
-            snackPosition: SnackPosition.BOTTOM,
-            backgroundColor: primaryColor,
-            colorText: Colors.black))
+        "Success", "Your account has been created",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: primaryColor,
+        colorText: Colors.black))
         .catchError((error, stackTrace) {
       Get.snackbar("Error", "Something went wrong. Try Again",
           snackPosition: SnackPosition.BOTTOM,
@@ -41,34 +39,34 @@ class profileController extends GetxController {
     // Get.to(OTPScreen());
   }
 
-  Future<profileModel> getUserDetails() async {
+  Future<driverModel> getUserDetails() async {
     final snapshot = await _firebaseFirestore
-        .collection("user")
+        .collection("driver")
         .where("uid", isEqualTo: getCurrentUserUid().toString())
         .get();
     final userdata =
-        snapshot.docs.map((e) => profileModel.fromSnapshot(e)).single;
+        snapshot.docs.map((e) => driverModel.fromSnapshot(e)).single;
     return userdata;
   }
 
   Future<List<driverModel>> getAllUserdetail() async {
     final snapshot = await _firebaseFirestore.collection("driver").get();
     final userdata =
-        snapshot.docs.map((e) => driverModel.fromSnapshot(e)).toList();
+    snapshot.docs.map((e) => driverModel.fromSnapshot(e)).toList();
     return userdata;
   }
 
-  Future<void> updateUserRecord(profileModel user) async {
+  Future<void> updateUserRecord(driverModel user) async {
     await _firebaseFirestore
-        .collection("user")
+        .collection("driver")
         .doc(getCurrentUserUid().toString())
         .update(user.toJason())
         .whenComplete(() => {
-              Get.snackbar("Success", "Your profile has been updated",
-                  snackPosition: SnackPosition.BOTTOM,
-                  backgroundColor: primaryColor,
-                  colorText: Colors.black)
-            });
+      Get.snackbar("Success", "Your profile has been updated",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: primaryColor,
+          colorText: Colors.black)
+    });
   }
 
   Future uploadImageAndGetLink(File imageFile) async {
@@ -89,7 +87,7 @@ class profileController extends GetxController {
 
     // Store the download URL of the image in Firebase Firestore
     await FirebaseFirestore.instance
-        .collection("user")
+        .collection("driver")
         .doc(getCurrentUserUid().toString())
         .update({"profileImage": url});
     // .add({'ProfileImage': url});
@@ -108,29 +106,33 @@ class profileController extends GetxController {
   }
 }
 
-class profileModel {
+class driverModel {
   final String? uid;
   final String fullname;
   final String email;
   final String phoneNo;
+  final String vehicleType;
   final String password;
+  final String? vehicleNumber;
   final String? residence;
   final String? gender;
   final String? dateofBirth;
   final String? cnic;
   final String? profileImage;
 
-  profileModel(
+  driverModel(
       {this.uid,
-      required this.fullname,
-      required this.email,
-      required this.phoneNo,
-      required this.password,
-      this.residence,
-      this.gender,
-      this.dateofBirth,
-      this.cnic,
-      this.profileImage});
+        required this.fullname,
+        required this.email,
+        required this.phoneNo,
+        required this.password,
+        required this.vehicleType,
+        this.vehicleNumber,
+        this.residence,
+        this.gender,
+        this.dateofBirth,
+        this.cnic,
+        this.profileImage});
 
   toJason() {
     return {
@@ -138,7 +140,9 @@ class profileModel {
       "userName": fullname,
       "email": email,
       "phoneNumber": phoneNo,
+      "vehicleType": vehicleType,
       "password": password,
+      "vehicleNumber": vehicleNumber,
       "residence": residence,
       "gender": gender,
       "date of Birth": dateofBirth,
@@ -147,15 +151,17 @@ class profileModel {
     };
   }
 
-  factory profileModel.fromSnapshot(
+  factory driverModel.fromSnapshot(
       DocumentSnapshot<Map<String, dynamic>> document) {
     final data = document.data()!;
-    return profileModel(
+    return driverModel(
       uid: data["uid"],
       fullname: data["userName"],
       email: data["email"],
       phoneNo: data["phoneNumber"],
+      vehicleType: data["vehicleType"],
       password: data["password"],
+      vehicleNumber: data["vehicleNumber"],
       residence: data["residence"],
       gender: data["gender"],
       dateofBirth: data["date of Birth"],

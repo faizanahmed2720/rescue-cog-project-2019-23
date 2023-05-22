@@ -32,6 +32,12 @@ class DriverSignupPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
+          appBar: AppBar(
+            leading: IconButton(onPressed: () {Get.back();}, icon: const Icon(Icons.arrow_back_rounded, color: Colors.white) ),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
+          extendBodyBehindAppBar: true,
       body: SingleChildScrollView(
         child: Column(
           children: [

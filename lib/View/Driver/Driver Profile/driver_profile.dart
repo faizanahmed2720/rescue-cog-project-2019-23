@@ -8,28 +8,38 @@ import 'package:image_picker/image_picker.dart';
 import 'package:untitled/src/Controller/auth_controller.dart';
 import 'package:untitled/src/Controller/profile_controller.dart';
 import 'package:untitled/src/Utils/CommonWidgets/customTextField.dart';
-import '../../src/Constants/colors.dart';
-import '../../src/Utils/CommonWidgets/CustomBottomNavigationBarWithWallet.dart';
-import '../../src/Utils/CommonWidgets/FloatingactionButtonWithNotched.dart';
 
-class UserAccountSetting extends StatefulWidget {
-  const UserAccountSetting({super.key});
+import '../../../src/Constants/colors.dart';
+import '../../../src/Controller/driver_controller.dart';
+import '../../../src/Utils/CommonWidgets/CustomBottomNavigationBarWithWallet.dart';
+import '../../../src/Utils/CommonWidgets/FloatingactionButtonWithNotched.dart';
+
+class DriverProfile extends StatefulWidget {
+  const DriverProfile({super.key});
 
   @override
-  State<UserAccountSetting> createState() => _UserAccountSettingState();
+  State<DriverProfile> createState() => _DriverProfileState();
 }
 
-class _UserAccountSettingState extends State<UserAccountSetting> {
-  final _profileController = Get.put(profileController());
+class _DriverProfileState extends State<DriverProfile> {
+  final _driverController = Get.put(driverController());
 
   TextEditingController fullnameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController residcenceController = TextEditingController();
   TextEditingController cnicController = TextEditingController();
-
   TextEditingController dateOfBirthController = TextEditingController();
   DateTime? selectedDate;
+  TextEditingController dropdownController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController vehicleDopdownController = TextEditingController();
+  final List<String> vehicleTypes = [
+    'Suzuki Bolan',
+    'Changhan',
+    'Kinglong Van'
+  ];
+  TextEditingController vehicleNoController = TextEditingController();
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -46,9 +56,6 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
     }
   }
 
-  TextEditingController dropdownController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
   final AuthController _authController = AuthController();
   final List<String> genderTypes = ['Male', 'Female', 'Other'];
 
@@ -56,13 +63,14 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
   String? _imageUrl;
 
   String? profileImage;
+
   Future _pickImage() async {
     final pickedFile =
         await ImagePicker().getImage(source: ImageSource.gallery);
     setState(() {
       _imageFile = File(pickedFile!.path);
     });
-    final url = await _profileController.uploadImageAndGetLink(_imageFile!);
+    final url = await _driverController.uploadImageAndGetLink(_imageFile!);
     setState(() {
       _imageUrl = url;
     });
@@ -78,6 +86,7 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
       gender: "",
       dateofBirth: "",
       profileImage: "");
+
   @override
   void initState() {
     // TODO: implement initState
@@ -86,7 +95,7 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
   }
 
   Future get() async {
-    user = await _profileController.getUserDetails();
+    user = (await _driverController.getUserDetails()) as profileModel;
 
     fullnameController.text = user.fullname;
     emailController.text = user.email;
@@ -104,7 +113,11 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: () {Get.back();}, icon: const Icon(Icons.arrow_back_rounded, color: Colors.white) ),
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(Icons.arrow_back_rounded, color: Colors.white)),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -117,26 +130,27 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
         child: Column(
           children: [
             Stack(
-              children: [Container(
-                height: 250,
-                alignment: Alignment.center,
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25),
-                    bottomRight: Radius.circular(25),
+              children: [
+                Container(
+                  height: 250,
+                  alignment: Alignment.center,
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(25),
+                      bottomRight: Radius.circular(25),
+                    ),
+                    color: primaryColor,
                   ),
-                  color: primaryColor,
-                ),
-                child: const Text(
-                  "YOUR PROFILE",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
+                  child: const Text(
+                    "YOUR PROFILE",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 180, 0, 30),
                   child: Center(
@@ -156,12 +170,12 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
                               style: BorderStyle.solid),
                         ),
                         child: FutureBuilder<Object>(
-                            future: _profileController.getUserDetails(),
+                            future: _driverController.getUserDetails(),
                             builder: (context, snapshot) {
                               if (snapshot.hasData) {
                                 profileModel userData =
-                                snapshot.data as profileModel;
-                                profileImage =  userData.profileImage!;
+                                    snapshot.data as profileModel;
+                                profileImage = userData.profileImage!;
                                 return ClipOval(
                                   child: Image.network(
                                     userData.profileImage!,
@@ -280,6 +294,40 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
                     },
                   ),
                   const SizedBox(
+                    height: 10,
+                  ),
+                  CustomTextField(
+                    controller: vehicleNoController,
+                    icon: Icons.numbers,
+                    placeholder: 'VEHICLE NUMBER',
+                    secureText: false,
+                    type: TextInputType.text,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  DropdownButtonFormField(
+                    value: vehicleDopdownController.text.isNotEmpty
+                        ? vehicleDopdownController.text
+                        : null,
+                    items: vehicleTypes
+                        .map(
+                          (type) => DropdownMenuItem(
+                            value: type,
+                            child: Text(type),
+                          ),
+                        )
+                        .toList(),
+                    onChanged: (value) {
+                      vehicleDopdownController.text = value!;
+                    },
+                    decoration: const InputDecoration(
+                      labelText: 'Vehicle Type',
+                      icon: Icon(Icons.car_rental),
+                      focusedBorder: InputBorder.none,
+                    ),
+                  ),
+                  const SizedBox(
                     height: 20,
                   ),
                   CustomTextField(
@@ -296,8 +344,8 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
                     onPressed: () {
                       // FirebaseAuth.instance.signOut();
                       // Get.to(const SplashScreen());
-                      profileModel model = profileModel(
-                        uid: _profileController.getCurrentUserUid(),
+                      driverModel model = driverModel(
+                        uid: _driverController.getCurrentUserUid(),
                         fullname: fullnameController.text,
                         email: emailController.text,
                         phoneNo: phoneController.text,
@@ -307,9 +355,11 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
                         cnic: cnicController.text,
                         dateofBirth: dateOfBirthController.text,
                         profileImage: user.profileImage.toString(),
+                        vehicleType: '',
+                        vehicleNumber: '',
                       );
 
-                      _profileController.updateUserRecord(model);
+                      _driverController.updateUserRecord(model);
                     },
                     style: ElevatedButton.styleFrom(primary: secondaryColor),
                     child: Padding(
@@ -320,7 +370,7 @@ class _UserAccountSettingState extends State<UserAccountSetting> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 50,
                   ),
                 ],

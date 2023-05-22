@@ -18,6 +18,12 @@ class _RequestAmbulanceState extends State<RequestAmbulance> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          leading: IconButton(onPressed: () {Get.back();}, icon: const Icon(Icons.arrow_back_rounded, color: Colors.white) ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        extendBodyBehindAppBar: true,
         body: SingleChildScrollView(
       child: Column(
         children: [
@@ -32,12 +38,15 @@ class _RequestAmbulanceState extends State<RequestAmbulance> {
               ),
               color: primaryColor,
             ),
-            child: Text(
-              "FIND THE DRIVER",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
+            child: const Padding(
+              padding: EdgeInsets.only(top: 40),
+              child: Text(
+                "FIND THE DRIVER",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
@@ -49,20 +58,20 @@ class _RequestAmbulanceState extends State<RequestAmbulance> {
                     return ListView.builder(
                         shrinkWrap: true,
                         itemCount: snapshot.data!.length,
-                        physics: ClampingScrollPhysics(),
+                        physics: const ClampingScrollPhysics(),
                         reverse: true,
                         itemBuilder: (c, index) {
                           return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Column(
                               children: [
                                 ListTile(
                                   title:
                                       Text("${snapshot.data![index].fullname}"),
                                   subtitle: Text(
-                                      "${snapshot.data![index].vehicleNumber}"),
+                                      "${snapshot.data![index].vehicleNumber} \n ${snapshot.data![index].vehicleType} "),
                                   onTap: () {
-                                    Get.to(Rescue_Map());
+                                    Get.to(const Rescue_Map());
                                   },
                                   textColor: Colors.black,
                                   leading: Container(

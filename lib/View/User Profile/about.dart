@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../src/Constants/colors.dart';
 import '../../src/Constants/text_strings.dart';
@@ -11,6 +12,12 @@ class About extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(onPressed: () {Get.back();}, icon: const Icon(Icons.arrow_back_rounded, color: Colors.white) ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      extendBodyBehindAppBar: true,
       bottomNavigationBar: CustomNavigationBar(),
       floatingActionButtonLocation:
       FloatingActionButtonLocation.miniCenterDocked,

@@ -8,8 +8,9 @@ import 'package:untitled/View/home_screen/get_started.dart';
 import 'package:untitled/src/Constants/colors.dart';
 import 'package:untitled/src/Controller/auth_controller.dart';
 import 'package:untitled/src/Utils/CommonWidgets/customTextField.dart';
-import 'package:untitled/src/Utils/CommonWidgets/snackbar_widget.dart';
+import 'package:untitled/src/Utils/CommonWidgets/snackBar_widget.dart';
 import 'package:untitled/src/Utils/Regex/regex.dart';
+import '../Driver Profile/driver_profile.dart';
 
 class DriverLogin extends StatefulWidget {
   const DriverLogin({super.key});
@@ -27,6 +28,16 @@ class _DriverLoginState extends State<DriverLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(Icons.arrow_back_rounded, color: Colors.white)),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      extendBodyBehindAppBar: true,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -63,8 +74,10 @@ class _DriverLoginState extends State<DriverLogin> {
                       secureText: false,
                       type: TextInputType.emailAddress,
                       validator: (val) {
-                        if (val!.isValidEmail == false)
+                        if (val!.isValidEmail == false) {
                           return 'Enter valid email';
+                        }
+                        return null;
                       },
                     ),
                     const SizedBox(
@@ -76,13 +89,14 @@ class _DriverLoginState extends State<DriverLogin> {
                       placeholder: 'PASSWORD',
                       secureText: true,
                       type: TextInputType.text,
-                      validator: (val) {
-                        if (val!.isNull == false) {
-                          return 'Please enter some text';
-                        }
-                       else if (val!.isValidPassword == false)
-                          return 'Incorrect Password';
-                      },
+                      // validator: (val) {
+                      //   if (val!.isNull == false) {
+                      //     return 'Please enter some text';
+                      //   } else if (val.isValidPassword == false) {
+                      //     return 'Incorrect Password';
+                      //   }
+                      //   return null;
+                      // },
                     ),
                     const SizedBox(
                       height: 40,
@@ -90,32 +104,36 @@ class _DriverLoginState extends State<DriverLogin> {
                     ElevatedButton(
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
-                          try {
-                            UserCredential? userCredential =
-                                await _authController.signInUser(
-                              emailController.text,
-                              passwordController.text,
-                            );
-                            if (userCredential != null) {
+                            try {
+                              UserCredential? userCredential =
+                                  await _authController
+                                      .signInUser(
+                                        emailController.text,
+                                        passwordController.text,
+                                      )
+                                      .then((value) =>
+                                          Get.to(const DriverProfile()));
+                              if (userCredential != null) {
+                                Get.snackbar('success', "Login Successfully",
+                                    backgroundColor: Colors.transparent);
+
+                                Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(
+                                    builder: (context) => const get_started(),
+                                  ),
+                                  (route) => false,
+                                );
+                              }
+                            } catch (e) {
                               showSnackBar(
-                                "Login Successful",
+                                e.toString(),
                                 context,
                               );
-                              Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(
-                                  builder: (context) => const get_started(),
-                                ),
-                                (route) => false,
-                              );
                             }
-                          } catch (e) {
-                            showSnackBar(
-                              e.toString(),
-                              context,
-                            );
-                          }}
+                          }
                         },
-                        style: ElevatedButton.styleFrom(primary: secondaryColor),
+                        style:
+                            ElevatedButton.styleFrom(primary: secondaryColor),
                         child: const Padding(
                           padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
                           child: Text(

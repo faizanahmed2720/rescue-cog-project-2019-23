@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import '../../../View/User Account Setting/user_account_setting.dart';
 import '../../../View/User Profile/user_profile.dart';
 import '../../constants/colors.dart';
 
@@ -25,7 +26,7 @@ Widget FloatingActionButtonWithNotched() {
             ),
           ),
           onPressed: () {
-            Get.to(userProfile());
+            Get.to(UserAccountSetting());
           }),
     ),
   );

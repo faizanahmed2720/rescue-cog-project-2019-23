@@ -70,8 +70,9 @@ class _userSignupState extends State<userSignup> {
                             secureText: false,
                             type: TextInputType.text,
                             validator: (val) {
-                              if (val!.isValidName == false)
+                              if (val!.isValidName == false) {
                                 return 'Enter valid Name';
+                              }
                             },
                           ),
                           const SizedBox(
@@ -84,8 +85,9 @@ class _userSignupState extends State<userSignup> {
                             secureText: false,
                             type: TextInputType.emailAddress,
                             validator: (val) {
-                              if (val!.isValidEmail == false)
+                              if (val!.isValidEmail == false) {
                                 return 'Enter valid email';
+                              }
                             },
                           ),
                           const SizedBox(
@@ -98,8 +100,9 @@ class _userSignupState extends State<userSignup> {
                             secureText: false,
                             type: TextInputType.number,
                             validator: (val) {
-                              if (val!.isValidPhone == false)
+                              if (val!.isValidPhone == false) {
                                 return 'Enter valid Phone';
+                              }
                             },
                           ),
                           const SizedBox(
@@ -115,8 +118,9 @@ class _userSignupState extends State<userSignup> {
                               if (passwordController.toString().isEmpty) {
                                 return 'Please enter some text';
                               }
-                              if (val!.isValidPassword == false)
+                              if (val!.isValidPassword == false) {
                                 return ' Password should contain A,a ,123';
+                              }
                             },
                           ),
                         ],
@@ -135,9 +139,6 @@ class _userSignupState extends State<userSignup> {
                                     .createAccount(
                                       emailController.text,
                                       passwordController.text,
-                                      // phoneController.text,
-                                      // fullnameController.text,
-                                      // 'user',
                                     )
                                     .whenComplete(() => {
                                           user = profileModel(

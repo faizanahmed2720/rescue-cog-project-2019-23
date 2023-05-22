@@ -30,7 +30,7 @@ class _get_startedState extends State<get_started> {
             width: 200,
             child: ElevatedButton(
                 onPressed: () {
-                  Get.to(const Emergency());
+                  Get.to(Emergency());
                 },
                 style:
                     ElevatedButton.styleFrom(backgroundColor: secondaryColor),

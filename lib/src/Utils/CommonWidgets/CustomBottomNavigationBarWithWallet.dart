@@ -2,6 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/View/User%20Account%20Setting/user_account_setting.dart';
+import 'package:untitled/View/User%20Profile/user_profile.dart';
+import '../../../View/Fire Brigades/fire_brigades_screen.dart';
+import '../../../View/Request Ambulance/request_ambulance_screen.dart';
 import '../../../View/User Dashboard/userDashoard_screen.dart';
 
 Widget CustomNavigationBar() {
@@ -37,29 +40,32 @@ Widget CustomNavigationBar() {
                   width: 26,
                 ),
               ),
-              // IconButton(
-              //   onPressed: () {
-              //     Get.to(const RequestAmbulance());
-              //   },
-              //   icon: Image.asset(
-              //     "assets/Images/Navigation Icons/ambulance.png",
-              //     height: 30,
-              //     width: 30,
-              //   ),
-              // ),
-              // IconButton(
-              //   onPressed: () {
-              //     Get.to(const fireBrigades());
-              //   },
-              //   icon: Image.asset(
-              //     "assets/Images/Navigation Icons/fire brigades.png",
-              //     height: 26,
-              //     width: 26,
-              //   ),
-              // ),
               IconButton(
                 onPressed: () {
-                  Get.to(const UserAccountSetting());
+                  Get.to(const RequestAmbulance());
+                },
+                icon: Image.asset(
+                  "assets/Images/Navigation Icons/ambulance.png",
+                  height: 30,
+                  width: 30,
+                ),
+              ),
+              const SizedBox(
+                width: 15,
+              ),
+              IconButton(
+                onPressed: () {
+                  Get.to(const fireBrigades());
+                },
+                icon: Image.asset(
+                  "assets/Images/Navigation Icons/fire brigades.png",
+                  height: 26,
+                  width: 26,
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  Get.to(const userProfile());
                 },
                 icon: Image.asset(
                   "assets/Images/Navigation Icons/setting.png",

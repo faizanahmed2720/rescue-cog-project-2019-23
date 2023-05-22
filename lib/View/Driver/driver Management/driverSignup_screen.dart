@@ -6,6 +6,7 @@ import 'package:untitled/src/Utils/CommonWidgets/snackbar_widget.dart';
 import 'package:untitled/src/Utils/Regex/regex.dart';
 import '../../../src/Constants/colors.dart';
 import '../../../src/Controller/auth_controller.dart';
+import '../../../src/Controller/driver_controller.dart';
 import '../../../src/Utils/CommonWidgets/customTextField.dart';
 import '../../home_screen/get_started.dart';
 import 'driverLogin_screen.dart';
@@ -15,7 +16,6 @@ class DriverSignup extends StatelessWidget {
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController cnicController = TextEditingController();
-  TextEditingController vehicleController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController dropdownController = TextEditingController();
   final List<String> vehicleTypes = [
@@ -24,6 +24,7 @@ class DriverSignup extends StatelessWidget {
     'Kinglong Van'
   ];
 
+  final _driverController = Get.put(driverController());
   final AuthController _authController = AuthController();
   final _formKey = GlobalKey<FormState>();
 
@@ -32,6 +33,12 @@ class DriverSignup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(onPressed: () {Get.back();}, icon: const Icon(Icons.arrow_back_rounded, color: Colors.white) ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      extendBodyBehindAppBar: true,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -174,14 +181,34 @@ class DriverSignup extends StatelessWidget {
                             if (_formKey.currentState!.validate()) {
                               //used for driver signup,
                               try {
+                                driverModel user;
                                 UserCredential? userCredential =
                                     await _authController.createAccount(
                                   emailController.text,
                                   passwordController.text,
-                                  // phoneController.text,
-                                  // fullnameController.text,
-                                  // 'driver',
-                                );
+                                )
+                                        .whenComplete(() => {
+                                      user = driverModel(
+                                          uid: _driverController
+                                              .getCurrentUserUid(),
+                                          fullname: fullnameController.text
+                                              .trim(),
+                                          email:
+                                          emailController.text.trim(),
+                                          phoneNo:
+                                          phoneController.text.trim(),
+                                          vehicleType:
+                                          dropdownController.text.trim(),
+                                          password: passwordController.text
+                                              .trim(),
+                                          vehicleNumber: "",
+                                          residence: "",
+                                          gender: "",
+                                          cnic: "",
+                                          dateofBirth: "",
+                                          profileImage: ""),
+                                      _driverController.createUser(user)
+                                    });
                                 //if user crdential is null then there must be an exception.
                                 if (userCredential != null) {
                                   // ignore: use_build_context_synchronously

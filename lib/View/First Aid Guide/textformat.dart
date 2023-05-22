@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:untitled/src/Constants/colors.dart';
 
 class TextFormatWidget extends StatelessWidget {
@@ -37,9 +38,11 @@ class TextFormatWidget extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          leading: IconButton(onPressed: () {Get.back();}, icon: const Icon(Icons.arrow_back_rounded, color: Colors.white) ),
           backgroundColor: primaryColor,
           title: Text(disease),
         ),
+        extendBodyBehindAppBar: true,
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

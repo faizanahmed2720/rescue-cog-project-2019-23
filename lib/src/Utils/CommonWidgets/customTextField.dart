@@ -33,12 +33,12 @@ class CustomTextField extends StatelessWidget {
           decoration: InputDecoration(
             prefixIcon: Icon(icon),
             hintText: placeholder,
-            focusedBorder: const UnderlineInputBorder(
+            focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(
                 color: primaryColor,
               ),
             ),
-            enabledBorder: const UnderlineInputBorder(
+            enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(
                 color: secondaryColor,
               ),

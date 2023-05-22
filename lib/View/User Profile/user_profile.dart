@@ -23,6 +23,12 @@ class _userProfileState extends State<userProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          leading: IconButton(onPressed: () {Get.back();}, icon: const Icon(Icons.arrow_back_rounded, color: Colors.white) ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        extendBodyBehindAppBar: true,
         bottomNavigationBar: CustomNavigationBar(),
         floatingActionButtonLocation:
             FloatingActionButtonLocation.miniCenterDocked,
@@ -43,7 +49,7 @@ class _userProfileState extends State<userProfile> {
                   color: primaryColor,
                 ),
                 child: Text(
-                  "Your Profile".toUpperCase(),
+                  "SETTING".toUpperCase(),
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 30,
