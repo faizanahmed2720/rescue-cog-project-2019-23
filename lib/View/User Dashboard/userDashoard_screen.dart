@@ -58,11 +58,11 @@ class userDashboard extends StatelessWidget {
                                   onPressed: () {
                                     Get.to(const RequestAmbulance());
                                   },
-                                  child: Image.asset(
-                                      "assets/Images/Dashboard/ambulance.png"),
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.transparent,
-                                      elevation: 0)),
+                                      elevation: 0),
+                                  child: Image.asset(
+                                      "assets/Images/Dashboard/ambulance.png")),
                             ),
                             const SizedBox(
                               height: 10,
@@ -75,11 +75,11 @@ class userDashboard extends StatelessWidget {
                                   onPressed: () {
                                     Get.to(NearestHospital());
                                   },
-                                  child: Image.asset(
-                                      "assets/Images/Dashboard/hospital.png"),
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.transparent,
-                                      elevation: 0)),
+                                      elevation: 0),
+                                  child: Image.asset(
+                                      "assets/Images/Dashboard/hospital.png")),
                             ),
                           ],
                         ),
@@ -96,11 +96,11 @@ class userDashboard extends StatelessWidget {
                                   onPressed: () {
                                     Get.to(FirstAidGuide());
                                   },
-                                  child: Image.asset(
-                                      "assets/Images/Dashboard/first aid.png"),
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.transparent,
-                                      elevation: 0)),
+                                      elevation: 0),
+                                  child: Image.asset(
+                                      "assets/Images/Dashboard/first aid.png")),
                             ),
                             const SizedBox(
                               height: 10,
@@ -111,13 +111,13 @@ class userDashboard extends StatelessWidget {
                               width: 150,
                               child: ElevatedButton(
                                   onPressed: () {
-                                    Get.to(const fireBrigades());
+                                    Get.to(fireBrigades());
                                   },
-                                  child: Image.asset(
-                                      "assets/Images/Dashboard/fire brigades.png"),
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.transparent,
-                                      elevation: 0)),
+                                      elevation: 0),
+                                  child: Image.asset(
+                                      "assets/Images/Dashboard/fire brigades.png")),
                             ),
                           ],
                         ),
@@ -131,10 +131,10 @@ class userDashboard extends StatelessWidget {
                         onPressed: () {
                           Get.to(const UserAccountSetting());
                         },
-                        child: Image.asset(
-                            "assets/Images/Dashboard/account setting.png"),
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.transparent, elevation: 0)),
+                            backgroundColor: Colors.transparent, elevation: 0),
+                        child: Image.asset(
+                            "assets/Images/Dashboard/account setting.png")),
                   ),
                 ],
               ),
