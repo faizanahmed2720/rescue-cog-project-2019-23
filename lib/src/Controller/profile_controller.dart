@@ -15,14 +15,12 @@ class profileController extends GetxController {
 
   get user => _auth.currentUser;
 
-  final firebaseInstance = FirebaseFirestore.instance;
-
   // Firebase Storage Variables
   final storage = FirebaseStorage.instance;
   final firestore = FirebaseFirestore.instance;
 
-  Future<void> createUser(profileModel user) async {
-    await firebaseInstance
+  Future<void> createUser(profileModel user)  async {
+    await _firebaseFirestore
         .collection("user")
         .doc(getCurrentUserUid().toString())
         .set(user.toJason())
@@ -50,6 +48,8 @@ class profileController extends GetxController {
         snapshot.docs.map((e) => profileModel.fromSnapshot(e)).single;
     return userdata;
   }
+
+
 
   Future<List<driverModel>> getAllUserdetail() async {
     final snapshot = await _firebaseFirestore.collection("driver").get();
@@ -121,7 +121,8 @@ class profileModel {
   final String? profileImage;
 
   profileModel(
-      {this.uid,
+      {
+        this.uid,
       required this.fullname,
       required this.email,
       required this.phoneNo,

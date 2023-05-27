@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:get/get.dart';
 import '../../src/Constants/colors.dart';
@@ -18,16 +19,17 @@ class _permissionScreenState extends State<permissionScreen> {
 
     if (locationStatus.isDenied) {
       // Location permission denied
-      return;
+      exit(0); // Terminate the program
     }
 
     // Request call permission
     var callStatus = await Permission.phone.request();
     if (callStatus.isDenied) {
       // Call permission denied
-      return;
+      exit(0); // Terminate the program
     }
   }
+
 
   @override
   Widget build(BuildContext context) {

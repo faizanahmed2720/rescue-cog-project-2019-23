@@ -1,12 +1,12 @@
 // import 'package:flutter/material.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 //
-// class EmergencyScreen extends StatefulWidget {
+// class fireBrigades extends StatefulWidget {
 //   @override
-//   _EmergencyScreenState createState() => _EmergencyScreenState();
+//   _fireBrigadesState createState() => _fireBrigadesState();
 // }
 //
-// class _EmergencyScreenState extends State<EmergencyScreen> {
+// class _fireBrigadesState extends State<fireBrigades> {
 //   LatLng? userLocation;
 //   TextEditingController addressController = TextEditingController();
 //

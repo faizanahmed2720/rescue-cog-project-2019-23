@@ -55,7 +55,7 @@ Widget CustomNavigationBar() {
               ),
               IconButton(
                 onPressed: () {
-                  Get.to(const fireBrigades());
+                  // Get.to(const fireBrigades());
                 },
                 icon: Image.asset(
                   "assets/Images/Navigation Icons/fire brigades.png",
