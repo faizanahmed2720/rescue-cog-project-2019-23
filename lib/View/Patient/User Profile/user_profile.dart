@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../src/Constants/colors.dart';
-import '../../src/Controller/profile_controller.dart';
-import '../../src/Utils/CommonWidgets/CustomBottomNavigationBarWithWallet.dart';
-import '../../src/Utils/CommonWidgets/FloatingactionButtonWithNotched.dart';
+import '../../../src/Controller/profile_controller.dart';
+import '../../../src/Theme/colors.dart';
+import '../../../src/Utils/CommonWidgets/CustomBottomNavigationBarWithWallet.dart';
+import '../../../src/Utils/CommonWidgets/FloatingactionButtonWithNotched.dart';
 import '../User Account Setting/user_account_setting.dart';
 import '../splash_screen/splash_screen.dart';
 import 'about.dart';

@@ -1,10 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:untitled/View/premission_screen/permission.dart';
 import 'package:get/get.dart';
+import 'package:untitled/View/Patient/premission_screen/permission.dart';
 
-import '../../src/Constants/colors.dart';
+import '../../../src/Theme/colors.dart';
+
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});

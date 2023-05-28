@@ -1,13 +1,12 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:untitled/View/First%20Aid%20Guide/textformat.dart';
+import 'package:untitled/View/Patient/First%20Aid%20Guide/textformat.dart';
+import 'package:untitled/src/Constants/text_strings.dart';
+import 'package:untitled/src/Utils/CommonWidgets/FloatingactionButtonWithNotched.dart';
 
-import '../../src/Constants/colors.dart';
-import '../../src/Constants/text_strings.dart';
-import '../../src/Utils/CommonWidgets/CustomBottomNavigationBarWithWallet.dart';
-import '../../src/Utils/CommonWidgets/FloatingactionButtonWithNotched.dart';
+import '../../../src/Theme/colors.dart';
+import '../../../src/Utils/CommonWidgets/CustomBottomNavigationBarWithWallet.dart';
 
 class FirstAidGuide extends StatelessWidget {
   final List<Map<String, String>> buttonData = [
@@ -109,14 +108,14 @@ class FirstAidGuide extends StatelessWidget {
                         ),
                       );
                     },
-                    child: Text(
+                    style: ElevatedButton.styleFrom(primary: secondaryColor),
+                    child: const Text(
                       "COVID-19 PRECAUTIONS",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    style: ElevatedButton.styleFrom(primary: secondaryColor),
                   ),
                 )),
           ),

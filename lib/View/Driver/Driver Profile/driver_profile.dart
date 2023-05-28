@@ -9,7 +9,7 @@ import 'package:untitled/src/Controller/auth_controller.dart';
 import 'package:untitled/src/Controller/profile_controller.dart';
 import 'package:untitled/src/Utils/CommonWidgets/customTextField.dart';
 
-import '../../../src/Constants/colors.dart';
+import '../../../src/Theme/colors.dart';
 import '../../../src/Controller/driver_controller.dart';
 import '../../../src/Utils/CommonWidgets/CustomBottomNavigationBarWithWallet.dart';
 import '../../../src/Utils/CommonWidgets/FloatingactionButtonWithNotched.dart';

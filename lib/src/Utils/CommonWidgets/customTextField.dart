@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:untitled/src/Constants/colors.dart';
+import 'package:untitled/src/Theme/colors.dart';
 
 class CustomTextField extends StatelessWidget {
   final String placeholder;

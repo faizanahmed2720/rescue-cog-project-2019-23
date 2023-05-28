@@ -1,10 +1,8 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import '../../../View/User Account Setting/user_account_setting.dart';
-import '../../../View/User Profile/user_profile.dart';
-import '../../constants/colors.dart';
+import 'package:untitled/View/Patient/User%20Account%20Setting/user_account_setting.dart';
+import '../../Theme/colors.dart';
 
 Widget FloatingActionButtonWithNotched() {
   return FloatingActionButton(
@@ -26,7 +24,7 @@ Widget FloatingActionButtonWithNotched() {
             ),
           ),
           onPressed: () {
-            Get.to(UserAccountSetting());
+            Get.to(const UserAccountSetting());
           }),
     ),
   );

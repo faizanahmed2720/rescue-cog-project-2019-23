@@ -2,9 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../src/Utils/CommonWidgets/CustomBottomNavigationBarWithWallet.dart';
-import '../../src/Utils/CommonWidgets/FloatingactionButtonWithNotched.dart';
+import '../../../src/Utils/CommonWidgets/CustomBottomNavigationBarWithWallet.dart';
+import '../../../src/Utils/CommonWidgets/FloatingactionButtonWithNotched.dart';
 import '../Fire Brigades/fire_brigades_screen.dart';
 import '../First Aid Guide/first_aid _guide.dart';
 import '../Nearest Hospital/nearest_hospital.dart';
@@ -35,10 +34,10 @@ class userDashboard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 30),
+                    padding: const EdgeInsets.only(top: 50),
                     child: Image.asset(
                       "assets/Images/logo.png",
-                      width: 250,
+                      width: 200,
                     ),
                   ),
                   Padding(

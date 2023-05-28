@@ -3,9 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../constants/colors.dart';
 import 'dart:io';
 
+import '../Theme/colors.dart';
 import 'driver_controller.dart';
 
 class profileController extends GetxController {

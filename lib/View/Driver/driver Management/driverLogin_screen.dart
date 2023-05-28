@@ -4,12 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/View/Driver/driver%20Management/driverSignup_screen.dart';
-import 'package:untitled/View/home_screen/get_started.dart';
-import 'package:untitled/src/Constants/colors.dart';
+import 'package:untitled/src/Theme/colors.dart';
 import 'package:untitled/src/Controller/auth_controller.dart';
 import 'package:untitled/src/Utils/CommonWidgets/customTextField.dart';
 import 'package:untitled/src/Utils/CommonWidgets/snackBar_widget.dart';
 import 'package:untitled/src/Utils/Regex/regex.dart';
+import '../../Patient/home_screen/get_started.dart';
 import '../Driver Profile/driver_profile.dart';
 
 class DriverLogin extends StatefulWidget {

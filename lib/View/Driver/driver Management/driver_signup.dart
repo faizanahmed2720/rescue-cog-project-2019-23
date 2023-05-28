@@ -2,11 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/src/Utils/Regex/regex.dart';
-import '../../../src/Constants/colors.dart';
+import '../../../src/Theme/colors.dart';
 import '../../../src/Controller/auth_controller.dart';
 import '../../../src/Utils/CommonWidgets/customTextField.dart';
 import '../../../src/Utils/CommonWidgets/snackbar_widget.dart';
-import '../../home_screen/get_started.dart';
+import '../../Patient/home_screen/get_started.dart';
 import 'driverLogin_screen.dart';
 
 class DriverSignupPage extends StatelessWidget {

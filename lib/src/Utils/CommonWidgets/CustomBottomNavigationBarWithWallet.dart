@@ -1,11 +1,9 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:untitled/View/User%20Account%20Setting/user_account_setting.dart';
-import 'package:untitled/View/User%20Profile/user_profile.dart';
-import '../../../View/Fire Brigades/fire_brigades_screen.dart';
-import '../../../View/Request Ambulance/request_ambulance_screen.dart';
-import '../../../View/User Dashboard/userDashoard_screen.dart';
+import '../../../View/Patient/Request Ambulance/request_ambulance_screen.dart';
+import '../../../View/Patient/User Dashboard/userDashoard_screen.dart';
+import '../../../View/Patient/User Profile/user_profile.dart';
 
 Widget CustomNavigationBar() {
   late List<Map<String, Object>> _pages;

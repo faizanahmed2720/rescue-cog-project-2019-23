@@ -3,8 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../constants/colors.dart';
 import 'dart:io';
+
+import '../Theme/colors.dart';
 
 class driverController extends GetxController {
   static driverController get instance => Get.find();
@@ -90,7 +91,7 @@ class driverController extends GetxController {
         .collection("driver")
         .doc(getCurrentUserUid().toString())
         .update({"profileImage": url});
-    // .add({'ProfileImage': url});
+        // .add({'ProfileImage': url});
 
     // Return the download URL of the image
     return url;

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-import '../../src/Constants/colors.dart';
+import '../../../src/Theme/colors.dart';
+
 
 class FirstAidVideo extends StatelessWidget {
   final List<String> videoUrls = [

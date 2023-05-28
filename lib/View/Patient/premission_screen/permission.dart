@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:get/get.dart';
-import '../../src/Constants/colors.dart';
+import '../../../src/Theme/colors.dart';
 import '../home_screen/get_started.dart';
 
 class permissionScreen extends StatefulWidget {

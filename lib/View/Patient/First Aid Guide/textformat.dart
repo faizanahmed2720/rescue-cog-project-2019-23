@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:untitled/src/Constants/colors.dart';
+import 'package:untitled/src/Theme/colors.dart';
 
 class TextFormatWidget extends StatelessWidget {
   const TextFormatWidget({

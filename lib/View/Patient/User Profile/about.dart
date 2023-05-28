@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../src/Constants/colors.dart';
-import '../../src/Constants/text_strings.dart';
-import '../../src/Utils/CommonWidgets/CustomBottomNavigationBarWithWallet.dart';
-import '../../src/Utils/CommonWidgets/FloatingactionButtonWithNotched.dart';
+import '../../../src/Constants/text_strings.dart';
+import '../../../src/Theme/colors.dart';
+import '../../../src/Utils/CommonWidgets/CustomBottomNavigationBarWithWallet.dart';
+import '../../../src/Utils/CommonWidgets/FloatingactionButtonWithNotched.dart';
 
 class About extends StatelessWidget {
   const About({Key? key}) : super(key: key);
