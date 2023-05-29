@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untitled/View/Driver/Driver%20Dashboard/driver_dashboard.dart';
 import 'package:untitled/View/Driver/driver%20Management/driverSignup_screen.dart';
 import 'package:untitled/src/Theme/colors.dart';
 import 'package:untitled/src/Controller/auth_controller.dart';
@@ -89,14 +90,11 @@ class _DriverLoginState extends State<DriverLogin> {
                       placeholder: 'PASSWORD',
                       secureText: true,
                       type: TextInputType.text,
-                      // validator: (val) {
-                      //   if (val!.isNull == false) {
-                      //     return 'Please enter some text';
-                      //   } else if (val.isValidPassword == false) {
-                      //     return 'Incorrect Password';
-                      //   }
-                      //   return null;
-                      // },
+                      validator: (val) {
+                        if (val!.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        },
                     ),
                     const SizedBox(
                       height: 40,
@@ -112,7 +110,7 @@ class _DriverLoginState extends State<DriverLogin> {
                                         passwordController.text,
                                       )
                                       .then((value) =>
-                                          Get.to(const DriverProfile()));
+                                          Get.to(const driverDashboard()));
                               if (userCredential != null) {
                                 Get.snackbar('success', "Login Successfully",
                                     backgroundColor: Colors.transparent);

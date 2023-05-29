@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:io';
 
+import '../../View/Driver/driver Management/driverLogin_screen.dart';
 import '../Theme/colors.dart';
 
 class driverController extends GetxController {
@@ -36,8 +37,10 @@ class driverController extends GetxController {
           backgroundColor: primaryColor,
           colorText: Colors.black);
     });
-    // phoneAuthentication(user.phone);
-    // Get.to(OTPScreen());
+    await firebaseInstance
+        .collection("driver")
+        .doc(getCurrentUserUid().toString())
+        .collection("AccountType").add({"type": "2"}).whenComplete(() => {Get.to (DriverLogin)});
   }
 
   Future<driverModel> getUserDetails() async {

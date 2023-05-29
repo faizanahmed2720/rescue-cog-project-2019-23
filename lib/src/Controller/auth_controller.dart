@@ -1,7 +1,7 @@
 // ignore_for_file: unnecessary_null_comparison
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:untitled/models/user_model.dart';
 import 'package:untitled/src/Controller/firebase_controller.dart';
 
 class AuthController {
@@ -64,4 +64,28 @@ class AuthController {
     }
     return userCredential;
   }
+
+  Future<bool> checkScannerExistInManagerAccount() async {
+    // Check if vehicle number already exists in Firestore database
+    QuerySnapshot snapshot = await FirebaseFirestore.instance
+        .collection('driver')
+        .doc(getCurrentUserUid())
+        .collection("AccountType")
+        .where('type', isEqualTo: "2")
+        .get();
+    return snapshot.docs.isNotEmpty;
+  }
+
+ static final _auth = FirebaseAuth.instance;
+  String getCurrentUserUid()  {
+    final user = _auth.currentUser;
+    if (user != null) {
+      return user.uid;
+    } else {
+      throw Exception("No signed-in user.");
+    }
+  }
+
+
+
 }

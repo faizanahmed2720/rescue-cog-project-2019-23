@@ -206,7 +206,8 @@ class DriverSignup extends StatelessWidget {
                                           gender: "",
                                           cnic: "",
                                           dateofBirth: "",
-                                          profileImage: ""),
+                                          profileImage: "",
+                                      ),
                                       _driverController.createUser(user)
                                     });
                                 //if user crdential is null then there must be an exception.

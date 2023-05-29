@@ -11,8 +11,8 @@ import 'package:untitled/src/Utils/CommonWidgets/customTextField.dart';
 
 import '../../../src/Theme/colors.dart';
 import '../../../src/Controller/driver_controller.dart';
-import '../../../src/Utils/CommonWidgets/CustomBottomNavigationBarWithWallet.dart';
-import '../../../src/Utils/CommonWidgets/FloatingactionButtonWithNotched.dart';
+import '../../../src/Utils/CommonWidgets/UserCustomBottomNavigationBar.dart';
+import '../../../src/Utils/CommonWidgets/UserFloatingactionButton.dart';
 
 class DriverProfile extends StatefulWidget {
   const DriverProfile({super.key});

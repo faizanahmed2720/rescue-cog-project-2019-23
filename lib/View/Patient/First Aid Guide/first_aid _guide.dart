@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/View/Patient/First%20Aid%20Guide/textformat.dart';
 import 'package:untitled/src/Constants/text_strings.dart';
-import 'package:untitled/src/Utils/CommonWidgets/FloatingactionButtonWithNotched.dart';
+import 'package:untitled/src/Utils/CommonWidgets/UserFloatingactionButton.dart';
 
 import '../../../src/Theme/colors.dart';
-import '../../../src/Utils/CommonWidgets/CustomBottomNavigationBarWithWallet.dart';
+import '../../../src/Utils/CommonWidgets/UserCustomBottomNavigationBar.dart';
 
 class FirstAidGuide extends StatelessWidget {
   final List<Map<String, String>> buttonData = [

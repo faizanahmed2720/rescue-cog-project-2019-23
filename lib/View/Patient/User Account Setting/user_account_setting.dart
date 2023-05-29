@@ -10,8 +10,8 @@ import 'package:untitled/src/Controller/profile_controller.dart';
 import 'package:untitled/src/Utils/CommonWidgets/customTextField.dart';
 
 import '../../../src/Theme/colors.dart';
-import '../../../src/Utils/CommonWidgets/CustomBottomNavigationBarWithWallet.dart';
-import '../../../src/Utils/CommonWidgets/FloatingactionButtonWithNotched.dart';
+import '../../../src/Utils/CommonWidgets/UserCustomBottomNavigationBar.dart';
+import '../../../src/Utils/CommonWidgets/UserFloatingactionButton.dart';
 
 class UserAccountSetting extends StatefulWidget {
   const UserAccountSetting({super.key});

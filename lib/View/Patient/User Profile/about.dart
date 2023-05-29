@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 import '../../../src/Constants/text_strings.dart';
 import '../../../src/Theme/colors.dart';
-import '../../../src/Utils/CommonWidgets/CustomBottomNavigationBarWithWallet.dart';
-import '../../../src/Utils/CommonWidgets/FloatingactionButtonWithNotched.dart';
+import '../../../src/Utils/CommonWidgets/UserCustomBottomNavigationBar.dart';
+import '../../../src/Utils/CommonWidgets/UserFloatingactionButton.dart';
 
 class About extends StatelessWidget {
   const About({Key? key}) : super(key: key);

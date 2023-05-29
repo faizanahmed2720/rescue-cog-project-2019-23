@@ -8,7 +8,7 @@ class NearestHospital extends StatefulWidget {
 
 class _NearestHospitalState extends State<NearestHospital> {
   final Set<Marker> _markers = {};
-  LatLng _initialCameraPosition = LatLng(31.5204, 74.3587); // Lahore LatLng
+  LatLng _initialCameraPosition = const LatLng(31.5204, 74.3587); // Lahore LatLng
 
   void _addMarker(LatLng position, String title) {
     final Marker marker = Marker(
@@ -25,20 +25,20 @@ class _NearestHospitalState extends State<NearestHospital> {
 
   void _addMarkers() {
 
-    _addMarker(LatLng(33.9930, 71.4402), 'Shaukat Khanum');
-    _addMarker(LatLng(31.4846, 74.2974), 'Jinnah Hospital');
-    _addMarker(LatLng(31.4797, 74.2804), 'Doctors Hospital');
-    _addMarker(LatLng(31.4846, 74.3974), 'National Hospital');
-    _addMarker(LatLng(31.5382, 74.3362), 'Punjab Institute of Cardiology');
-    _addMarker(LatLng(31.4756, 74.3377), 'Ittefaq Hospital');
-    _addMarker(LatLng(31.5753, 74.3798), 'Shalamar Hospital');
-    _addMarker(LatLng(31.5708, 74.3152), 'Mayo Hospital');
-    _addMarker(LatLng(31.5119, 74.3283), 'Hameed Latif Hospital');
-    _addMarker(LatLng(31.5127, 74.2996), 'Farooq Hospital');
-    _addMarker(LatLng(31.5356, 74.3273), 'Fatima Memorial Hospital');
-    _addMarker(LatLng(31.5380, 74.3513), 'Surgimed Hospital');
-    _addMarker(LatLng(31.3361, 74.1985), 'Sharif Medical City Hospital');
-    _addMarker(LatLng(31.5082, 74.3086), 'Sheikh Zayed Hospital');
+    _addMarker(const LatLng(33.9930, 71.4402), 'Shaukat Khanum');
+    _addMarker(const LatLng(31.4846, 74.2974), 'Jinnah Hospital');
+    _addMarker(const LatLng(31.4797, 74.2804), 'Doctors Hospital');
+    _addMarker(const LatLng(31.4846, 74.3974), 'National Hospital');
+    _addMarker(const LatLng(31.5382, 74.3362), 'Punjab Institute of Cardiology');
+    _addMarker(const LatLng(31.4756, 74.3377), 'Ittefaq Hospital');
+    _addMarker(const LatLng(31.5753, 74.3798), 'Shalamar Hospital');
+    _addMarker(const LatLng(31.5708, 74.3152), 'Mayo Hospital');
+    _addMarker(const LatLng(31.5119, 74.3283), 'Hameed Latif Hospital');
+    _addMarker(const LatLng(31.5127, 74.2996), 'Farooq Hospital');
+    _addMarker(const LatLng(31.5356, 74.3273), 'Fatima Memorial Hospital');
+    _addMarker(const LatLng(31.5380, 74.3513), 'Surgimed Hospital');
+    _addMarker(const LatLng(31.3361, 74.1985), 'Sharif Medical City Hospital');
+    _addMarker(const LatLng(31.5082, 74.3086), 'Sheikh Zayed Hospital');
   }
 
   @override

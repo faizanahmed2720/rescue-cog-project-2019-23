@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../src/Controller/profile_controller.dart';
 import '../../../src/Theme/colors.dart';
-import '../../../src/Utils/CommonWidgets/CustomBottomNavigationBarWithWallet.dart';
-import '../../../src/Utils/CommonWidgets/FloatingactionButtonWithNotched.dart';
+import '../../../src/Utils/CommonWidgets/UserCustomBottomNavigationBar.dart';
+import '../../../src/Utils/CommonWidgets/UserFloatingactionButton.dart';
 import '../User Account Setting/user_account_setting.dart';
 import '../splash_screen/splash_screen.dart';
 import 'about.dart';
@@ -149,8 +149,7 @@ class _userProfileState extends State<userProfile> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      FirebaseAuth.instance.signOut();
-                      Get.to(const SplashScreen());
+                      FirebaseAuth.instance.signOut().then((value) => {Get.to(const SplashScreen())});
                     },
                     style: ElevatedButton.styleFrom(primary: secondaryColor),
                     child: Padding(
