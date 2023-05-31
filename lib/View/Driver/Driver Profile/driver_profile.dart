@@ -6,22 +6,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:untitled/src/Controller/auth_controller.dart';
-import 'package:untitled/src/Controller/profile_controller.dart';
 import 'package:untitled/src/Utils/CommonWidgets/customTextField.dart';
-
 import '../../../src/Theme/colors.dart';
 import '../../../src/Controller/driver_controller.dart';
-import '../../../src/Utils/CommonWidgets/UserCustomBottomNavigationBar.dart';
-import '../../../src/Utils/CommonWidgets/UserFloatingactionButton.dart';
+import '../Models/driverModel.dart';
+import '../commonWidgets/customBottomNavigationBar.dart';
+import '../commonWidgets/customFloatingActionButton.dart';
 
-class DriverProfile extends StatefulWidget {
-  const DriverProfile({super.key});
+class driverProfile extends StatefulWidget {
+  const driverProfile({super.key});
 
   @override
-  State<DriverProfile> createState() => _DriverProfileState();
+  State<driverProfile> createState() => _driverProfileState();
 }
 
-class _DriverProfileState extends State<DriverProfile> {
+class _driverProfileState extends State<driverProfile> {
   final _driverController = Get.put(driverController());
 
   TextEditingController fullnameController = TextEditingController();
@@ -33,7 +32,7 @@ class _DriverProfileState extends State<DriverProfile> {
   DateTime? selectedDate;
   TextEditingController dropdownController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController vehicleDopdownController = TextEditingController();
+  TextEditingController vehicleTypeController = TextEditingController();
   final List<String> vehicleTypes = [
     'Suzuki Bolan',
     'Changhan',
@@ -76,7 +75,7 @@ class _DriverProfileState extends State<DriverProfile> {
     });
   }
 
-  profileModel user = profileModel(
+  driverModel user = driverModel(
       fullname: "",
       email: "",
       phoneNo: "",
@@ -85,7 +84,9 @@ class _DriverProfileState extends State<DriverProfile> {
       cnic: "",
       gender: "",
       dateofBirth: "",
-      profileImage: "");
+      profileImage: "",
+      vehicleType: "",
+      vehicleNumber: "");
 
   @override
   void initState() {
@@ -95,7 +96,7 @@ class _DriverProfileState extends State<DriverProfile> {
   }
 
   Future get() async {
-    user = (await _driverController.getUserDetails()) as profileModel;
+    user = (await _driverController.getUserDetails()) as driverModel;
 
     fullnameController.text = user.fullname;
     emailController.text = user.email;
@@ -105,6 +106,8 @@ class _DriverProfileState extends State<DriverProfile> {
     cnicController.text = user.cnic!;
     dropdownController.text = user.gender!;
     dateOfBirthController.text = user.dateofBirth!;
+    vehicleNoController.text = user.vehicleNumber!;
+    vehicleTypeController.text  = user.vehicleType!;
 
     setState(() {});
   }
@@ -121,11 +124,13 @@ class _DriverProfileState extends State<DriverProfile> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
+      resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
-      bottomNavigationBar: CustomNavigationBar(),
+      extendBody: true,
+      bottomNavigationBar: driverCustomBottomNavigationBar(),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,
-      floatingActionButton: FloatingActionButtonWithNotched(),
+      floatingActionButton: driverFloatingActionButtonWithNotched(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -173,15 +178,26 @@ class _DriverProfileState extends State<DriverProfile> {
                             future: _driverController.getUserDetails(),
                             builder: (context, snapshot) {
                               if (snapshot.hasData) {
-                                profileModel userData =
-                                    snapshot.data as profileModel;
+                                driverModel userData =
+                                    snapshot.data as driverModel;
                                 profileImage = userData.profileImage!;
-                                return ClipOval(
-                                  child: Image.network(
-                                    userData.profileImage!,
-                                    fit: BoxFit.cover,
-                                  ),
-                                );
+                                if (userData.profileImage != null &&
+                                    userData.profileImage!.isNotEmpty) {
+                                  return ClipOval(
+                                    child: Image.network(
+                                      userData.profileImage!,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  );
+                                } else {
+                                  return ClipOval(
+                                    child: Icon(
+                                      Icons.person,
+                                      size: 120,
+                                      color: Colors.white,
+                                    ),
+                                  );
+                                }
                               } else if (snapshot.hasError) {
                                 return Center(
                                   child: Text(snapshot.error.toString()),
@@ -268,9 +284,18 @@ class _DriverProfileState extends State<DriverProfile> {
                       dropdownController.text = value!;
                     },
                     decoration: const InputDecoration(
+                      focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: primaryColor,
+                        ),
+                      ),
+                      enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: primaryColor,
+                        ),
+                      ),
                       labelText: 'Gender',
-                      icon: Icon(Icons.person),
-                      focusedBorder: InputBorder.none,
+                      prefixIcon: Icon(Icons.person),
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -281,9 +306,14 @@ class _DriverProfileState extends State<DriverProfile> {
                     decoration: const InputDecoration(
                       hintText: "Select date",
                       prefixIcon: Icon(Icons.calendar_today),
-                      enabledBorder: UnderlineInputBorder(
+                      focusedBorder: const OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: secondaryColor,
+                          color: primaryColor,
+                        ),
+                      ),
+                      enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: primaryColor,
                         ),
                       ),
                     ),
@@ -307,8 +337,8 @@ class _DriverProfileState extends State<DriverProfile> {
                     height: 20,
                   ),
                   DropdownButtonFormField(
-                    value: vehicleDopdownController.text.isNotEmpty
-                        ? vehicleDopdownController.text
+                    value: vehicleTypeController.text.isNotEmpty
+                        ? vehicleTypeController.text
                         : null,
                     items: vehicleTypes
                         .map(
@@ -319,12 +349,21 @@ class _DriverProfileState extends State<DriverProfile> {
                         )
                         .toList(),
                     onChanged: (value) {
-                      vehicleDopdownController.text = value!;
+                      vehicleTypeController.text = value!;
                     },
                     decoration: const InputDecoration(
+                      focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: primaryColor,
+                        ),
+                      ),
+                      enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: primaryColor,
+                        ),
+                      ),
                       labelText: 'Vehicle Type',
-                      icon: Icon(Icons.car_rental),
-                      focusedBorder: InputBorder.none,
+                      prefixIcon: Icon(Icons.car_rental),
                     ),
                   ),
                   const SizedBox(
@@ -355,8 +394,8 @@ class _DriverProfileState extends State<DriverProfile> {
                         cnic: cnicController.text,
                         dateofBirth: dateOfBirthController.text,
                         profileImage: user.profileImage.toString(),
-                        vehicleType: '',
-                        vehicleNumber: '',
+                        vehicleType: vehicleTypeController.text,
+                        vehicleNumber: vehicleNoController.text
                       );
 
                       _driverController.updateUserRecord(model);
@@ -371,7 +410,7 @@ class _DriverProfileState extends State<DriverProfile> {
                     ),
                   ),
                   const SizedBox(
-                    height: 50,
+                    height: 100,
                   ),
                 ],
               ),

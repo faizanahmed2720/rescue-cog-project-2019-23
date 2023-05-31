@@ -42,7 +42,7 @@ class _permissionScreenState extends State<permissionScreen> {
                   fit: BoxFit.cover)),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(90, 550, 0, 0),
+          padding: const EdgeInsets.fromLTRB(90, 600, 0, 0),
           child: SizedBox(
               height: 40,
               width: 180,

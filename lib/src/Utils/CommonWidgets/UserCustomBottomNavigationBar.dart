@@ -1,9 +1,8 @@
-// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../View/Patient/Request Ambulance/request_ambulance_screen.dart';
 import '../../../View/Patient/User Dashboard/userDashoard_screen.dart';
-import '../../../View/Patient/User Profile/user_profile.dart';
+import '../../../View/Patient/User Setting/user_setting.dart';
 
 Widget CustomNavigationBar() {
   late List<Map<String, Object>> _pages;
@@ -63,7 +62,7 @@ Widget CustomNavigationBar() {
               ),
               IconButton(
                 onPressed: () {
-                  Get.to(const userProfile());
+                  Get.to(const userSetting());
                 },
                 icon: Image.asset(
                   "assets/Images/Navigation Icons/setting.png",

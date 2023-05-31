@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:io';
 
+import '../../View/Driver/Models/driverModel.dart';
 import '../Theme/colors.dart';
 import 'driver_controller.dart';
 

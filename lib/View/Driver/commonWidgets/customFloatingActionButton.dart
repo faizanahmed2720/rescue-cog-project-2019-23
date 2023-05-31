@@ -1,8 +1,8 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:untitled/View/Patient/User%20Account%20Setting/user_account_setting.dart';
-
+import 'package:get/get_core/src/get_main.dart';
+import 'package:untitled/View/Driver/Driver%20Profile/driver_profile.dart';
 import '../../../src/Theme/colors.dart';
 
 Widget driverFloatingActionButtonWithNotched() {
@@ -26,7 +26,7 @@ Widget driverFloatingActionButtonWithNotched() {
             ),
           ),
           onPressed: () {
-            // Get.to(const UserAccountSetting());
+            Get.to(const driverProfile());
           }),
     ),
   );

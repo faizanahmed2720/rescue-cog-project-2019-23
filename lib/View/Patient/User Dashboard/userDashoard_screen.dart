@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../src/Utils/CommonWidgets/UserCustomBottomNavigationBar.dart';
 import '../../../src/Utils/CommonWidgets/UserFloatingactionButton.dart';
-import '../Fire Brigades/fire_brigades_screen.dart';
 import '../First Aid Guide/first_aid _guide.dart';
 import '../Nearest Hospital/nearest_hospital.dart';
 import '../Request Ambulance/request_ambulance_screen.dart';
-import '../User Account Setting/user_account_setting.dart';
+import '../User Setting/user_setting.dart';
 
 // ignore: camel_case_types
 class userDashboard extends StatelessWidget {
@@ -128,7 +127,7 @@ class userDashboard extends StatelessWidget {
                     width: 150,
                     child: ElevatedButton(
                         onPressed: () {
-                          Get.to(const UserAccountSetting());
+                          Get.to(const userSetting());
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.transparent, elevation: 0),

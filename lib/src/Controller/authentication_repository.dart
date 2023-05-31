@@ -15,6 +15,8 @@ class AuthenticationRepository extends GetxController{
   //variables
   final _auth = FirebaseAuth.instance;
   late final Rx<User?> firebaseUser;
+  User? user = FirebaseAuth.instance.currentUser;
+
 
   @override
   void onReady() {
@@ -23,20 +25,21 @@ class AuthenticationRepository extends GetxController{
     ever(firebaseUser, _setInitialScreen);
   }
 
-  _setInitialScreen(User? user) async {
-    // user == null ? Get.offAll(() => WelcomeScreen()) : Get.offAll(() => const dashboard());
+  _setInitialScreen(user) async {
+    // user == null ? Get.offAll(() => IntroScreen()) : Get.offAll(() => const driverDashboard());
+    print(user);
     if(user == null){
-      Get.offAll(() => IntroScreen());
+      Get.offAll(() => const IntroScreen());
     }else{
       if(await _controller.checkScannerExistInManagerAccount()==true)
       {
-        Get.offAll(() => driverDashboard());
+        Get.offAll(() => const driverDashboard());
       }
       else{
         Get.offAll(() => const userDashboard());
-
       }
     }
+
 
   }
 

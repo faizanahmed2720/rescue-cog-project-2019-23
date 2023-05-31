@@ -24,7 +24,7 @@ class _get_startedState extends State<get_started> {
                 fit: BoxFit.cover)),
       ),
       Padding(
-        padding: const EdgeInsets.fromLTRB(80, 470, 0, 0),
+        padding: const EdgeInsets.fromLTRB(80, 500, 0, 0),
         child: SizedBox(
             height: 50,
             width: 200,
@@ -40,7 +40,7 @@ class _get_startedState extends State<get_started> {
                 ))),
       ),
       Padding(
-        padding: const EdgeInsets.fromLTRB(80, 600, 0, 0),
+        padding: const EdgeInsets.fromLTRB(80, 620, 0, 0),
         child: SizedBox(
             height: 50,
             width: 200,
@@ -56,7 +56,7 @@ class _get_startedState extends State<get_started> {
                 ))),
       ),
       Padding(
-        padding: const EdgeInsets.fromLTRB(80, 670, 0, 0),
+        padding: const EdgeInsets.fromLTRB(80, 690, 0, 0),
         child: SizedBox(
             height: 50,
             width: 200,

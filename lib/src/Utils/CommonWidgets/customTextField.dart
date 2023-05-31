@@ -40,7 +40,7 @@ class CustomTextField extends StatelessWidget {
             ),
             enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(
-                color: secondaryColor,
+                color: primaryColor,
               ),
             ),
           ),

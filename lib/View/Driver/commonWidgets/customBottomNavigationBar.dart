@@ -1,5 +1,9 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:untitled/View/Driver/Driver%20Setting/driver_setting.dart';
+
+import '../Driver Dashboard/driver_dashboard.dart';
 
 
 Widget driverCustomBottomNavigationBar() {
@@ -27,7 +31,7 @@ Widget driverCustomBottomNavigationBar() {
             children: [
               IconButton(
                 onPressed: () {
-                  // Get.to(const userDashboard());
+                  Get.to(const driverDashboard());
                 },
                 icon: Image.asset(
                   "assets/Images/Navigation Icons/home.png",
@@ -42,7 +46,7 @@ Widget driverCustomBottomNavigationBar() {
 
               IconButton(
                 onPressed: () {
-                  // Get.to(const userProfile());
+                  Get.to(const driverSetting());
                 },
                 icon: Image.asset(
                   "assets/Images/Navigation Icons/setting.png",

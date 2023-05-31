@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:untitled/main.dart';
 import 'package:untitled/src/Theme/colors.dart';
-
-import '../../../src/Utils/CommonWidgets/UserCustomBottomNavigationBar.dart';
-import '../../../src/Utils/CommonWidgets/UserFloatingactionButton.dart';
 import '../commonWidgets/customBottomNavigationBar.dart';
 import '../commonWidgets/customFloatingActionButton.dart';
 import 'accept_patient_request.dart';
@@ -16,11 +11,13 @@ class driverDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
+      extendBody: true,
       bottomNavigationBar: driverCustomBottomNavigationBar(),
       floatingActionButton: driverFloatingActionButtonWithNotched(),
       floatingActionButtonLocation:
-          FloatingActionButtonLocation.miniCenterDocked,
+      FloatingActionButtonLocation.miniCenterDocked,
       body: Stack(
         children: [
           Image.asset(

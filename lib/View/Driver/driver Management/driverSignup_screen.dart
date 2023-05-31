@@ -9,6 +9,7 @@ import '../../../src/Controller/auth_controller.dart';
 import '../../../src/Controller/driver_controller.dart';
 import '../../../src/Utils/CommonWidgets/customTextField.dart';
 import '../../Patient/home_screen/get_started.dart';
+import '../Models/driverModel.dart';
 import 'driverLogin_screen.dart';
 
 class DriverSignup extends StatelessWidget {
@@ -61,6 +62,9 @@ class DriverSignup extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+            ),
+            SizedBox(
+              height: 20,
             ),
             Padding(
               padding: const EdgeInsets.only(
@@ -151,8 +155,17 @@ class DriverSignup extends StatelessWidget {
                         },
                         decoration: const InputDecoration(
                           labelText: 'Vehicle Type',
-                          icon: Icon(Icons.car_rental),
-                          focusedBorder: InputBorder.none,
+                          prefixIcon: Icon(Icons.car_rental),
+                          focusedBorder: const OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: primaryColor,
+                            ),
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: primaryColor,
+                            ),
+                          ),
                         ),
                       ),
                       const SizedBox(
@@ -211,32 +224,13 @@ class DriverSignup extends StatelessWidget {
                                       _driverController.createUser(user)
                                     });
                                 //if user crdential is null then there must be an exception.
-                                if (userCredential != null) {
-                                  // ignore: use_build_context_synchronously
-                                  showSnackBar(
-                                    "Signup Successful",
-                                    context,
-                                  );
-                                  // ignore: use_build_context_synchronously
-                                  Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(
-                                      builder: (context) => const get_started(),
-                                    ),
-                                    (route) => false,
-                                  );
-                                } else {
-                                  // ignore: use_build_context_synchronously
-                                  showSnackBar(
-                                    "Login failed",
-                                    context,
-                                  );
-                                }
+
                               } catch (e) {
                                 //e will tell us the value of exception
-                                showSnackBar(
-                                  e.toString(),
-                                  context,
-                                );
+                                // showSnackBar(
+                                //   e.toString(),
+                                //   context,
+                                // );
                               }
                             }
                           },
