@@ -4,6 +4,10 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:untitled/src/Constants/text_strings.dart';
+import 'package:flutter/services.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
+
 
 class Rescue_Map extends StatefulWidget {
   const Rescue_Map({Key? key}) : super(key: key);
@@ -67,11 +71,12 @@ class Rescue_MapState extends State<Rescue_Map> {
         ImageConfiguration.empty, "assets/Images/Navigation Icon/sourceLocation.png").then((icon) => {
     sourceIcon = icon
     },);
-    // sourceIcon = Icon(Image.asset("assets/Images/userSourceLocation.png") as IconData?) as BitmapDescriptor;
+
     BitmapDescriptor.fromAssetImage(
         ImageConfiguration.empty, "assets/Images/user.png").then((icon) => {
     destinationIcon = icon
     },);
+
     BitmapDescriptor.fromAssetImage(
         ImageConfiguration.empty, "assets/Images/user.png").then((icon) => {
       currentLocationIcon = icon

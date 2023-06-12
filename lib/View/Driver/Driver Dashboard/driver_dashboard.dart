@@ -104,7 +104,7 @@ class driverDashboard extends StatelessWidget {
                                                   width: 3.0,
                                                   style: BorderStyle.solid),
                                             ),
-                                            child: ClipOval(
+                                            child: const ClipOval(
                                                 child: Icon(
                                               Icons.person,
                                               size: 80,

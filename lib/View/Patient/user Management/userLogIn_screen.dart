@@ -3,14 +3,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:untitled/View/Patient/User/user%20Management/userSignUp_screen.dart';
 import 'package:untitled/View/Patient/home_screen/get_started.dart';
+import 'package:untitled/View/Patient/user%20Management/userSignUp_screen.dart';
 import 'package:untitled/src/Theme/colors.dart';
 import 'package:untitled/src/Controller/auth_controller.dart';
 import 'package:untitled/src/Utils/CommonWidgets/customTextField.dart';
 import 'package:untitled/src/Utils/CommonWidgets/snackbar_widget.dart';
 import 'package:untitled/src/Utils/Regex/regex.dart';
-import '../../User Dashboard/userDashoard_screen.dart';
+
+import '../User Dashboard/userDashoard_screen.dart';
 
 class UserLogin extends StatefulWidget {
   const UserLogin({super.key});

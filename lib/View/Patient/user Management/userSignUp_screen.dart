@@ -3,15 +3,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:untitled/View/Patient/User/user%20Management/userLogIn_screen.dart';
+import 'package:untitled/View/Patient/User%20Dashboard/userDashoard_screen.dart';
 import 'package:untitled/src/Theme/colors.dart';
 import 'package:untitled/src/Controller/auth_controller.dart';
 import 'package:untitled/src/Utils/CommonWidgets/customTextField.dart';
 import 'package:untitled/src/Utils/CommonWidgets/snackbar_widget.dart';
 import 'package:untitled/src/Utils/Regex/regex.dart';
-
 import '../../../../src/Controller/profile_controller.dart';
-import '../../home_screen/get_started.dart';
+import '../home_screen/get_started.dart';
 
 class userSignup extends StatefulWidget {
   const userSignup({super.key});
@@ -205,7 +204,7 @@ class _userSignupState extends State<userSignup> {
                       ),
                       TextButton(
                         onPressed: () {
-                          Get.to(const UserLogin());
+                          Get.to(const userDashboard());
                         },
                         child: const Text(
                           "Log in",

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../View/Patient/Fire Brigades/fire_brigades_screen.dart';
 import '../../../View/Patient/Request Ambulance/request_ambulance_screen.dart';
 import '../../../View/Patient/User Dashboard/userDashoard_screen.dart';
 import '../../../View/Patient/User Setting/user_setting.dart';
@@ -39,7 +40,7 @@ Widget CustomNavigationBar() {
               ),
               IconButton(
                 onPressed: () {
-                  Get.to(const RequestAmbulance());
+                  Get.to(UserLocation());
                 },
                 icon: Image.asset(
                   "assets/Images/Navigation Icons/ambulance.png",
@@ -52,7 +53,7 @@ Widget CustomNavigationBar() {
               ),
               IconButton(
                 onPressed: () {
-                  // Get.to(const fireBrigades());
+                  Get.to(FireBrigades());
                 },
                 icon: Image.asset(
                   "assets/Images/Navigation Icons/fire brigades.png",

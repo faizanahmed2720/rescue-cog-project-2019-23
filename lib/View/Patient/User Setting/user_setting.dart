@@ -2,6 +2,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untitled/View/Patient/User%20Profile/user_profile.dart';
 import '../../../src/Controller/profile_controller.dart';
 import '../../../src/Theme/colors.dart';
 import '../../../src/Utils/CommonWidgets/UserCustomBottomNavigationBar.dart';
@@ -110,7 +111,7 @@ class _userSettingState extends State<userSetting> {
                                           height: 70,
                                           width: 450,
                                           child: IconButton(onPressed: () {
-                                            Get.to(const userSetting());
+                                            Get.to(const userProfile());
                                           }, icon: Image.asset("assets/Images/editProfile.png"),),
                                         ),
                                         Container(

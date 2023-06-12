@@ -166,6 +166,9 @@ class _driverSettingState extends State<driverSetting> {
                         },
                       ),
                       const Divider(),
+                      SizedBox(
+                        height: 50,
+                      ),
                       Container(
                         height: 70,
                         width: 450,

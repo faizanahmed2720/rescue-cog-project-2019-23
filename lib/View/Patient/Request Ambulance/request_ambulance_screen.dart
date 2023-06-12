@@ -1,277 +1,210 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:untitled/View/Patient/Request%20Ambulance/map.dart';
-import '../../../src/Controller/profile_controller.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 import '../../../src/Theme/colors.dart';
 import '../../../src/Utils/CommonWidgets/UserCustomBottomNavigationBar.dart';
 import '../../../src/Utils/CommonWidgets/UserFloatingactionButton.dart';
+import 'find_driver.dart';
 
-class RequestAmbulance extends StatefulWidget {
-  const RequestAmbulance({super.key});
-
+class UserLocation extends StatefulWidget {
   @override
-  State<RequestAmbulance> createState() => _RequestAmbulanceState();
+  _UserLocationState createState() => _UserLocationState();
 }
 
-class _RequestAmbulanceState extends State<RequestAmbulance> {
-  final profileController _profileController = Get.put(profileController());
+class _UserLocationState extends State<UserLocation> {
+  late GoogleMapController _mapController;
+  final TextEditingController _sourceController = TextEditingController();
+  final TextEditingController _destinationController = TextEditingController();
+  late LatLng _sourceLocation;
+  late LatLng _destinationLocation;
+  Set<Marker> _markers = {}; // Added markers set
+
+  @override
+  void dispose() {
+    _mapController.dispose();
+    _sourceController.dispose();
+    _destinationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-              onPressed: () {
-                Get.back();
-              },
-              icon: const Icon(Icons.arrow_back_rounded, color: Colors.white)),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
-        extendBodyBehindAppBar: true,
-        bottomNavigationBar: CustomNavigationBar(),
-        floatingActionButtonLocation:
-            FloatingActionButtonLocation.miniCenterDocked,
-        floatingActionButton: FloatingActionButtonWithNotched(),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                height: 200,
-                alignment: Alignment.center,
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25),
-                    bottomRight: Radius.circular(25),
-                  ),
-                  color: primaryColor,
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.only(top: 40),
-                  child: Text(
-                    "FIND THE DRIVER",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+      appBar: AppBar(
+        leading: IconButton(onPressed: () {Get.back();}, icon: const Icon(Icons.arrow_back_rounded, color: Colors.white) ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      extendBodyBehindAppBar: true,
+      bottomNavigationBar: CustomNavigationBar(),
+      floatingActionButtonLocation:
+      FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: FloatingActionButtonWithNotched(),
+      body: Stack(
+        children: [
+          GoogleMap(
+            onMapCreated: (controller) {
+              setState(() {
+                _mapController = controller;
+              });
+            },
+            initialCameraPosition: const CameraPosition(
+              target: LatLng(31.6211, 74.2824),
+              // Default initial location (San Francisco)
+              zoom: 12.0,
+            ),
+            markers: _markers, // Added markers property
+          ),
+          Container(
+            height: 320,
+            // alignment: Alignment.center,
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(25),
+                bottomRight: Radius.circular(25),
+              ),
+              color: primaryColor,
+            ),
+            child: const Padding(
+              padding: EdgeInsets.fromLTRB(80, 60, 20, 0),
+              child: Text(
+                "YOUR LOCATION",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              FutureBuilder(
-                  future: _profileController.getAllUserdetail(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.done) {
-                      if (snapshot.hasData) {
-                        return ListView.builder(
-                            padding: EdgeInsets.zero,
-                            shrinkWrap: true,
-                            itemCount:  snapshot.data!.length,
-                            physics: const ClampingScrollPhysics(),
-                            reverse: true,
-                            itemBuilder: (context, index) {
-                          if(snapshot.data![index].profileImage != null && snapshot.data![index].profileImage!.isNotEmpty ){
-                            return Padding(
-                              padding: const EdgeInsets.all(15.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: primaryColor,  // Border color
-                                    width: 2.0,          // Border width
-                                  ),
-                                  borderRadius: BorderRadius.circular(15.0),  // Border radius
-                                ),
-                                child: Column(
-                                  children: [
-                                    ListTile(
-                                      leading: Container(
-                                          width: 50,
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Colors.blue,
-                                          ),
-                                          child: Image.network('${snapshot.data![index].profileImage}')
-                                      ),
-                                      title: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children:  [
-                                          Text(
-                                            '${snapshot.data![index].fullname}',
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          Text(
-                                            'Vehicle #: ${snapshot.data![index].vehicleNumber}',
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                            ),
-                                          ),
-                                          Text(
-                                            'Vehicle: ${snapshot.data![index].vehicleType}',
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                            ),
-                                          ),Text(
-                                            'Location: ${snapshot.data![index].residence}',
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      trailing: Container(
-                                        width: 50,
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: thirdColor,
-                                        ),
-                                        child: Icon(
-                                          Icons.star,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                                      child: Divider(color: thirdColor, thickness: 2,),
-                                    ),
-                                    SizedBox(
-                                      width: 200,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          Get.to(Rescue_Map());
-                                        },
-                                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.red)),
-                                        child: const Text(
-                                          'Request Ambulance',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          }else{
-                            return Padding(
-                              padding: const EdgeInsets.all(15.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: primaryColor,  // Border color
-                                    width: 2.0,          // Border width
-                                  ),
-                                  borderRadius: BorderRadius.circular(15.0),  // Border radius
-                                ),
-                                child: Column(
-                                  children: [
-                                    ListTile(
-                                      leading: Container(
-                                          width: 50,
-                                          height: 50,
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Colors.blue,
-                                          ),
-                                          child: Icon(Icons.person)
-                                      ),
-                                      title: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children:  [
-                                          Text(
-                                            '${snapshot.data![index].fullname}',
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          Text(
-                                            'Vehicle #: ${snapshot.data![index].vehicleNumber}',
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                            ),
-                                          ),
-                                          Text(
-                                            'Vehicle: ${snapshot.data![index].vehicleType}',
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                            ),
-                                          ),Text(
-                                            'Location: ${snapshot.data![index].residence}',
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      trailing: Container(
-                                        width: 50,
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: thirdColor,
-                                        ),
-                                        child: Icon(
-                                          Icons.star,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                                      child: Divider(color: thirdColor, thickness: 2,),
-                                    ),
-                                    SizedBox(
-                                      width: 200,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          Get.to(Rescue_Map());
-                                        },
-                                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.red)),
-                                        child: const Text(
-                                          'Request Ambulance',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          }
-                        });
-                      } else if (snapshot.hasError) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      } else {
-                        return Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      }
-                    } else {
-                      return Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                  }),
-            ],
+            ),
           ),
-        ));
+          // SizedBox(
+          //   height: 250,
+          // )
+          Positioned(
+            top: 120.0,
+            left: 20.0,
+            right: 20.0,
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Icon(Icons.location_on, color: Colors.white, size: 30,),
+                    SizedBox(width: 10.0),
+                    Expanded(
+                      child: TextField(
+                        controller: _sourceController,
+                        decoration: InputDecoration(
+                          hintText: 'Enter source location',
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10.0),
+                Row(
+                  children: [
+                    Icon(Icons.location_on, color: Colors.white, size: 30,),
+                    SizedBox(width: 10.0),
+                    Expanded(
+                      child: TextField(
+                        controller: _destinationController,
+                        decoration: InputDecoration(
+                          hintText: 'Enter destination location',
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10.0),
+                ElevatedButton(
+                  onPressed: () {
+                    _findDriver();
+                    Get.to(const FindDriver());
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: secondaryColor,
+                    minimumSize: Size(150, 40),
+                  ),
+                  child: Text('Find Driver'),
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 30.0,
+            right: 290.0,
+
+            child: FloatingActionButton(
+              onPressed: () {
+                _getCurrentLocation();
+              },
+              child: Icon(Icons.my_location),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _findDriver() async {
+    // Get source location coordinates
+    Position sourcePosition = await Geolocator.getCurrentPosition();
+    setState(() {
+      _sourceLocation =
+          LatLng(sourcePosition.latitude, sourcePosition.longitude);
+    });
+
+    // Get destination location coordinates
+    // (assuming it's already in LatLng format)
+    String destinationString = _destinationController.text;
+    List<String> latLng = destinationString.split(',');
+    double lat = double.parse(latLng[0]);
+    double lng = double.parse(latLng[1]);
+    setState(() {
+      _destinationLocation = LatLng(lat, lng);
+    });
+
+    // Move the camera to show both source and destination locations
+    LatLngBounds bounds = LatLngBounds(
+      southwest: _sourceLocation,
+      northeast: _destinationLocation,
+    );
+    _mapController.animateCamera(CameraUpdate.newLatLngBounds(bounds, 100.0));
+  }
+
+  Future<void> _getCurrentLocation() async {
+    Position position = await Geolocator.getCurrentPosition();
+    setState(() {
+      LatLng userLocation = LatLng(position.latitude, position.longitude);
+      _markers = {
+        Marker(
+          markerId: MarkerId('user_location'),
+          position: userLocation,
+          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+        )
+      };
+      _mapController.animateCamera(
+        CameraUpdate.newCameraPosition(
+          CameraPosition(
+            target: userLocation,
+            zoom: 15.0,
+          ),
+        ),
+      );
+    });
   }
 }

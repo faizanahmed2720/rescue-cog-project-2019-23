@@ -80,7 +80,7 @@ class FirstAidGuide extends StatelessWidget {
           SizedBox(
             width: 320,
             child: Padding(
-                padding: const EdgeInsets.fromLTRB(40, 20, 40, 0),
+                padding: const EdgeInsets.fromLTRB(40, 50, 40, 0),
                 child: SizedBox(
                   height: 50,
                   child: ElevatedButton(

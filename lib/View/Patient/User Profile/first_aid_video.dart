@@ -38,7 +38,7 @@ class FirstAidVideo extends StatelessWidget {
                 color: primaryColor,
               ),
               child: Text(
-                "First Aid Video Guide".toUpperCase(),
+                "First Aid\nVideo Guide".toUpperCase(), textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 30,

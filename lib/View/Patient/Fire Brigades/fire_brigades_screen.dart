@@ -1,94 +1,154 @@
-// import 'package:flutter/material.dart';
-// import 'package:google_maps_flutter/google_maps_flutter.dart';
-//
-// class fireBrigades extends StatefulWidget {
-//   @override
-//   _fireBrigadesState createState() => _fireBrigadesState();
-// }
-//
-// class _fireBrigadesState extends State<fireBrigades> {
-//   LatLng? userLocation;
-//   TextEditingController addressController = TextEditingController();
-//
-//   @override
-//   void dispose() {
-//     addressController.dispose();
-//     super.dispose();
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('Emergency Service'),
-//       ),
-//       body: Column(
-//         children: [
-//           Expanded(
-//             child: GoogleMap(
-//               initialCameraPosition: const CameraPosition(
-//                 target: LatLng(0, 0),
-//                 zoom: 10.0,
-//               ),
-//               markers: userLocation! = null
-//                   ? {...?{
-//                 Marker(
-//                   markerId: MarkerId('userLocation'),
-//                   position: userLocation!,
-//                 ),
-//               }}
-//                   : null,
-//             ),
-//           ),
-//           Padding(
-//             padding: const EdgeInsets.all(16.0),
-//             child: TextField(
-//               controller: addressController,
-//               decoration: const InputDecoration(
-//                 labelText: 'Address',
-//               ),
-//             ),
-//           ),
-//           FloatingActionButton(
-//             onPressed: () {
-//               String address = addressController.text;
-//               // Perform further actions with the user's address
-//               print('User Address: $address');
-//             },
-//             child: Text('Confirm Location'),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-//
-//
-//
-//
-//
-// // import 'package:flutter/material.dart';
-// // import 'package:get/get_core/src/get_main.dart';
-// // import 'package:get/get_navigation/get_navigation.dart';
-// //
-// // class fireBrigades extends StatefulWidget {
-// //   const fireBrigades({super.key});
-// //
-// //   @override
-// //   State<fireBrigades> createState() => _fireBrigadesState();
-// // }
-// //
-// // class _fireBrigadesState extends State<fireBrigades> {
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     return Scaffold(
-// //       appBar: AppBar(
-// //         leading: IconButton(onPressed: () {Get.back();}, icon: const Icon(Icons.arrow_back_rounded, color: Colors.white) ),
-// //         backgroundColor: Colors.transparent,
-// //         elevation: 0,
-// //       ),
-// //       extendBodyBehindAppBar: true,
-// //       body: Center(child: Text("This is Fire Brigades Screen")),
-// //     );
-// //   }
-// // }
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:untitled/src/Theme/colors.dart';
+import 'package:untitled/src/Utils/CommonWidgets/UserCustomBottomNavigationBar.dart';
+import 'package:untitled/src/Utils/CommonWidgets/UserFloatingactionButton.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+class FireBrigades extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'FIRE BRIGADE EMERGENCY SERVICE',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: FireBrigadesPage(),
+    );
+  }
+}
+
+class FireBrigadesPage extends StatefulWidget {
+  @override
+  _FireBrigadesPageState createState() => _FireBrigadesPageState();
+}
+
+class _FireBrigadesPageState extends State<FireBrigadesPage> {
+  final Set<Marker> _markers = Set<Marker>();
+
+  void _onMarkerTapped(MarkerId markerId) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Branch Name'),
+          content: Text(markerId.value),
+          actions: <Widget>[
+            Align(
+              alignment: Alignment.center,
+              child: SizedBox(
+                width: 100,
+                height: 40,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: secondaryColor),
+                  onPressed: () {
+                    _launchPhoneCall('tel:+92-42-99230418');
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Call',
+                    style: TextStyle(fontSize: 20),),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _launchPhoneCall(String phoneNumber) async {
+    if (await canLaunch(phoneNumber)) {
+      await launch(phoneNumber);
+    } else {
+      throw 'Could not launch $phoneNumber';
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _addMarker(
+        'Fire Brigade, G7MM+7RR, Band Rd, Tariq Colony, Sodiwal Gulshan-e-Ravi, Lahore, Punjab 54030',
+        const LatLng(31.5332, 74.2144));
+    _addMarker(
+        'Fire Brigade Station, G9XF+JCV, Street No. 36, Saddar Town, Lahore, Punjab',
+        const LatLng(31.5490, 74.3035));
+    _addMarker(
+        'Fire Brigade Station، Hospital Road, Scheme No. 2, Scheme No 2, Lahore, Punjab',
+        const LatLng(31.5944, 74.2814));
+    _addMarker(
+        'Fire Brigade, F8GV+WF5, Lahore – Kasur Rd, Nishtar Town, Lahore, Punjab',
+        const LatLng(31.4772, 74.2737));
+    _addMarker(
+        'Fire Brigade, Quaid-e-Azam Industrial Area, Kot Lakhpat Madar-e-Millat Road, Quaid-e-Azam Industrial Estate Quaid e Azam Industrial Estate, Lahore, Punjab',
+        const LatLng(31.4408, 74.2523));
+  }
+
+  void _addMarker(String branchName, LatLng latLng) {
+    _markers.add(
+      Marker(
+        markerId: MarkerId(branchName),
+        position: latLng,
+        onTap: () => _onMarkerTapped(MarkerId(branchName)),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      bottomNavigationBar: CustomNavigationBar(),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: FloatingActionButtonWithNotched(),
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(Icons.arrow_back_rounded, color: Colors.white)),
+        // backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: const Text('FIRE BRIGADE'),
+        backgroundColor: primaryColor,
+      ),
+      body: Stack(
+        children: [
+          GoogleMap(
+            initialCameraPosition: const CameraPosition(
+              target: LatLng(31.5497, 74.3436),
+              zoom: 12.0,
+            ),
+            markers: _markers,
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              color: Colors.white,
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Direct Call',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                  IconButton(
+                      onPressed: () {
+                        _launchPhoneCall('tel:+92-42-99230418');
+                      },
+                      icon: Image.asset("assets/Images/callIcon.png")),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
