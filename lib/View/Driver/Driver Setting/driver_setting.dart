@@ -2,10 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/View/Driver/Driver%20Profile/driver_profile.dart';
+import 'package:untitled/View/Driver/Driver%20Setting/driver_about.dart';
 import '../../../src/Controller/driver_controller.dart';
-import '../../../src/Controller/profile_controller.dart';
 import '../../../src/Theme/colors.dart';
-import '../../Patient/User Profile/about.dart';
 import '../../Patient/splash_screen/splash_screen.dart';
 import '../Models/driverModel.dart';
 import '../commonWidgets/customBottomNavigationBar.dart';
@@ -180,7 +179,7 @@ class _driverSettingState extends State<driverSetting> {
                         height: 70,
                         width: 450,
                         child: IconButton(onPressed: () {
-                          Get.to(const About());
+                          Get.to(const DriverAbout());
                         }, icon: Image.asset("assets/Images/about.png"),),
                       ),
                       const SizedBox(

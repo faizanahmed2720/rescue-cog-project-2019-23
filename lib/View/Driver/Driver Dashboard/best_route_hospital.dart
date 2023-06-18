@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:untitled/View/Driver/Driver%20Dashboard/driver_dashboard.dart';
 
 import '../../../src/Theme/colors.dart';
 import '../commonWidgets/customBottomNavigationBar.dart';
@@ -56,13 +59,17 @@ class _bestRouteToHospitalState extends State<bestRouteToHospital> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        leading: IconButton(onPressed: () {Get.back();}, icon: const Icon(Icons.arrow_back_rounded, color: Colors.white) ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       extendBodyBehindAppBar: true,
-      extendBody: true,
+      // resizeToAvoidBottomInset: false,
       bottomNavigationBar: driverCustomBottomNavigationBar(),
-      floatingActionButton: driverFloatingActionButtonWithNotched(),
       floatingActionButtonLocation:
       FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: driverFloatingActionButtonWithNotched(),
       body: Column(
         children: [
           Container(
@@ -86,41 +93,45 @@ class _bestRouteToHospitalState extends State<bestRouteToHospital> {
             ),
           ),
 
-          Stack(
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height/1.35,
-                child: GoogleMap(
-                  initialCameraPosition: CameraPosition(
-                    target: _initialCameraPosition,
-                    zoom: 12.0,
-                  ),
-                  markers: _markers,
-                  onTap: (latlang)
-                  {
-                    print("Hello");
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 500),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: ElevatedButton(
-                    onPressed: () {
+          Expanded(
+            child: Stack(
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  child: GoogleMap(
+                    initialCameraPosition: CameraPosition(
+                      target: _initialCameraPosition,
+                      zoom: 12.0,
+                    ),
+                    markers: _markers,
+                    onTap: (latlang)
+                    {
+                      print("Hello");
                     },
-                    style: ElevatedButton.styleFrom(
-                        primary: secondaryColor),
-                    child: Text(
-                      "Reached on Destination".toUpperCase(),
-                      style:
-                      const TextStyle(fontSize: 15),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 60),
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Get.to(const driverDashboard());
+                      },
+                      style: ElevatedButton.styleFrom(
+                          primary: secondaryColor),
+                      child: Text(
+                        "Reached on Destination".toUpperCase(),
+                        style:
+                        const TextStyle(fontSize: 15),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+
+              ],
+            ),
           )
 
         ],

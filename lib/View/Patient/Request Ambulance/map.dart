@@ -19,7 +19,7 @@ class Rescue_Map extends StatefulWidget {
 class Rescue_MapState extends State<Rescue_Map> {
   final Completer<GoogleMapController> _controller = Completer();
 
-  static const LatLng sourceLocation = LatLng(31.5806489,74.4005833); //31.533199, 74.3766649
+  static const LatLng sourceLocation = LatLng(31.5806489,74.4005833);
   static const LatLng destination = LatLng(31.5409497, 74.370683);
 
   List<LatLng> polylineCoordinates = [];

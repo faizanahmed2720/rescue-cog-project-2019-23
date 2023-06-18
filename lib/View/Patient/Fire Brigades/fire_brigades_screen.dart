@@ -78,7 +78,7 @@ class _FireBrigadesPageState extends State<FireBrigadesPage> {
         'Fire Brigade Station, G9XF+JCV, Street No. 36, Saddar Town, Lahore, Punjab',
         const LatLng(31.5490, 74.3035));
     _addMarker(
-        'Fire Brigade Station، Hospital Road, Scheme No. 2, Scheme No 2, Lahore, Punjab',
+        'Fire Brigade Station، Hospital Road, Scheme No. 2, Lahore, Punjab',
         const LatLng(31.5944, 74.2814));
     _addMarker(
         'Fire Brigade, F8GV+WF5, Lahore – Kasur Rd, Nishtar Town, Lahore, Punjab',
@@ -104,7 +104,7 @@ class _FireBrigadesPageState extends State<FireBrigadesPage> {
       extendBodyBehindAppBar: true,
       bottomNavigationBar: CustomNavigationBar(),
       floatingActionButtonLocation:
-          FloatingActionButtonLocation.miniCenterDocked,
+      FloatingActionButtonLocation.miniCenterDocked,
       floatingActionButton: FloatingActionButtonWithNotched(),
       appBar: AppBar(
         leading: IconButton(
@@ -114,7 +114,6 @@ class _FireBrigadesPageState extends State<FireBrigadesPage> {
             icon: const Icon(Icons.arrow_back_rounded, color: Colors.white)),
         // backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('FIRE BRIGADE'),
         backgroundColor: primaryColor,
       ),
       body: Stack(
@@ -125,6 +124,29 @@ class _FireBrigadesPageState extends State<FireBrigadesPage> {
               zoom: 12.0,
             ),
             markers: _markers,
+          ),
+          Container(
+            height: 200,
+            alignment: Alignment.centerLeft,
+            // width: double.infinity,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(25),
+                bottomRight: Radius.circular(25),
+              ),
+              color: primaryColor,
+            ),
+            child: const Padding(
+              padding: EdgeInsets.fromLTRB(80, 60, 20, 0),
+              child: Text(
+                "FIRE BRIGADES",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ),
           Align(
             alignment: Alignment.bottomCenter,

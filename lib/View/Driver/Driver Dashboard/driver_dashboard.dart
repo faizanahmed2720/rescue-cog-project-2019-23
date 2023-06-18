@@ -41,7 +41,7 @@ class driverDashboard extends StatelessWidget {
                 ),
                 SizedBox(
                   height: 60,
-                  width: 325,
+                  width: 330,
                   child: Container(
                     child: Align(
                       alignment: Alignment.center,
@@ -54,7 +54,7 @@ class driverDashboard extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    color: secondaryColor,
+                    color: primaryColor,
                   ),
                 ),
                 SingleChildScrollView(
@@ -67,7 +67,7 @@ class driverDashboard extends StatelessWidget {
                         shrinkWrap: true,
                         itemBuilder: (c, index) {
                           return Padding(
-                            padding: const EdgeInsets.fromLTRB(25, 10, 25, 0),
+                            padding: const EdgeInsets.fromLTRB(28, 10, 25, 0),
                             child: Container(
                               height: 185,
                               alignment: Alignment.center,
@@ -79,7 +79,7 @@ class driverDashboard extends StatelessWidget {
                                   bottomLeft: Radius.circular(15),
                                   bottomRight: Radius.circular(15),
                                 ),
-                                color: primaryColor,
+                                color: thirdColor,
                               ),
                               child: Column(
                                 children: [
@@ -176,7 +176,7 @@ class driverDashboard extends StatelessWidget {
                                           height: 40,
                                           child: ElevatedButton(
                                             onPressed: () {
-                                              Get.to(const acceptPatientRequest());
+                                              Get.to(const PatientLocation());
                                             },
                                             style: ElevatedButton.styleFrom(
                                                 primary: secondaryColor),
