@@ -10,6 +10,7 @@ class FireBrigades extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'FIRE BRIGADE EMERGENCY SERVICE',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -101,26 +102,21 @@ class _FireBrigadesPageState extends State<FireBrigadesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(onPressed: () {Get.back();}, icon: const Icon(Icons.arrow_back_rounded, color: Colors.white) ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       extendBodyBehindAppBar: true,
       bottomNavigationBar: CustomNavigationBar(),
       floatingActionButtonLocation:
       FloatingActionButtonLocation.miniCenterDocked,
       floatingActionButton: FloatingActionButtonWithNotched(),
-      appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: const Icon(Icons.arrow_back_rounded, color: Colors.white)),
-        // backgroundColor: Colors.transparent,
-        elevation: 0,
-        backgroundColor: primaryColor,
-      ),
       body: Stack(
         children: [
           GoogleMap(
             initialCameraPosition: const CameraPosition(
-              target: LatLng(31.5497, 74.3436),
+              target: LatLng(31.5490, 74.3035),
               zoom: 12.0,
             ),
             markers: _markers,
@@ -162,7 +158,7 @@ class _FireBrigadesPageState extends State<FireBrigadesPage> {
                   ),
                   IconButton(
                       onPressed: () {
-                        _launchPhoneCall('tel:+92-42-99230418');
+                        _launchPhoneCall('tel:+92 3201004367');
                       },
                       icon: Image.asset("assets/Images/callIcon.png")),
                 ],

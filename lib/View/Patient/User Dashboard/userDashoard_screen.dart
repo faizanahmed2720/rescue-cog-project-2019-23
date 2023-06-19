@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../src/Utils/CommonWidgets/UserCustomBottomNavigationBar.dart';
@@ -10,7 +8,6 @@ import '../Nearest Hospital/nearest_hospital.dart';
 import '../Request Ambulance/request_ambulance_screen.dart';
 import '../User Setting/user_setting.dart';
 
-// ignore: camel_case_types
 class userDashboard extends StatelessWidget {
   const userDashboard({super.key});
 

@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/View/Patient/User%20Dashboard/userDashoard_screen.dart';
+import 'package:untitled/View/Patient/user%20Management/userLogIn_screen.dart';
 import 'package:untitled/src/Theme/colors.dart';
 import 'package:untitled/src/Controller/auth_controller.dart';
 import 'package:untitled/src/Utils/CommonWidgets/customTextField.dart';
@@ -204,7 +205,7 @@ class _userSignupState extends State<userSignup> {
                       ),
                       TextButton(
                         onPressed: () {
-                          Get.to(const userDashboard());
+                          Get.to(const UserLogin());
                         },
                         child: const Text(
                           "Log in",
