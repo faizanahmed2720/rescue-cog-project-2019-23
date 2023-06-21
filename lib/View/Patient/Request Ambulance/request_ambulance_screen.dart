@@ -237,9 +237,6 @@ class _UserLocationState extends State<UserLocation> {
 }
 
 
-
-
-
 // import 'package:flutter/material.dart';
 // import 'package:geolocator/geolocator.dart';
 // import 'package:get/get_core/src/get_main.dart';
