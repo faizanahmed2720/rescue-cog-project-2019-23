@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:untitled/View/Driver/commonWidgets/customBottomNavigationBar.dart';
+import 'package:untitled/View/Driver/commonWidgets/customFloatingActionButton.dart';
 import 'package:untitled/src/Theme/colors.dart';
 
-import '../../../src/Utils/CommonWidgets/UserCustomBottomNavigationBar.dart';
-import '../../../src/Utils/CommonWidgets/UserFloatingactionButton.dart';
-
-class NearestHospital extends StatefulWidget {
+class DriverNearestHospital extends StatefulWidget {
   @override
-  _NearestHospitalState createState() => _NearestHospitalState();
+  _DriverNearestHospitalState createState() => _DriverNearestHospitalState();
 }
 
-class _NearestHospitalState extends State<NearestHospital> {
+class _DriverNearestHospitalState extends State<DriverNearestHospital> {
   final Set<Marker> _markers = {};
   LatLng _initialCameraPosition = const LatLng(31.5204, 74.3587); // Lahore LatLng
 
@@ -66,9 +65,10 @@ class _NearestHospitalState extends State<NearestHospital> {
         elevation: 0,
       ),
       extendBodyBehindAppBar: true,
-      bottomNavigationBar: CustomNavigationBar(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
-      floatingActionButton: FloatingActionButtonWithNotched(),
+      bottomNavigationBar: driverCustomBottomNavigationBar(),
+      floatingActionButton: driverFloatingActionButtonWithNotched(),
+      floatingActionButtonLocation:
+      FloatingActionButtonLocation.miniCenterDocked,
       body: Stack(
         children: [
           GoogleMap(

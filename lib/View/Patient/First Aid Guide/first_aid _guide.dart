@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/View/Patient/First%20Aid%20Guide/textformat.dart';
+import 'package:untitled/View/Patient/User%20Profile/first_aid_video.dart';
 import 'package:untitled/src/Constants/text_strings.dart';
 import 'package:untitled/src/Utils/CommonWidgets/UserFloatingactionButton.dart';
 
@@ -58,7 +59,7 @@ class FirstAidGuide extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: 200,
+            height: 150,
             alignment: Alignment.center,
             width: double.infinity,
             decoration: const BoxDecoration(
@@ -326,6 +327,33 @@ class FirstAidGuide extends StatelessWidget {
                   ),
                 )),
           ),
+          SizedBox(
+            width: 320,
+            child: Padding(
+                padding: const EdgeInsets.fromLTRB(40, 20, 40, 0),
+                child: SizedBox(
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FirstAidVideo()),
+                      );
+                    },
+                    child: Text(
+                      "First Aid Video Guides".toUpperCase(),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(primary: secondaryColor),
+                  ),
+                )),
+          ),
+          SizedBox(
+            height: 10,
+          )
         ],
       ),
     );

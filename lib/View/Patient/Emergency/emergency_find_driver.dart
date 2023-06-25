@@ -1,31 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untitled/View/Patient/Emergency/call_ambulance.dart';
 import 'package:untitled/View/Patient/Request%20Ambulance/map_screen.dart';
 import 'package:uuid/uuid.dart';
 import '../../../models/request_ambulance_model.dart';
 import '../../../src/Controller/profile_controller.dart';
 import '../../../src/Controller/user_Ambulance_request_Controller.dart';
 import '../../../src/Theme/colors.dart';
-import '../../../src/Utils/CommonWidgets/UserCustomBottomNavigationBar.dart';
-import '../../../src/Utils/CommonWidgets/UserFloatingactionButton.dart';
 
-class FindDriver extends StatefulWidget {
+class EmergencyFindDriver extends StatefulWidget {
   String source;
   String destination;
 
-  FindDriver({super.key, required this.source, required this.destination});
+  EmergencyFindDriver({super.key, required this.source, required this.destination});
 
   @override
-  State<FindDriver> createState() => _FindDriverState();
+  State<EmergencyFindDriver> createState() => _EmergencyFindDriverState();
 }
 
-class _FindDriverState extends State<FindDriver> {
+class _EmergencyFindDriverState extends State<EmergencyFindDriver> {
   final profileController _profileController = Get.put(profileController());
   final UserRequestAmbulanceController _requestAmbulanceController =
-      Get.put(UserRequestAmbulanceController());
+  Get.put(UserRequestAmbulanceController());
 
   profileModel user =
-      profileModel(fullname: '', email: '', phoneNo: '', password: '');
+  profileModel(fullname: '', email: '', phoneNo: '', password: '');
 
   Future get() async {
     user = (await _requestAmbulanceController.getUserDetails());
@@ -51,10 +50,6 @@ class _FindDriverState extends State<FindDriver> {
           elevation: 0,
         ),
         extendBodyBehindAppBar: true,
-        bottomNavigationBar: CustomNavigationBar(),
-        floatingActionButtonLocation:
-            FloatingActionButtonLocation.miniCenterDocked,
-        floatingActionButton: FloatingActionButtonWithNotched(),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -116,18 +111,18 @@ class _FindDriverState extends State<FindDriver> {
                                               color: Colors.blue,
                                             ),
                                             child: snapshot.data![index]
-                                                            .profileImage !=
-                                                        null &&
-                                                    snapshot
-                                                        .data![index]
-                                                        .profileImage!
-                                                        .isNotEmpty
+                                                .profileImage !=
+                                                null &&
+                                                snapshot
+                                                    .data![index]
+                                                    .profileImage!
+                                                    .isNotEmpty
                                                 ? Image.network(
-                                                    '${snapshot.data![index].profileImage}')
+                                                '${snapshot.data![index].profileImage}')
                                                 : const Icon(Icons.person)),
                                         title: Column(
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               snapshot.data![index].fullname,
@@ -181,35 +176,35 @@ class _FindDriverState extends State<FindDriver> {
                                           onPressed: () async {
                                             var uuid = Uuid();
                                             RequestAmbulanceModel request =
-                                                RequestAmbulanceModel(
-                                                    source: widget.source,
-                                                    destination:
-                                                        widget.destination,
-                                                    fullName: user.fullname,
-                                                    profileImage:
-                                                        user.profileImage,
-                                                    phoneNo: user.phoneNo,
-                                                    requestId: uuid.v4()
-                                                );
+                                            RequestAmbulanceModel(
+                                                source: widget.source,
+                                                destination:
+                                                widget.destination,
+                                                fullName: user.fullname,
+                                                profileImage:
+                                                user.profileImage,
+                                                phoneNo: user.phoneNo,
+                                                requestId: uuid.v4()
+                                            );
 
                                             await _requestAmbulanceController
                                                 .createRequest(
-                                                    request,
-                                                    snapshot.data![index].uid
-                                                        .toString())
+                                                request,
+                                                snapshot.data![index].uid
+                                                    .toString())
                                                 .then((value) => {
-                                                      Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                MapScreen(fullName: snapshot.data![index].fullname, vehicleNo: snapshot.data![index].vehicleNumber,profileImage: snapshot.data![index].profileImage,vehicleType: snapshot.data![index].vehicleType,)),
-                                                      )
-                                                    });
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        CallAmbulance(fullName: snapshot.data![index].fullname, vehicleNo: snapshot.data![index].vehicleNumber,profileImage: snapshot.data![index].profileImage,vehicleType: snapshot.data![index].vehicleType,)),
+                                              )
+                                            });
                                           },
                                           style: ButtonStyle(
                                               backgroundColor:
-                                                  MaterialStateProperty.all<
-                                                      Color>(Colors.red)),
+                                              MaterialStateProperty.all<
+                                                  Color>(Colors.red)),
                                           child: const Text(
                                             'Request Ambulance',
                                             style: TextStyle(

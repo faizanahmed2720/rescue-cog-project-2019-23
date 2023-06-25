@@ -143,7 +143,7 @@ class _UserLocationState extends State<UserLocation> {
                 ElevatedButton(
                   onPressed: () {
                     _findDriver();
-                    Get.to(const FindDriver());
+                    Get.to( FindDriver(source: _sourceController.text, destination: _destinationController.text,));
                   },
                   style: ElevatedButton.styleFrom(
                     primary: secondaryColor,

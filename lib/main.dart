@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
       // supportedLocales: const [
       //   Locale('en'), // English
       //   Locale('ur'), // Urdu
+
       // ],
       // theme: ThemeData(
       //   primarySwatch: Colors.blue,

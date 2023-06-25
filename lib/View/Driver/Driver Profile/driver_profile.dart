@@ -96,7 +96,7 @@ class _driverProfileState extends State<driverProfile> {
   }
 
   Future get() async {
-    user = (await _driverController.getUserDetails()) as driverModel;
+    user = (await _driverController.getUserDetails());
 
     fullnameController.text = user.fullname;
     emailController.text = user.email;
